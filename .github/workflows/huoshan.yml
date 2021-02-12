@@ -10,7 +10,7 @@ on:
   watch:
     types: started
   repository_dispatch:
-    types: huoshan.js
+    types: huoshan
 jobs:
   build:
 
