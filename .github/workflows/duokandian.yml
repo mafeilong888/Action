@@ -27,7 +27,7 @@ jobs:
         run: |
           npm install
       - name: '运行 【多看点】'
-        if: env.DKD_duokandianBODY
+        if: env.duokandianbodyVal
         run: |
           node Scripts/duokandian.js
         env:
