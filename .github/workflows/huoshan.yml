@@ -9,7 +9,8 @@ on:
     - cron: '*/5 * * * *'
   watch:
     types: started
-  
+    repository_dispatch:
+    types: dyjsb
     
 jobs:
   build:
@@ -20,7 +21,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
         with:
-          repository: z2kk/Action_JS
+          repository: ZhiYi-N/Private-Script
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
