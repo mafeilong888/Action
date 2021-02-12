@@ -39,12 +39,12 @@ jobs:
         run: |
           node Scripts/dyhotsoon.js
         env:
-          HOTSOONSIGNHEADER: ${{ secrets. HOTSOONSIGNHEADER }}
-          HOTSOONSIGNKEY: ${{ secrets. HOTSOONSIGNKEY }}
-          HOTSOONADHEADER: ${{ secrets. HOTSOONADHEADER }}
-          HOTSOONADKEY: ${{ secrets. HOTSOONADKEY }}
-          HOTSOONREADHEADER: ${{ secrets. HOTSOONREADHEADER }}
-          HOTSOONREADKEY: ${{ secrets. HOTSOONREADKEY }}
+          HSURL: ${{ secrets. HSURL }}
+          HSHEADER: ${{ secrets. HSHEADER }}
+          HSBODY: ${{ secrets. HSBODY }}
+          PLAYURL: ${{ secrets. PLAYURL }}
+          PLAYHEADER: ${{ secrets. PLAYHEADER }}
+          PLAYBODY: ${{ secrets. PLAYBODY }}
           PUSH_KEY: ${{ secrets.PUSH_KEY }}
           BARK_PUSH: ${{ secrets.BARK_PUSH }}
           BARK_SOUND: ${{ secrets.BARK_SOUND }}
