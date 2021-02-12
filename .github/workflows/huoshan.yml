@@ -37,7 +37,7 @@ jobs:
           npm install
       - name: '运行 【抖音火山版】'
         run: |
-          node Scripts/dyhotsoon.js
+          node Scripts/huoshan.js
         env:
           HSURL: ${{ secrets. HSURL }}
           HSHEADER: ${{ secrets. HSHEADER }}
