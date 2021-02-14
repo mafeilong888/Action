@@ -6,6 +6,9 @@ on:
      - cron: '15 */2 * * *'
   watch:
     types: started
+ repository_dispatch:
+    types: dkd
+
 jobs:
   build:
     runs-on: ubuntu-latest
