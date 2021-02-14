@@ -10,11 +10,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     if: github.event.repository.owner.id == github.event.sender.id
-    env:
-        DKD_duokandianBODY: ${{ secrets.DKD_duokandianBODY }}
-        DKD_duokandianvideoBODY: ${{ secrets.DKD_duokandianvideoBODY }}
-        duokandianbodyVal: ${{ secrets.duokandianbodyVal }}
-        duokandianvideobodyVal: ${{ secrets.duokandianvideobodyVal }}
+   
     steps:
       - name: Checkout
         uses: actions/checkout@v1
@@ -27,7 +23,7 @@ jobs:
         run: |
           npm install
       - name: '运行 【多看点】'
-        if: env.duokandianbodyVal
+        
         run: |
           node Scripts/duokandian.js
         env:
