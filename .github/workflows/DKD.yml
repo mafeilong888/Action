@@ -7,7 +7,7 @@ on:
   watch:
     types: started
  repository_dispatch:
-    types: duokandian
+    types: dkd
 
 jobs:
   build:
