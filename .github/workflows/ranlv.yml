@@ -15,6 +15,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
     if: github.event.repository.owner.id == github.event.sender.id
+    env:
+        RLURL: ${{ secrets.RLURL }}
+        RLHEADER: ${{ secrets.RLHEADER }}
+        TZ: Asia/shanghai
     steps:
       - name: Checkout
         run: |
@@ -37,10 +41,17 @@ jobs:
           npm install
 
       - name: '运行 【燃旅视频】'
+        if: env.RLHEADER
         run: |
           cd ~/Action/Scripts
           node ranlv.js
         env:
-          TZ: Asia/shanghai
+          PUSH_KEY: ${{ secrets.PUSH_KEY }}
+          BARK_PUSH: ${{ secrets.BARK_PUSH }}
+          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+          TG_USER_ID: ${{ secrets.TG_USER_ID }}
+          BARK_SOUND: ${{ secrets.BARK_SOUND }}
+          DD_BOT_TOKEN: ${{ secrets.DD_BOT_TOKEN }}
+          DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET }}
 
  
