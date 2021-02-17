@@ -18,7 +18,7 @@ const notifyInterval = $.getdata('tzbutton'); //0为关闭通知，1为所有通
 
 let task = '';
 let tz = '';
-let uid = $.getdata('uid')
+let uid = '623700'
 let headerVal = {
   'User-Agent': `cong hua shi pin/1.4.6 (iPhone; iOS 14.1; Scale/2.00)`,
   'Accept': `*/*`,
