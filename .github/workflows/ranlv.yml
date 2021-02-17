@@ -29,7 +29,7 @@ jobs:
       - name: '运行 【ranlv】'
         if: env.RLHEADER
         run: |
-          node Scripts/ranlv.js
+          node ranlv.js
         env:
           PUSH_KEY: ${{ secrets.PUSH_KEY }}
           BARK_PUSH: ${{ secrets.BARK_PUSH }}
