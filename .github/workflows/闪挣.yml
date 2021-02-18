@@ -1,5 +1,5 @@
 
-name: Curtin-闪挣
+name: 闪挣
 
 on:
   workflow_dispatch:
