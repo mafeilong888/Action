@@ -40,7 +40,7 @@ jobs:
           git checkout main
           npm install
       - name: '运行 【闪挣】'
-        if: env.RLHEADER
+        if: env.SZHD
         run: |
           cd ~/Action/Scripts
           node sz.js
