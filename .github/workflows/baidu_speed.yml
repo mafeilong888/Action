@@ -27,7 +27,7 @@ jobs:
       - name: '运行 【百度极速】'
         if: env.BAIDU_COOKIE
         run: |
-          node Task/baidu_speed.js
+          node Scripts/baidu_speed.js
         env:
           BAIDU_CASH: ${{ secrets.BAIDU_CASH }}
           BAIDU_TASK: ${{ secrets.BAIDU_TASK }}
