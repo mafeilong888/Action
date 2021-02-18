@@ -54,36 +54,9 @@ if (isGetCookie) {
    $.done()
 } 
 if ($.isNode()) {
-   if (process.env.RLURL && process.env.RLURL.indexOf('#') > -1) {
-   rlurl = process.env.RLURL.split('#');
-   console.log(`您选择的是用"#"隔开\n`)
-  }
-  else if (process.env.RLURL && process.env.RLURL.indexOf('\n') > -1) {
-   rlurl = process.env.RLURL.split('\n');
-   console.log(`您选择的是用换行隔开\n`)
-  } else {
-   rlurl = process.env.RLURL.split()
-  };
-  if (process.env.RLHEADER && process.env.RLHEADER.indexOf('#') > -1) {
-   rlheader = process.env.RLHEADER.split('#');
-   console.log(`您选择的是用"#"隔开\n`)
-  }
-  else if (process.env.RLHEADER && process.env.RLHEADER.indexOf('\n') > -1) {
-   rlheader = process.env.RLHEADER.split('\n');
-   console.log(`您选择的是用换行隔开\n`)
-  } else {
-   rlheader = process.env.RLHEADER.split()
-  };
-  if (process.env.RLBODY && process.env.RLBODY.indexOf('#') > -1) {
-   rlbody = process.env.RLBODY.split('#');
-   console.log(`您选择的是用"#"隔开\n`)
-  }
-  else if (process.env.RLBODY && process.env.RLBODY.indexOf('\n') > -1) {
-   rlbody = process.env.RLBODY.split('\n');
-   console.log(`您选择的是用换行隔开\n`)
-  } else {
-   rlbody = process.env.RLBODY.split()
-  };
+
+rlurlArr.push('access_token=f2e1d57418bb3d6a0439b494f3468a75&client=1&member_id=196355&user_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJSYW5sdiBKV1QiLCJpYXQiOjE2MTM0OTE3MzgsImV4cCI6MzIyNjk4MzQ3NiwiYXVkIjoiUmFubHYiLCJzdWIiOiJSYW5sdiIsImRhdGEiOnsibWVtYmVyX2lkIjoxOTYzNTUsImF2YXRhciI6Imh0dHA6XC9cL3Jhbmx2Lmx2ZmFjbi5jb21cL3N0YXRpY1wvbW9kdWxlXC9hZG1pblwvaW1nXC9kZWZhdWx0X2hlYWQuanBnIiwibmlja25hbWUiOiJcdTc1MjhcdTYyMzc4Mjk3MDUzMSIsIm1vYmlsZSI6IjE1NjA2MTAwMDE5In19.0uZIHrG1oUctuIoWcIQKOTLjNv7bjU1P0vG_17SB_q4&video_id=31077')
+rlheaderArr.push('{\"Cookie\":\"view_24378=24378; acw_tc=3d93df2116134917316823145e84ddc0373db9be222f0a5d96d89a1d1e\",\"Accept\":\"*/*\",\"Connection\":\"keep-alive\",\"Accept-Encoding\":\"gzip, deflate, br\",\"Host\":\"ranlv.lvfacn.com\",\"User-Agent\":\"ran lu shi pin/1.0.49 (iPhone; iOS 14.2; Scale/3.00)\",\"Content-Length\":\"0\",\"Accept-Language\":\"zh-Hans-CN;q=1\"}')
     console.log(`============ 脚本执行-国际标准时间(UTC)：${new Date().toLocaleString()}  =============\n`)
     console.log(`============ 脚本执行-北京时间(UTC+8)：${new Date(new Date().getTime() + 8 * 60 * 60 * 1000).toLocaleString()}  =============\n`)
  } else {
