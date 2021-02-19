@@ -89,6 +89,8 @@ if (process.env.SZHD) {
   .catch((e) => $.logErr(e))
   .finally(() => $.done())
 //闪挣数据获取
+szurlArr.push('https://api-9f9d25.sz365.cn/api/virtual_currency_v2/reward')
+szhdArr.push('{\"Accept-Encoding\":\"gzip, deflate, br\",\"Accept\":\"application/json, text/javascript, */*; q=0.01\",\"Connection\":\"keep-alive\",\"Content-Type\":\"application/x-www-form-urlencoded\",\"Host\":\"api-9f9d25.sz365.cn\",\"User-Agent\":\"shan zheng/2.2.7 (iPhone; iOS 14.2; Scale/3.00) NetType/4G\",\"Authorization\":\"Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9hcGktOWY5ZDI1LnN6MzY1LmNuXC9hcGlcL2FwcFwvbG9naW4iLCJpYXQiOjE2MTM2NjEzODAsImV4cCI6MTYxMzc0Nzc4MCwibmJmIjoxNjEzNjYxMzgwLCJqdGkiOiJ1Rjk2VHl4ZHMzVUQwWWVaIiwic3ViIjoyMTI0MzE3LCJwcnYiOiI4ZGNhNzhkOGViZTgwYWQzZjM2MGI1YmQxNzQ2MjFmMThkZDFlOWFlIiwiZGV2aWNlX2lkIjoyMDg1MjM0LCJrZXlfYXBwX2lkIjoiNCIsInN5cyI6IjEiLCJwcm9kdWN0aW9uX2lkIjoiMSJ9.qU-aA9aS77_Kicvw4dvy-dYIHInRSTLc0IROs3LOD-k\",\"Accept-Language\":\"zh-Hans-CN;q=1\",\"Content-Length\":\"8\"}')      
 function szck() {
    if ($request.url.indexOf("virtual_currency_v2/reward") > -1){
  const szurl = $request.url
