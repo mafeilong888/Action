@@ -57,19 +57,19 @@ hostname = api-9f9d25.sz365.cn
 const $ = new Env('闪挣');
 // let szurl = $.getdata('szurl')
 // let szhd = $.getdata('szhd')
-var szurl=''
-var szhd=''
+var szurl='https://api-9f9d25.sz365.cn/api/virtual_currency_v2/reward'
+var szhd='{\"Accept-Encoding\":\"gzip, deflate, br\",\"Accept\":\"application/json, text/javascript, */*; q=0.01\",\"Connection\":\"keep-alive\",\"Content-Type\":\"application/x-www-form-urlencoded\",\"Host\":\"api-9f9d25.sz365.cn\",\"User-Agent\":\"shan zheng/2.2.7 (iPhone; iOS 14.2; Scale/3.00) NetType/4G\",\"Authorization\":\"Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9hcGktOWY5ZDI1LnN6MzY1LmNuXC9hcGlcL2FwcFwvbG9naW4iLCJpYXQiOjE2MTM2NjEzODAsImV4cCI6MTYxMzc0Nzc4MCwibmJmIjoxNjEzNjYxMzgwLCJqdGkiOiJ1Rjk2VHl4ZHMzVUQwWWVaIiwic3ViIjoyMTI0MzE3LCJwcnYiOiI4ZGNhNzhkOGViZTgwYWQzZjM2MGI1YmQxNzQ2MjFmMThkZDFlOWFlIiwiZGV2aWNlX2lkIjoyMDg1MjM0LCJrZXlfYXBwX2lkIjoiNCIsInN5cyI6IjEiLCJwcm9kdWN0aW9uX2lkIjoiMSJ9.qU-aA9aS77_Kicvw4dvy-dYIHInRSTLc0IROs3LOD-k\",\"Accept-Language\":\"zh-Hans-CN;q=1\",\"Content-Length\":\"8\"}'
 
 if (process.env.SZURL) {
 	szurl = process.env.SZURL;
 }else{
-	szurl = $.getdata('szurl');
+	szurl = $.getdata('https://api-9f9d25.sz365.cn/api/virtual_currency_v2/reward');
 }
 
 if (process.env.SZHD) {
 	szhd = process.env.SZHD;
 }else{
-	szhd = $.getdata('szhd');
+	szhd = $.getdata('{\"Accept-Encoding\":\"gzip, deflate, br\",\"Accept\":\"application/json, text/javascript, */*; q=0.01\",\"Connection\":\"keep-alive\",\"Content-Type\":\"application/x-www-form-urlencoded\",\"Host\":\"api-9f9d25.sz365.cn\",\"User-Agent\":\"shan zheng/2.2.7 (iPhone; iOS 14.2; Scale/3.00) NetType/4G\",\"Authorization\":\"Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9hcGktOWY5ZDI1LnN6MzY1LmNuXC9hcGlcL2FwcFwvbG9naW4iLCJpYXQiOjE2MTM2NjEzODAsImV4cCI6MTYxMzc0Nzc4MCwibmJmIjoxNjEzNjYxMzgwLCJqdGkiOiJ1Rjk2VHl4ZHMzVUQwWWVaIiwic3ViIjoyMTI0MzE3LCJwcnYiOiI4ZGNhNzhkOGViZTgwYWQzZjM2MGI1YmQxNzQ2MjFmMThkZDFlOWFlIiwiZGV2aWNlX2lkIjoyMDg1MjM0LCJrZXlfYXBwX2lkIjoiNCIsInN5cyI6IjEiLCJwcm9kdWN0aW9uX2lkIjoiMSJ9.qU-aA9aS77_Kicvw4dvy-dYIHInRSTLc0IROs3LOD-k\",\"Accept-Language\":\"zh-Hans-CN;q=1\",\"Content-Length\":\"8\"}');
 }
 
 !(async () => {
