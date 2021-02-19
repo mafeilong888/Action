@@ -43,55 +43,55 @@ jobs:
         if: env.SZHD
         run: |
           cd ~/Action/Scripts
-          node sz.js
+          node Scripts/sz.js
         env:
           SZURL: ${{ secrets.SZURL }}
           SZHD: ${{ secrets.SZHD }}
       - name: '运行 【闪挣2】'   
         run: |
-          node sz.js
+          node Scripts/sz.js
         env:
           SZURL: ${{ secrets.SZURL }}
           SZHD: ${{ secrets.SZHD }}
       - name: '运行 【闪挣3】'   
         run: |
-          node sz.js
+          node Scripts/sz.js
         env:
           SZURL: ${{ secrets.SZURL }}
           SZHD: ${{ secrets.SZHD }}
       - name: '运行 【闪挣4】'   
         run: |
-          node sz.js
+          node Scripts/sz.js
         env:
           SZURL: ${{ secrets.SZURL }}
           SZHD: ${{ secrets.SZHD }}
       - name: '运行 【闪挣5】'   
         run: |
-          node sz.js
+          node Scripts/sz.js
         env:
           SZURL: ${{ secrets.SZURL }}
           SZHD: ${{ secrets.SZHD }}
       - name: '运行 【闪挣6】'   
         run: |
-          node sz.js
+          node Scripts/sz.js
         env:
           SZURL: ${{ secrets.SZURL }}
           SZHD: ${{ secrets.SZHD }}
       - name: '运行 【闪挣7】'   
         run: |
-          node sz.js
+          node Scripts/sz.js
         env:
           SZURL: ${{ secrets.SZURL }}
           SZHD: ${{ secrets.SZHD }}
       - name: '运行 【闪挣8】'   
         run: |
-          node sz.js
+          node Scripts/sz.js
         env:
           SZURL: ${{ secrets.SZURL }}
           SZHD: ${{ secrets.SZHD }}
       - name: '运行 【闪挣9】'   
         run: |
-          node sz.js
+          node Scripts/sz.js
         env:
           SZURL: ${{ secrets.SZURL }}
           SZHD: ${{ secrets.SZHD }}
