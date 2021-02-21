@@ -68,15 +68,15 @@ jobs:
           YOUTH_READ: ${{ secrets.YOUTH_READ4 }}
           YOUTH_ATIME: ${{ secrets.YOUTH_ATIME4 }}
           
-       - name: '运行 【中青看点自动阅读五】'
-        if: env.YOUTH_READ5
+      - name: '运行 【中青看点自动阅读五】'
+        if: env.YOUTH_READ5                                      
         run: |
           node Scripts/Youth_Read.js
         env:
           YOUTH_READ: ${{ secrets.YOUTH_READ5 }}
           YOUTH_ATIME: ${{ secrets.YOUTH_ATIME5 }}
           
-       - name: '运行 【中青看点自动阅读六】'
+      - name: '运行 【中青看点自动阅读六】'
         if: env.YOUTH_READ6
         run: |
           node Scripts/Youth_Read.js
@@ -84,7 +84,7 @@ jobs:
           YOUTH_READ: ${{ secrets.YOUTH_READ6 }}
           YOUTH_ATIME: ${{ secrets.YOUTH_ATIME6 }}
           
-       - name: '运行 【中青看点自动阅读七】'
+      - name: '运行 【中青看点自动阅读七】'
         if: env.YOUTH_READ7
         run: |
           node Scripts/Youth_Read.js
@@ -92,7 +92,7 @@ jobs:
           YOUTH_READ: ${{ secrets.YOUTH_READ7 }}
           YOUTH_ATIME: ${{ secrets.YOUTH_ATIME7 }}
           
-       - name: '运行 【中青看点自动阅读八】'
+      - name: '运行 【中青看点自动阅读八】'
         if: env.YOUTH_READ8
         run: |
           node Scripts/Youth_Read.js
@@ -100,7 +100,7 @@ jobs:
           YOUTH_READ: ${{ secrets.YOUTH_READ8 }}
           YOUTH_ATIME: ${{ secrets.YOUTH_ATIME8 }}
           
-       - name: '运行 【中青看点自动阅读九】'
+      - name: '运行 【中青看点自动阅读九】'
         if: env.YOUTH_READ9
         run: |
           node Scripts/Youth_Read.js
@@ -108,7 +108,7 @@ jobs:
           YOUTH_READ: ${{ secrets.YOUTH_READ9 }}
           YOUTH_ATIME: ${{ secrets.YOUTH_ATIME9 }}
           
-       - name: '运行 【中青看点自动阅读十】'
+      - name: '运行 【中青看点自动阅读十】'
         if: env.YOUTH_READ10
         run: |
           node Scripts/Youth_Read.js
