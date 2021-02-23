@@ -89,13 +89,12 @@ if (!fqkkhdArr[0]) {
       console.log(`\n番茄看看开始执行第${x+1}次阅读任务！💦\n`)
     await fqkk1();
 if(zz==1){
-console.log('番茄看看任务异常，请查看脚本运行日志查看情况!')
+$.msg("","",'番茄看看任务异常，请查看脚本运行日志查看情况!')
+break;
 }
-  }if(zz==1){
-$.msg($.name,'','番茄看看任务异常，请查看脚本运行日志查看情况!')
-}
+  }
   await fqkktx();
-}}}
+}}
 })()
   .catch((e) => $.logErr(e))
   .finally(() => $.done())
@@ -126,11 +125,11 @@ let url = {
            
     const result = JSON.parse(data)
         if(result.code == 0){
-        console.log('\n番茄看看领取阅读奖励回执:成功🌝 '+result.msg+'\n今日阅读次数: '+result.data.infoView.num+' 今日阅读奖励: '+result.data.infoView.score)
+        console.log('\n番茄看看领取阅读奖励回执:成功🌝 '+result.msg)
 }
-if(result.code !== 0){
+if(result.code == 502 || result.code == 550 || result.code == 413 || resule.code == 600){
 
-       console.log('\n番茄看看领取阅读奖励回执:失败🚫 '+result.msg+'\n今日阅读次数: '+result.data.infoView.num+' 今日阅读奖励: '+result.data.infoView.score)
+       console.log('\n番茄看看领取阅读奖励回执:失败🚫 '+result.msg)
 zz = 1
 }
    
@@ -153,16 +152,12 @@ let url = {
 }      
       $.post(url, async (err, resp, data) => {
         try {
-        if (err) {
-          console.log("⛔️API查询请求失败❌ ‼️‼️");
-          console.log(JSON.stringify(err));
-          $.logErr(err);
-        } else {
            
     const result = JSON.parse(data)
        console.log('\n番茄看看key提交成功,即将开始领取阅读奖励')       
-       
-        }} catch (e) {
+       await $.wait(8000);
+        await fqkk3();
+        } catch (e) {
           //$.logErr(e, resp);
         } finally {
           resolve()
@@ -173,14 +168,15 @@ let url = {
 
 
 
+
 //番茄看看key
 function fqkk1(timeout = 0) {
   return new Promise((resolve) => {
-    setTimeout( ()=>{
+/*    setTimeout( ()=>{
       if (typeof $.getdata('fqkkhd') === "undefined") {
         $.msg($.name,"",'请先获取番茄看看数据!😓',)
         $.done()
-      }
+      }*/
 let url = {
         url : "http://m."+fqkkurl.match(/m.(.*?).top/)[1]+".top/reada/getTask",
         headers : JSON.parse(fqkkhd),
@@ -193,11 +189,11 @@ let url = {
         console.log('\n番茄看看获取key回执:成功🌝 ')
         fqkey = result.data.jkey
         console.log(fqkey)
+        await $.wait(1000);
         await fqkk2()
-}       await $.wait(10000);
-        await fqkk3();   
-if(result.code !== 0){
-console.log('番茄看看获取key回执:失败🚫 '+result.msg)
+}
+if(result.code == 401){
+        $.msg('','','番茄看看获取key回执:失败🚫 '+result.msg+'请重新获取数据。')
 
 }
         } catch (e) {
@@ -205,7 +201,7 @@ console.log('番茄看看获取key回执:失败🚫 '+result.msg)
         } finally {
           resolve()
         }
-      })
+//      })
     },timeout)
   })
 }
@@ -225,7 +221,7 @@ let url = {
         if(result.code == 0){
         console.log('\n番茄看看提现回执:成功🌝 ')
 }
-if(result.code !== 0){
+if(result.code == 502 || result.code == 505 || result.code == 413 || result.code == 501){
 
        console.log('\n番茄看看提现回执:失败🚫 '+result.msg)
 }
