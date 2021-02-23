@@ -39,7 +39,6 @@ jqbzpbodyArr.push('sign=e7506671c6f9e181ea2b8b1a57143d52&channelID=2&timestamp=1
     jqbzpbodyArr.push($.getdata('jqbzpbody'))
     let jqbcount = ($.getval('jqbcount') || '1');
   for (let i = 2; i <= jqbcount; i++) {
-    jqburlArr.push($.getdata('jqburl${i}'))
     jqbhdArr.push($.getdata('jqbhd${i}'))
     jqbggbodyArr.push($.getdata('jqbggbody${i}'))
     jqbqdbodyArr.push($.getdata('jqbqdbody${i}'))
