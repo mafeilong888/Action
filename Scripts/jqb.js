@@ -14,20 +14,46 @@ let jqbzpbody = $.getdata('jqbzpbody')
 
 if ($.isNode()) {
 
-   jqbhd = process.env.JQB_HD
-   jqbggbody = process.env.JQB_GGBODY
-   jqbqdbody = process.env.JQB_QDBODY
-   jqbbody1 = process.env.JQB_BODY1
-   jqbbody2 = process.env.JQB_BODY2
-   jqbbody3 = process.env.JQB_BODY3
-   jqbbody4 = process.env.JQB_BODY4
-   jqbbody5 = process.env.JQB_BODY5
-   jqbrwbody = process.env.JQB_RWBODY
-   jqbzpbody = process.env.JQB_ZPBODY
-
+jqburlArr.push('http://jqb.iphonezhuan.com/submitsign\')
+jqbhdArr.push('{\"Accept\":\"*/*\",\"Accept-Encoding\":\"gzip, deflate\",\"Connection\":\"keep-alive\",\"Content-Type\":\"application/x-www-form-urlencoded\",\"Host\":\"jqb.iphonezhuan.com\",\"User-Agent\":\"%E6%99%BA%E8%83%BD%E4%BC%98%E9%80%89/1.03 CFNetwork/1206 Darwin/20.1.0\",\"Content-Length\":\"28\",\"Accept-Language\":\"zh-cn\"}')
+jqbggbodyArr.push('sign=d7e087a09847507d9f84aa1a9f89cb63&channelID=2&timestamp=1613364669422&type=2&uid=8544&ver=103')
+jqbqdbodyArr.push('channelID=2&uid=8544&ver=103')
+jqbbody1Arr.push('sign=7d1e2f0b98a9ef3666c19af8fb2fad94&adconfigid=6&channelID=2&timestamp=1613363962067&type=3&uid=8544&ver=103')
+jqbbody2Arr.push('sign=666c0e8c144c1f017eea96f163fab202&adconfigid=7&channelID=2&timestamp=1613363881702&type=3&uid=8544&ver=103')
+jqbbody3Arr.push('sign=ec8859321954e544bdd40c4af45ba6cf&adconfigid=8&channelID=2&timestamp=1613363932048&type=3&uid=8544&ver=103')
+jqbbody4Arr.push('sign=210c60cc7887f2020279b3b7ac5fa4ba&adconfigid=9&channelID=2&timestamp=1613364003739&type=3&uid=8544&ver=103')
+jqbbody5Arr.push('sign=1a5b187cf40a79f145ea00bedb062736&adconfigid=10&channelID=2&timestamp=1613364044607&type=3&uid=8544&ver=103')
+jqbrwbodyArr.push('uid=8544&channelID=2&type=1&ver=103')	
+jqbzpbodyArr.push('sign=e7506671c6f9e181ea2b8b1a57143d52&channelID=2&timestamp=1613364077435&type=4&uid=8544&ver=103')	
     console.log(`============ 脚本执行-国际标准时间(UTC)：${new Date().toLocaleString()}  =============\n`)
     console.log(`============ 脚本执行-北京时间(UTC+8)：${new Date(new Date().getTime() + 8 * 60 * 60 * 1000).toLocaleString()}  =============\n`)
- }
+} else {
+    jqburlArr.push($.getdata('jqburl'))
+    jqbhdArr.push($.getdata('jqbhd'))
+    jqbggbodyArr.push($.getdata('jqbggbody'))
+    jqbqdbodyArr.push($.getdata('jqbqdbody'))
+    jqbbody1Arr.push($.getdata('jqbbody1'))
+    jqbbody2Arr.push($.getdata('jqbbody2'))
+    jqbbody3Arr.push($.getdata('jqbbody3'))
+    jqbbody4Arr.push($.getdata('jqbbody4'))
+    jqbbody5Arr.push($.getdata('jqbbody5'))
+    jqbrwbodyArr.push($.getdata('jqbrwbody'))	
+    jqbzpbodyArr.push($.getdata('jqbzpbody'))
+    let jqbcount = ($.getval('jqbcount') || '1');
+  for (let i = 2; i <= jqbcount; i++) {
+    jqburlArr.push($.getdata('jqburl${i}'))
+    jqbhdArr.push($.getdata('jqbhd${i}'))
+    jqbggbodyArr.push($.getdata('jqbggbody${i}'))
+    jqbqdbodyArr.push($.getdata('jqbqdbody${i}'))
+    jqbbody1Arr.push($.getdata('jqbbody1${i}'))
+    jqbbody2Arr.push($.getdata('jqbbody2${i}'))
+    jqbbody3Arr.push($.getdata('jqbbody3${i}'))
+    jqbbody4Arr.push($.getdata('jqbbody4${i}'))
+    jqbbody5Arr.push($.getdata('jqbbody5${i}'))
+    jqbrwbodyArr.push($.getdata('jqbrwbody${i}'))	
+    jqbzpbodyArr.push($.getdata('jqbzpbody${i}'))	  
+  }
+}
 
 
 
