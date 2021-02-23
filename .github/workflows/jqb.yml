@@ -37,7 +37,7 @@ jobs:
       - name: '运行 【金钱豹】'
         if: env.JQB_HD
         run: |
-          node Task/jqb.js
+          node Scripts/jqb.js
         env:
           PUSH_KEY: ${{ secrets.PUSH_KEY }}
           BARK_PUSH: ${{ secrets.BARK_PUSH }}
