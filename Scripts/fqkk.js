@@ -12,7 +12,7 @@ let fqtx = ($.getval('fqtx') || '100');  // 此处修改提现金额，0.1元等
 var zz = ''
 
 if ($.isNode()) {
-   if (process.env.FQKK_URL && process.env.FQKK_URL.indexOf('#') > -1) {
+/*   if (process.env.FQKK_URL && process.env.FQKK_URL.indexOf('#') > -1) {
    fqkkurlArr = process.env.FQKK_URL.split('#');
    console.log(`您选择的是用"#"隔开\n`)
   }
@@ -58,7 +58,8 @@ if ($.isNode()) {
           rlbodyArr.push(rlbody[item])
         }
     });  */
-	
+fqkkurlArr.push('http://m.ycjingchang.top/reada/getTask')
+fqkkhdArr.push('{\"Accept\":\"*/*\",\"Accept-Encoding\":\"gzip, deflate\",\"Origin\":\"http://m.ycjingchang.top\",\"Cookie\":\"autoRead=1; udtauth=ee13lHTmwYXrVNL5G%2Fbkt64X6dNJVzFMu7Mi%2B3yu6bMMTo7r6m2o7oS4s9GYihWw8D8MHREstNFK%2BYoyDGm1YjH1RnRawNJMAkvjRFZF5Zlt9jfSc9FOKu1FKM9Uf84HTkEqdFgdF0Hld1f9DxPcgg6u3UX1WNhBc76kgVc%2Bhl4; PHPSESSID=amgjne1ae9b16gbpugej5s34b1\",\"Connection\":\"keep-alive\",\"Host\":\"m.ycjingchang.top\",\"Content-Length\":\"0\",\"User-Agent\":\"Mozilla/5.0 (iPhone; CPU iPhone OS 14_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 MicroMessenger/8.0.2(0x1800022e) NetType/WIFI Language/zh_CN\",\"Referer\":\"http://m.ycjingchang.top/reada?upuid=3950781\",\"Accept-Language\":\"zh-cn\",\"X-Requested-With\":\"XMLHttpRequest\"}')
     console.log(`============ 脚本执行-国际标准时间(UTC)：${new Date().toLocaleString()}  =============\n`)
     console.log(`============ 脚本执行-北京时间(UTC+8)：${new Date(new Date().getTime() + 8 * 60 * 60 * 1000).toLocaleString()}  =============\n`)
  } else {
