@@ -28,17 +28,28 @@ jqbzpbodyArr.push('sign=e7506671c6f9e181ea2b8b1a57143d52&channelID=2&timestamp=1
     console.log(`============ 脚本执行-北京时间(UTC+8)：${new Date(new Date().getTime() + 8 * 60 * 60 * 1000).toLocaleString()}  =============\n`)
 } else {
 	
-jqbhdArr.push('$.getdata('jqbhd')')
-jqbggbodyArr.push('$.getdata('jqbggbody')')
-jqbqdbodyArr.push('$.getdata('jqbqdbody')')
-jqbbody1Arr.push('$.getdata('jqbbody1')')
-jqbbody2Arr.push('$.getdata('jqbbody2')')
-jqbbody3Arr.push('$.getdata('jqbbody3')')
-jqbbody4Arr.push('$.getdata('jqbbody4')')
-jqbbody5Arr.push('$.getdata('jqbbody5')')
-jqbrwbodyArr.push('$.getdata('jqbrwbody')')	
-jqbzpbodyArr.push('$.getdata('jqbzpbody')')
-	
+jqbhdArr.push($.getdata('jqbhd'))
+jqbggbodyArr.push($.getdata('jqbggbody'))
+jqbqdbodyArr.push($.getdata('jqbqdbody'))
+jqbbody1Arr.push($.getdata('jqbbody1'))
+jqbbody2Arr.push($.getdata('jqbbody2'))
+jqbbody3Arr.push($.getdata('jqbbody3'))
+jqbbody4Arr.push($.getdata('jqbbody4'))
+jqbbody5Arr.push($.getdata('jqbbody5'))
+jqbrwbodyArr.push($.getdata('jqbrwbody'))	
+jqbzpbodyArr.push($.getdata('jqbzpbody'))
+    let jqbcount = ($.getval('jqbcount') || '1');
+  for (let i = 2; i <= jqbcount; i++) {
+jqbhdArr.push($.getdata('jqbhd${i}'))
+jqbggbodyArr.push($.getdata('jqbggbody${i}'))
+jqbqdbodyArr.push($.getdata('jqbqdbody${i}'))
+jqbbody1Arr.push($.getdata('jqbbody1${i}'))
+jqbbody2Arr.push($.getdata('jqbbody2${i}'))
+jqbbody3Arr.push($.getdata('jqbbody3${i}'))
+jqbbody4Arr.push($.getdata('jqbbody4${i}'))
+jqbbody5Arr.push($.getdata('jqbbody5${i}'))
+jqbrwbodyArr.push($.getdata('jqbrwbody${i}'))	
+jqbzpbodyArr.push($.getdata('jqbzpbody${i}'))
   }
 } 
 
