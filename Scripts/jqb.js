@@ -13,7 +13,8 @@ let jqbrwbody = $.getdata('jqbrwbody')
 let jqbzpbody = $.getdata('jqbzpbody')
 
 if ($.isNode()) {
-
+	
+jqburlArr.push('http://jqb.iphonezhuan.com/submitsign')
 jqbhdArr.push('{\"Accept\":\"*/*\",\"Accept-Encoding\":\"gzip, deflate\",\"Connection\":\"keep-alive\",\"Content-Type\":\"application/x-www-form-urlencoded\",\"Host\":\"jqb.iphonezhuan.com\",\"User-Agent\":\"%E6%99%BA%E8%83%BD%E4%BC%98%E9%80%89/1.03 CFNetwork/1206 Darwin/20.1.0\",\"Content-Length\":\"28\",\"Accept-Language\":\"zh-cn\"}')
 jqbggbodyArr.push('sign=d7e087a09847507d9f84aa1a9f89cb63&channelID=2&timestamp=1613364669422&type=2&uid=8544&ver=103')
 jqbqdbodyArr.push('channelID=2&uid=8544&ver=103')
