@@ -13,28 +13,9 @@ let ymzbody1 = $.getdata('ymzbody1')
 //let ymzbody2 = $.getdata('ymzbody2')
 
 if ($.isNode()) {
-
- /*if (process.env.YMZ_URL && process.env.YMZ_URL.indexOf('\n') > -1) {
-   ymzurl = process.env.YMZ_URL.split('\n');
-   console.log(`您选择的是用换行隔开\n`)
-  } else {
-   ymzurl = process.env.YMZ_URLL.split()
-  }; */
-if (process.env.YMZ_HD && process.env.YMZ_HD.split('\n').length > 0) {
-   ymzhd = process.env.YMZ_HD.split('\n');
-  } else  {
-   ymzhd = process.env.YMZ_HD.split()
-  };
-if (process.env.YMZ_BODY && process.env.YMZ_BODY.split('\n').length > 0) {
-   ymzbody = process.env.YMZ_BODY.split('\n');
-  } else  {
-   ymzbody = process.env.YMZ_BODY.split()
-  };  
-if (process.env.YMZ_BODY1 && process.env.YMZ_BODY1.split('\n').length > 0) {
-   ymzbody1 = process.env.YMZ_BODY1.split('\n');
-  } else  {
-   ymzbody1 = process.env.YMZ_BODY1.split()
-  };  
+ymzhdArr.push('{\"Accept\":\"*/*\",\"Accept-Encoding\":\"gzip, deflate\",\"Connection\":\"keep-alive\",\"Content-Type\":\"application/x-www-form-urlencoded\",\"Host\":\"ymz.iphonezhuan.com\",\"User-Agent\":\"%E7%BE%8A%E6%AF%9B%E8%8B%B1%E6%B1%89%E8%AF%8D%E5%85%B8/1.03 CFNetwork/1206 Darwin/20.1.0\",\"Content-Length\":\"82\",\"Accept-Language\":\"zh-cn\"}')
+ymzbodyArr.push('sign=d4a30bba478c29a8ed71322c6d9a44c5&channelID=2&taskid=1&type=1&uid=8809&ver=102')
+ymzbody1Arr.push('sign=09efb343deb49cc83283c72014eceb7d&channelID=2&taskid=2&type=2&uid=8809&ver=102')
 //video
 /*  Object.keys(ymzurl).forEach((item) => {
         if (ymzurl[item]) {
