@@ -14,7 +14,6 @@ let jqbzpbody = $.getdata('jqbzpbody')
 
 if ($.isNode()) {
 	
-jqburlArr.push('http://jqb.iphonezhuan.com/submitsign')
 jqbhdArr.push('{\"Accept\":\"*/*\",\"Accept-Encoding\":\"gzip, deflate\",\"Connection\":\"keep-alive\",\"Content-Type\":\"application/x-www-form-urlencoded\",\"Host\":\"jqb.iphonezhuan.com\",\"User-Agent\":\"%E6%99%BA%E8%83%BD%E4%BC%98%E9%80%89/1.03 CFNetwork/1206 Darwin/20.1.0\",\"Content-Length\":\"28\",\"Accept-Language\":\"zh-cn\"}')
 jqbggbodyArr.push('sign=d7e087a09847507d9f84aa1a9f89cb63&channelID=2&timestamp=1613364669422&type=2&uid=8544&ver=103')
 jqbqdbodyArr.push('channelID=2&uid=8544&ver=103')
@@ -27,6 +26,20 @@ jqbrwbodyArr.push('uid=8544&channelID=2&type=1&ver=103')
 jqbzpbodyArr.push('sign=e7506671c6f9e181ea2b8b1a57143d52&channelID=2&timestamp=1613364077435&type=4&uid=8544&ver=103')	
     console.log(`============ 脚本执行-国际标准时间(UTC)：${new Date().toLocaleString()}  =============\n`)
     console.log(`============ 脚本执行-北京时间(UTC+8)：${new Date(new Date().getTime() + 8 * 60 * 60 * 1000).toLocaleString()}  =============\n`)
+} else {
+	
+jqbhdArr.push('$.getdata('jqbhd')')
+jqbggbodyArr.push('$.getdata('jqbggbody')')
+jqbqdbodyArr.push('$.getdata('jqbqdbody')')
+jqbbody1Arr.push('$.getdata('jqbbody1')')
+jqbbody2Arr.push('$.getdata('jqbbody2')')
+jqbbody3Arr.push('$.getdata('jqbbody3')')
+jqbbody4Arr.push('$.getdata('jqbbody4')')
+jqbbody5Arr.push('$.getdata('jqbbody5')')
+jqbrwbodyArr.push('$.getdata('jqbrwbody')')	
+jqbzpbodyArr.push('$.getdata('jqbzpbody')')
+	
+  }
 } 
 
 
