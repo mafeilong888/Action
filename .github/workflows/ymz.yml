@@ -35,7 +35,7 @@ jobs:
       - name: '运行 【羊毛赚】'
         if: env.YMZ_HD
         run: |
-          node Task/ymz.js
+          node Scripts/ymz.js
         env:
           PUSH_KEY: ${{ secrets.PUSH_KEY }}
           BARK_PUSH: ${{ secrets.BARK_PUSH }}
