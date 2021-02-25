@@ -8,7 +8,7 @@ let fqkkurl = $.getdata('fqkkurl')
 let fqkkhd = $.getdata('fqkkhd')
 let fqkey = ''
 let fqkkxh = ($.getval('fqkkxh') || '25');  // 此处修改循环次数，默认一百
-let fqtx = ($.getval('fqtx') || '100');  // 此处修改提现金额，0.1元等于10，默认为提现一元，也就是100
+let fqtx = ($.getval('fqtx') || '500');  // 此处修改提现金额，0.1元等于10，默认为提现一元，也就是100
 var zz = ''
 
 if ($.isNode()) {
