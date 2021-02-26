@@ -1,3 +1,40 @@
+/*软件名：金钱豹  扫码下载  
+注意，必须扫码使用我贴在下面的二维码扫码打开软件，否则不会加载出任务界面
+本脚本以学习为主，出现任何情况与本人无关，大佬见笑，技术有限
+脚本包含除了试玩任务外的所有任务
+任务完成每天收益0.5元左右
+两元可提现
+作者：@肥皂  最后更新时间 2021.02.15
+我的邀请码：30008347  感谢大佬们的填写----
+食用方法：
+1、进入软件，点击看视频，共五个视频任务，每个任务观看一次视频共获取五个视频body
+2、进入转盘红包，转一次，获取转盘抽奖body
+3、点击现金福利，点击签到，获取签到body
+4、点击看广告，看完一组广告，获取广告body和headers
+5、现在可以先跑一次脚本，跑完脚本之后，进入现金福利-每日任务-领取每日任务的奖励-获得每日任务的body
+脚本每天运行一次就可以了。
+
+金钱豹下载二维码地址： https://raw.githubusercontent.com/age174/-/main/0DCC1893-7EEB-4E15-9EE9-F6A3AEC52070.jpeg
+
+圈X配置如下，其他软件自行测试，金钱豹没有任务界面请务必复制上面的二维码链接到浏览器打开保存扫码，然后到扫码结果上打开
+[task_local]
+#金钱豹
+15 0 * * * https://raw.githubusercontent.com/age174/-/main/jqb.js, tag=金钱豹, img-url=https://ftp.bmp.ovh/imgs/2021/02/9e6d449acb9b6889.png, enabled=true
+
+[rewrite_local]
+#金钱豹
+^http://jqb.iphonezhuan.com/ url script-request-body https://raw.githubusercontent.com/age174/-/main/jqb.js
+
+#loon
+^http://jqb.iphonezhuan.com/ script-path=https://raw.githubusercontent.com/age174/-/main/jqb.js, requires-body=true, timeout=10, tag=金钱豹
+
+#surge
+金钱豹 = type=http-request,pattern=^http://jqb.iphonezhuan.com/,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/age174/-/main/jqb.js,script-update-interval=0
+
+[MITM]
+hostname = jqb.iphonezhuan.com
+
+*/
 const $ = new Env('金钱豹');
 const jqburlArr = [],jqbhdArr = [],jqbggbodyArr=[],jqbqdbodyArr=[],jqbbody1Arr=[],jqbbody2Arr=[],jqbbody3Arr=[],jqbbody4Arr=[],jqbbody5Arr=[],jqbrwbodyArr=[],jqbzpbodyArr=[]
 let jqburl = $.getdata('jqburl')
@@ -13,46 +50,21 @@ let jqbrwbody = $.getdata('jqbrwbody')
 let jqbzpbody = $.getdata('jqbzpbody')
 
 if ($.isNode()) {
-jqburlArr.push('http://jqb.iphonezhuan.com/submitsign')	
-jqbhdArr.push('{\"Accept\":\"*/*\",\"Accept-Encoding\":\"gzip, deflate\",\"Connection\":\"keep-alive\",\"Content-Type\":\"application/x-www-form-urlencoded\",\"Host\":\"jqb.iphonezhuan.com\",\"User-Agent\":\"%E6%99%BA%E8%83%BD%E4%BC%98%E9%80%89/1.03 CFNetwork/1206 Darwin/20.1.0\",\"Content-Length\":\"28\",\"Accept-Language\":\"zh-cn\"}')
-jqbggbodyArr.push('sign=d7e087a09847507d9f84aa1a9f89cb63&channelID=2&timestamp=1613364669422&type=2&uid=8544&ver=103')
-jqbqdbodyArr.push('channelID=2&uid=8544&ver=103')
-jqbbody1Arr.push('sign=7d1e2f0b98a9ef3666c19af8fb2fad94&adconfigid=6&channelID=2&timestamp=1613363962067&type=3&uid=8544&ver=103')
-jqbbody2Arr.push('sign=666c0e8c144c1f017eea96f163fab202&adconfigid=7&channelID=2&timestamp=1613363881702&type=3&uid=8544&ver=103')
-jqbbody3Arr.push('sign=ec8859321954e544bdd40c4af45ba6cf&adconfigid=8&channelID=2&timestamp=1613363932048&type=3&uid=8544&ver=103')
-jqbbody4Arr.push('sign=210c60cc7887f2020279b3b7ac5fa4ba&adconfigid=9&channelID=2&timestamp=1613364003739&type=3&uid=8544&ver=103')
-jqbbody5Arr.push('sign=1a5b187cf40a79f145ea00bedb062736&adconfigid=10&channelID=2&timestamp=1613364044607&type=3&uid=8544&ver=103')
-jqbrwbodyArr.push('uid=8544&channelID=2&type=1&ver=103')	
-jqbzpbodyArr.push('sign=e7506671c6f9e181ea2b8b1a57143d52&channelID=2&timestamp=1613364077435&type=4&uid=8544&ver=103')	
+
+   jqbhd = process.env.JQB_HD
+   jqbggbody = process.env.JQB_GGBODY
+   jqbqdbody = process.env.JQB_QDBODY
+   jqbbody1 = process.env.JQB_BODY1
+   jqbbody2 = process.env.JQB_BODY2
+   jqbbody3 = process.env.JQB_BODY3
+   jqbbody4 = process.env.JQB_BODY4
+   jqbbody5 = process.env.JQB_BODY5
+   jqbrwbody = process.env.JQB_RWBODY
+   jqbzpbody = process.env.JQB_ZPBODY
+
     console.log(`============ 脚本执行-国际标准时间(UTC)：${new Date().toLocaleString()}  =============\n`)
     console.log(`============ 脚本执行-北京时间(UTC+8)：${new Date(new Date().getTime() + 8 * 60 * 60 * 1000).toLocaleString()}  =============\n`)
-} else {
-jqburlArr.push($.getdata('jqburl'))	
-jqbhdArr.push($.getdata('jqbhd'))
-jqbggbodyArr.push($.getdata('jqbggbody'))
-jqbqdbodyArr.push($.getdata('jqbqdbody'))
-jqbbody1Arr.push($.getdata('jqbbody1'))
-jqbbody2Arr.push($.getdata('jqbbody2'))
-jqbbody3Arr.push($.getdata('jqbbody3'))
-jqbbody4Arr.push($.getdata('jqbbody4'))
-jqbbody5Arr.push($.getdata('jqbbody5'))
-jqbrwbodyArr.push($.getdata('jqbrwbody'))	
-jqbzpbodyArr.push($.getdata('jqbzpbody'))
-    let jqbcount = ($.getval('jqbcount') || '1');
-  for (let i = 2; i <= jqbcount; i++) {
-jqburlArr.push($.getdata('jqburl${i}'))	  
-jqbhdArr.push($.getdata('jqbhd${i}'))
-jqbggbodyArr.push($.getdata('jqbggbody${i}'))
-jqbqdbodyArr.push($.getdata('jqbqdbody${i}'))
-jqbbody1Arr.push($.getdata('jqbbody1${i}'))
-jqbbody2Arr.push($.getdata('jqbbody2${i}'))
-jqbbody3Arr.push($.getdata('jqbbody3${i}'))
-jqbbody4Arr.push($.getdata('jqbbody4${i}'))
-jqbbody5Arr.push($.getdata('jqbbody5${i}'))
-jqbrwbodyArr.push($.getdata('jqbrwbody${i}'))	
-jqbzpbodyArr.push($.getdata('jqbzpbody${i}'))
-  }
-} 
+ }
 
 
 
