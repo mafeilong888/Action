@@ -1,13 +1,13 @@
-name: 步步宝子夜
+name: 羊毛赚
 
 on:
   workflow_dispatch:
   schedule:
-     - cron: '8 1 1 1 *'
+     - cron: '8 10 * * *'
   watch:
     types: started
   repository_dispatch:
-    types: 步步宝
+    types: 羊毛赚
 
 jobs:
   build:
