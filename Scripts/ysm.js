@@ -1,11 +1,11 @@
 /*
 软件名称:云扫码 微信扫描二维码打开
-更新时间：2021-03-02 @肥皂
+更新时间：2021-02-28 @肥皂
 脚本说明：云扫码自动阅读
 脚本为自动完成云扫码的阅读任务
 每日收益1元左右，可多号撸。提现秒到
 类似番茄看看，番茄看看黑了就跑云扫码，云扫码黑了就跑番茄看看
-哈哈哈啊哈哈哈哈，其实是可以一起跑的，没关系
+哈哈哈啊哈哈哈哈
 
 任务打开二维码地址 https://raw.githubusercontent.com/age174/-/main/3B7C4F94-B961-4690-8DF7-B27998789124.png
 微信扫描打开，保存临时码，再去扫码获取数据
@@ -14,18 +14,10 @@
 
 本脚本以学习为主！
 首次运行脚本，会提示获取数据
-
-去云扫码，点击开始阅读，获得阅读数据
-七八秒后返回，获得提交任务数据
-跑脚本到3000金币，手动提现一次，获得自动提现数据
-总共需要三个数据。。。。
+去云扫码，点击开始阅读，阅读几秒返回结算成功获取数据
 
 TG电报群: https://t.me/hahaha802
 
-3.1更新增加是否有阅读任务的判断
-加入自动兑换和自动提现，当前金币大于等于3000会自动提现，请自行去获取提现数据，方法，进入云扫码，成功提现一次获取数据成功
-解决多账号问题，可以多账号撸了
-3.2更新,新增判断，如果提示当前任务已结束脚本会尝试继续执行不会终止循环，key提交提示失败也会尝试重新执行，增加了提现成功的通知
 
 boxjs地址 :  
 
@@ -36,7 +28,7 @@ https://raw.githubusercontent.com/age174/-/main/feizao.box.json
 圈X配置如下，其他软件自行测试，定时可以多设置几次，没任务会停止运行的
 [task_local]
 #云扫码
-15 12,14,16,20,22 * * * https://raw.githubusercontent.com/age174/-/main/ysm.js, tag=云扫码, img-url=https://raw.githubusercontent.com/erdongchanyo/icon/main/taskicon/Yunsaoma.png, enabled=true
+15 12,14,16,20,22 * * * https://raw.githubusercontent.com/age174/-/main/ysm.js, tag=云扫码, img-url=https://s3.ax1x.com/2021/02/28/6CRWb8.jpg, enabled=true
 
 
 [rewrite_local]
@@ -67,38 +59,75 @@ hostname = .*.top
 const $ = new Env('云扫码自动阅读');
 let status;
 status = (status = ($.getval("ysmstatus") || "1") ) > 1 ? `${status}` : ""; // 账号扩展字符
-const ysmurlArr = [], ysmhdArr = [],ysmbodyArr = [],ysm2bodyArr = [],ysmtxArr = [],ysmcount = ''
+let ysmurlArr = [], ysmhdArr = [],ysmbodyArr = [],ysm2bodyArr = [],ysmcount = ''
 let ysmurl = $.getdata('ysmurl')
 let ysmhd = $.getdata('ysmhd')
 let ysmbody = $.getdata('ysmbody')
 let ysm2body = $.getdata('ysm2body')
-let ysmtx = $.getdata('ysmtx')
 let ysmkey = ''
+let max = 30;
+let min = 10;
+
 
 if ($.isNode()) {
-    ysmurlArr.push('http://erd.tqdrwu.bar/yunonline/v1/task')
-    ysmhdArr.push('{\"Accept\":\"application/json, text/javascript, */*; q=0.01\",\"Origin\":\"http://erd.tqdrwu.bar\",\"Accept-Encoding\":\"gzip, deflate\",\"Content-Type\":\"application/x-www-form-urlencoded; charset=UTF-8\",\"Connection\":\"keep-alive\",\"Host\":\"erd.tqdrwu.bar\",\"User-Agent\":\"Mozilla/5.0 (iPhone; CPU iPhone OS 14_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 MicroMessenger/8.0.2(0x18000231) NetType/WIFI Language/zh_CN\",\"Referer\":\"http://erd.tqdrwu.bar/yunonline/v1/redirect/eyJpdiI6ImJPdVB6YXhBamRRejRwcGFGeUk3SGc9PSIsInZhbHVlIjoieG9FeWRDcUhkeHFCVjVGK3E5NEVMb3E5UW5vTitiRU1lUzBPZWlDUklXSmVYOXlYVTBhVldsWW9UQXZBak53R2ptcFAyZ3U1dGdaWDRBM2xOWWNISlBNT1QzYk9Zb2RodnpCVk4wXC9oNWduWnV0bVRtSXBhaW1OSDdvYTJEbGswN2FZQU1yUkJKT1d3eTlkRHc0ZVFsd3hackx6bWVTOURqOHZoN3J0d2hkSVNFcDhpWHgwejVsVFA2RTQxck51XC9PS1dabGtWWFl6UmdvRytlcitYYzAxMkErUjlIMHJTRkRmZlRqNTREYXhqQnI1bHZXaEpJcHM1RE5YRWRycXBMbmdRT3hKOVZYa3NiVFY1eGdpbUR5aVlFVzAySENCb3lKWVEwNjlcL25FUFZhekRSRkE0djRicXRvZzFkRUNXYlFIRU9BRDRGYU5hNDhLbWV0RkNKZXRcL2hDajhEdThhWTNOK3VvbncrdzFcL2Zycm9UMzFGQm5UZnNZdFJ1MUFtVW1SZVFzK3JRTFJia2E2aE5xMDdsVkhBPT0iLCJtYWMiOiJkMWQyMDMzOGZjYzJlZWVmYjFkOTQ5NDI3OTgzM2ViZTU1YTZhYTFkMWZmMjQzNTg4YWFkYzUzYWQ2MTgyMDg4In0%3D?openid=oksnzweL3p24EITgcCul5QPXSUUs&redirect_flag=read\",\"Accept-Language\":\"zh-cn\",\"Content-Length\":\"729\",\"X-Requested-With\":\"XMLHttpRequest\"}')
-    ysmbodyArr.push('"secret=eyJpdiI6IjczZWZXeUNlY0V3VFFVMGxOU28zYXc9PSIsInZhbHVlIjoid1czM0hYaEpGS0NjY3NCY1JUdjRvQ0xEaUJsVUxSSlJPd3d2R1JxRnBzY3B5clV1bmVwZTJ0M1NMTDg1QnhGVlVjdGhiUVRwbXdKbDBOajRidEhzSW83TjYza2VUZVZtMDk1UnhJOGt4SkZJcG1idzBaSm9SNXBwSWRwZWY3bGZ5dmRhTjdzelwvbTNqMXg4KzZvWUdRRkxtbXBodlI0aDRYSGNqS1BuUjZlVGFcL1QrSkx0MHNhdUJUcWVWeFF2ODVlbUdKWEJ6Q2VMaUFmOTYrVXBxcmZibXBPN0JMcmZPKzl4Z1RMdzFwZUo5blNkekFRRHc4VHlrZzh2b25qbGFFNGlFb0tWSm9DYjEwWDRac3R6UVFYaUJCczF2dWVkOUlJMHZzam9XTXRLWHhHbVFpUFBHeTZxQzc1RzlYNk9QYTBhZnRPZURwU1ZWd3ZleGxPSXZiZEFKNTBqbnFoUW05OVpOUWxwRkNcL3owT0lGeVRSUUdHQ2ZPc2ZcL3l6UU1mUmV3bytZbDlEXC83U2Jsclhxcm5NK2RRPT0iLCJtYWMiOiI1ZmRkMmZhZGQ0NzRmOGFmZTJjYmM0MTM5YWZmYzQzMzFmNjk3ZTg0YzMyYWRmNzZhYTlhYWVhNzY3ODdiNzU3In0%253D&type=read"')
-    ysm2bodyArr.push('openid=oksnzweL3p24EITgcCul5QPXSUUs&time=14')
-    ysmtxArr.push('openid=oksnzweL3p24EITgcCul5QPXSUUs&request_id=5f2c2e817055bc906a0203b2b22fbc8c&ua=1')
-  
+   if (process.env.YSM_URL && process.env.YSM_URL.indexOf('#') > -1) {
+   ysmurlArr = process.env.YSM_URL.split('#');
+   console.log(`您选择的是用"#"隔开\n`)
+  }
+  else if (process.env.YSM_URL && process.env.YSM_URL.indexOf('\n') > -1) {
+   ysmurlArr = process.env.YSM_URL.split('\n');
+   console.log(`您选择的是用换行隔开\n`)
+  } else {
+   ysmurlArr = process.env.YSM_URL.split()
+  };
+  if (process.env.YSM_HD && process.env.YSM_HD.indexOf('#') > -1) {
+   ysmhdArr = process.env.YSM_HD.split('#');
+   console.log(`您选择的是用"#"隔开\n`)
+  }
+  else if (process.env.YSM_HD && process.env.YSM_HD.indexOf('\n') > -1) {
+   ysmhdArr = process.env.YSM_HD.split('\n');
+   console.log(`您选择的是用换行隔开\n`)
+  } else {
+   ysmhdArr = process.env.YSM_HD.split()
+  };
+  if (process.env.YSM_BD && process.env.YSM_BD.indexOf('#') > -1) {
+   ysmbodyArr = process.env.YSM_BD.split('#');
+   console.log(`您选择的是用"#"隔开\n`)
+  }
+  else if (process.env.YSM_BD && process.env.YSM_BD.indexOf('\n') > -1) {
+   ysmbodyArr = process.env.YSM_BD.split('\n');
+   console.log(`您选择的是用换行隔开\n`)
+  } else {
+   ysmbodyArr = process.env.YSM_BD.split()
+  };	
+  if (process.env.YSM2_BD && process.env.YSM2_BD.indexOf('#') > -1) {
+   ysm2bodyArr = process.env.YSM2_BD.split('#');
+   console.log(`您选择的是用"#"隔开\n`)
+  }
+  else if (process.env.YSM2_BD && process.env.YSM2_BD.indexOf('\n') > -1) {
+   ysm2bodyArr = process.env.YSM2_BD.split('\n');
+   console.log(`您选择的是用换行隔开\n`)
+  } else {
+   ysm2bodyArr = process.env.YSM2_BD.split()
+  };		
+	
+
     console.log(`============ 脚本执行-国际标准时间(UTC)：${new Date().toLocaleString()}  =============\n`)
     console.log(`============ 脚本执行-北京时间(UTC+8)：${new Date(new Date().getTime() + 8 * 60 * 60 * 1000).toLocaleString()}  =============\n`)
-   
-  } else {ysmurlArr.push($.getdata('ysmurl'))
+ } else {ysmurlArr.push($.getdata('ysmurl'))
     ysmhdArr.push($.getdata('ysmhd'))
     ysmbodyArr.push($.getdata('ysmbody'))
     ysm2bodyArr.push($.getdata('ysm2body'))
-    ysmtxArr.push($.getdata('ysmtx'))
     let ysmcount = ($.getval('ysmcount') || '1');
   for (let i = 2; i <= ysmcount; i++) {
     ysmurlArr.push($.getdata(`ysmurl${i}`))
     ysmhdArr.push($.getdata(`ysmhd${i}`))
     ysmbodyArr.push($.getdata(`ysmbody${i}`))
     ysm2bodyArr.push($.getdata(`ysm2body${i}`))
-    ysmtxArr.push($.getdata(`ysmtx${i}`))
   }
 }
+
+
 
 !(async () => {
 if (!ysmhdArr[0]) {
@@ -113,14 +142,13 @@ if (!ysmhdArr[0]) {
           ysmhd = ysmhdArr[i];
           ysmbody = ysmbodyArr[i];
           ysm2body = ysm2bodyArr[i];
-          ysmtx = ysmtxArr[i];
           $.index = i + 1;
           console.log(`\n开始【云扫码${$.index}】`)
     await ysm1();
 
   }
   //await ysmtx();
-}}
+}
 
 })()
   .catch((e) => $.logErr(e))
@@ -170,18 +198,14 @@ let url = {
         if(result.errcode == 0){
         console.log('\n云扫码领取阅读奖励回执:成功🌝 '+result.data.gold+'\n今日阅读次数: '+result.data.day_read+' 今日阅读奖励: '+result.data.day_gold+' 当前余额'+result.data.last_gold+'\n')
         if(result.data.last_gold >= 3000){
-    console.log('\n检测到当前金额可提现，前去执行提现,请去抓取提现的数据，如果没有提现数据脚本会自行终止!')                
-await ysmdh();
+    console.log('\n检测到当前金额可提现，前去执行提现')         
+    console.log('\n提现已被注释')        
+//await ysmdh();
 }       await $.wait(2000);
         await ysm1();
         
 } else {
-       if(result.errcode == 405){
-console.log('\n🧼来自肥皂的提示:'+result.msg+'尝试继续执行任务')
-      await ysm1();
-}
-    console.log(result.errcode)
-console.log('\n云扫码领取阅读奖励回执:失败🚫 '+result.msg)
+       console.log('\n云扫码领取阅读奖励回执:失败🚫 '+result.msg)
 }
    
         } catch (e) {
@@ -205,14 +229,15 @@ let url = {
         try {
          //console.log('\n开始重定向跳转，跳转返回结果：'+data)
         if (err) {
-          console.log(`\n${$.name} 🧼来自肥皂的提示:key请求提交失败,尝试重新执行任务`)
-     await ysm1();
+          console.log(`\n${$.name} 请求失败，请检查网路重试`)
         } else {
            
     //const result = JSON.parse(data)
-       console.log('\n云扫码key提交成功,10秒后开始领取阅读奖励') 
-       
-        await $.wait(9000);
+       console.log('\n云扫码key提交成功,即将开始领取阅读奖励') 
+        random = Math.floor(Math.random()*(max-min+1)+min)*1000
+        console.log(random);
+	await $.wait(random);       
+    //    await $.wait(8000);
         await ysm3(); 
        
         }} catch (e) {
@@ -228,11 +253,11 @@ let url = {
 //云扫码key
 function ysm1(timeout = 0) {
   return new Promise((resolve) => {
-    setTimeout( ()=>{
+/*    setTimeout( ()=>{
       if (typeof $.getdata('ysmhd') === "undefined") {
         $.msg($.name,"",'请先获取云扫码数据!😓',)
         $.done()
-      }
+      } */
 //console.log(ysmurl.match(/m.(.*?)reada/)[1])
 //console.log("http:"+ysmurl.match(/http:(.*?)yunonline/)[1]+"yunonline/v1/add_gold")
 //$.done()
@@ -273,7 +298,7 @@ console.log('云扫码获取key回执:失败🚫 '+result.msg+' 已停止当前�
         } finally {
           resolve()
         }
-      })
+  //    })
     },timeout)
   })
 }
@@ -323,7 +348,6 @@ let url = {
     const result = JSON.parse(data)
         if(result.errcode == 0){
         console.log('\n云扫码微信提现回执:成功🌝 '+result.msg)
-        $.msg($.name,"",'云扫码已成功提现至微信0.3元')
         await ysm1();
 } else {
        console.log('\n云扫码微信提现回执:失败🚫 '+result.msg)
