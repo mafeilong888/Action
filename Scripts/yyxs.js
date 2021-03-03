@@ -77,60 +77,28 @@ let yyxscjurl = $.getdata('yyxscjurl')
 let yyxscjhd = $.getdata('yyxscjhd')
 let yyxsxxurl = $.getdata('yyxsxxurl')
 
+
 if ($.isNode()) {
-     yyxsspurlArr.push('http://goway.reader.yueyouxs.com/assemble/app/video/notify?channelId=yueyou&platId=1&deviceId=6D2F4EDF-6797-492B-AD2A-C8A5206A59E6&appId=com.reader.xiyue&appVersion=2.9.7&time=1614522943&userId=y39450766&sex=boy&tmpToken=69F8DC7904CF4200AB9666008C9B73DD&wx=1&idfa=00000000-0000-0000-0000-000000000000&sign=x1LG0ckqqL%2BSZrJuv2eLTMMofB9zqkQKJZWQ2HvQssbKdqR7lTIOJyH1%2FCiS%201lOTys5X4VJX7lHIea3DNep2vcEqULJSsGen5YZr94ueiYrdtKeGsRRyYuN5%20MNl5Qh5zC1o7t58HJm%2FUa5IuZn4dux9Ijst3P5TRymrue16ghJZY72%2B2dFJS%20FsbaziwtWHXKE48gmxIdLrzAsW%2BqUGaTXvlqCsV%2BFPa9eYYT4j6WjHGW6Eo5%20miyihOTA77v5wHpOK9hUXir0sytU5IMEfhojaanF98g5bqkF08XcVhY07YJ0%20iEJckcWece%2FlBl74RDUR8Y2%2B9DCanCzYPgtQkRyhin0oEi9CBbVf9Au1YAkp%20bzqd8LWA6MsbFdajGc5x2Gm1Y%2FhElw9COIW1mAuZM2BmDU6Q1Ov6Ze1g4d6N%20n%2F9UEMk%3D')
-     yyxssphdArr.push('{\"Accept\":\"*/*\",\"Accept-Encoding\":\"gzip, deflate\",\"Connection\":\"keep-alive\",\"Content-Type\":\"application/x-www-form-urlencoded\",\"Host\":\"goway.reader.yueyouxs.com\",\"User-Agent\":\"yue you xiao shuo/2.9.71 (iPhone; iOS 14.2; Scale/3.00)\",\"Content-Length\":\"464\",\"Accept-Language\":\"zh-Hans-CN;q=1\"}')
-     yyxsspbodyArr.push('\"adCp=toutiao&extra=%7B%22appId%22%3A%22com.reader.xiyue%22%2C%22channelId%22%3A%22yueyou%22%2C%22p%22%3A%22Wwqsk6sc40ZMMsjke6/wqAhET96jgpoMRL7WgZF%2BqlJ76KGMceLfOsUri0w8bcq76Mzia3tyYoAyUGqPxJ5nDI9TJs3jVyMwf5rdn8BI0sG4resSY5SEv/4tNisKbeUS0Q66MTSnCxImuWk2RmCzOoycgTT6WxzQ%22%2C%22platId%22%3A1%2C%22subType%22%3A0%2C%22taskId%22%3A22%2C%22ts%22%3A%221614522916%22%2C%22type%22%3A6%2C%22version%22%3A%222.9.7%22%7D&siteId=121&trans_id=b1340177fbc94d0da8c3d121a971b65f\"')
-     yyxsjsurlArr.push('http://goway.reader.yueyouxs.com/goway/act/app/task/addTimerRcd?channelId=yueyou&platId=1&deviceId=6D2F4EDF-6797-492B-AD2A-C8A5206A59E6&appId=com.reader.xiyue&appVersion=2.9.7&time=1614522868&userId=y39450766&sex=boy&tmpToken=13C0E70CF0D34711AE2BFF1CD5D070DD&wx=1&idfa=00000000-0000-0000-0000-000000000000&sign=VNSVjmC0XeC5wjnrAiXu5QUmxDfljWstrDKAIVSuFZbY%2BCcsqEAmxedfRe0N%20RQPsegbntNkT%2FDYTKwxFrh64Q6RoPrTHBitsxSuLTDxtyrvozOJre3JigDJQ%20ao%2FEnmcMmoh9dC6UK0C2pp816YVxFpxsFUo%2FS6uOpnEkcgxkmNhEjAESF1H1%20RCtoloiecDajTUhYBlehc3IpdOniBKmCYNd6jRUaRmXOBmdMmkWcffjD6u00%202cjtg8Hct4oanBckAb%2FN6CYik%2FLcGOrU1%2B3qobSICSWe6mbuS5CFvyC5z9kO%20bZuiOyk4nzWYU6xVpvdA8Y2%2B9DCanCzYPgtQkRyhinyA6qevLnxjfSgSL0IF%20tV80tjjrokAy4vDCDyGHDs1%2FDOTsr7eO0hdvqGPcUTxmQ0Ewl98bzFiximP3%20LWXa23Q%3D')
-     yyxsschdArr.push('{\"User-Agent\":\"yue you xiao shuo/2.9.71 (iPhone; iOS 14.2; Scale/3.00)\",\"Host\":\"bi.reader.yueyouxs.com\",\"Connection\":\"keep-alive\",\"Accept-Language\":\"zh-Hans-CN;q=1\",\"Accept-Encoding\":\"gzip, deflate\",\"Accept\":\"*/*\"}')
-     yyxsscurlArr.push('http://bi.reader.yueyouxs.com/api/valid/create.do?data=3W7oZG2p6eqCSIPdrp3h8W%2BfilmBYyP0M7HTh6XaNxJdK1FUP9Zg9U19Rb3f%20zKZMbl8FaZxFk3uAJICPLFBPg4zUOYsgwFdJz8pkK6HFN8xgVzLO9cGbmfp4%20jAfY73sXuUMgZ0Uy%2BKs%2FHyhK1Y3FBteaRq1rjzWiwc7UywrS3oXY2IBTmGW3%20xuJvgfQwOk5rytv%2BElEcxwMYyIC34ZhY4vsGNtGKMuj6VNNH6mYSNALssMOK%20RC5cuzNU9mq3l%2FyWTkkVQDjXQL1NOSO1t%2FgCM9kupB6PItFvdR91YFP1d17O%202OhE2nsopHF0H8SHL%2FshwTKW%2FKCxAsfymHLDwxTXxlb3vTQQPw6ZtUrj02s2%20SkQaTH7B1%2B6vlP7jdGULAs70VL%2BdiYJgfKc%3D')
-     yyxscjhdArr.push('{\"Origin\":\"https://h5.reader.yueyouxs.com\",\"Accept\":\"application/json, text/plain, */*\",\"Connection\":\"keep-alive\",\"Referer\":\"https://h5.reader.yueyouxs.com/raffle?title=%25E5%25A4%25A7%25E8%25BD%25AC%25E7%259B%2598&YYFullScreen=1&channelId=yueyou&channelId=yueyou&platId=1&deviceId=6D2F4EDF-6797-492B-AD2A-C8A5206A59E6&appId=com.reader.xiyue&appVersion=2.9.7&time=1614522749&userId=y39450766&sex=boy&tmpToken=13C0E70CF0D34711AE2BFF1CD5D070DD&wx=1&idfa=00000000-0000-0000-0000-000000000000&sign=XxGsUC2sDl4bEmZPIhaI9GnGhFfkMxspyU4%2FLw78j69RRJ0hDQwgBSS3DOmy%20XtW9%2B5b003%2BkRe7ofLcW4aP%2BP2DrMORdn7XfVIwSR3oIyI7KdqR7lTIOJ8HK%20zf4U9zqhjLixvixS%2BvsY5NgC%2FCrO5pYdk3GNVRSPUD6U7iKS45ZoOy3loZ7L%20psOsHytfuJu%2BxtvCgl1VJYorxmt5fslWoKlspm4889mt8zCfl%2FgtcUCvlFLN%20xlth%2BiPXIOsZ5WBDuxcQwVaKejz1J0v4eBFFndW4PAY5I2F33%2FdKc21FDbOS%20f5C%2BLRhDHHqqU1P7uar31mfEh8Fk0TNV41hB7T1qUw%2FLuQYGNM3UPQ7Earse%20K7ldSPjY8hJCaC720uWqcaq6TkE8Z70I3Gt9KBIvQgW1X2dV7NOBr9LVDpP2%20zLlkA719KBIvQgW1X%2FBlNgH1UiPQH%2BIUgC3chW4lk6mu2S1BiQAFt5cgcDbd%20oqNhw7RydlV%2BpQCY4Dkd0WZ%2FI%2FpKk5ri\",\"Accept-Encoding\":\"gzip, deflate, br\",\"Host\":\"goway.reader.yueyouxs.com\",\"User-Agent\":\"Mozilla/5.0 (iPhone; CPU iPhone OS 14_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148\",\"Accept-Language\":\"zh-cn\"}')
-     yyxscjurlArr.push('https://goway.reader.yueyouxs.com/goway/act/h5/raffle/draw?channelId=yueyou&platId=1&deviceId=6D2F4EDF-6797-492B-AD2A-C8A5206A59E6&appId=com.reader.xiyue&appVersion=2.9.7&time=1614522794&userId=y39450766&sex=boy&tmpToken=13C0E70CF0D34711AE2BFF1CD5D070DD&wx=1&idfa=00000000-0000-0000-0000-000000000000&sign=VNSVjmC0XeBTmBv%2Fus8ZfP4imvLQeG8lhG7P%2BOPocPhKi4EEoJd38QkIKQPv%20ykfnWR%2B2k5JoO1QkVqnnJo9ySWGR%2BMgCK46feptagJM%2FFtVB7rC4gE%2FkYrSv%20GKPLbsdPmD0L%2BltubsDrcRrpyA2Xeb9opTp2eWzwJG36iocgtpq6kMdmeX77%20UGeXevixkO1n0%2FaMFxUZmljtvkqtrXwGFITHsfRaOJlViEKTQET5JvLUQ%2FYd%20rBNvb1HXWIxxX9cAH59PQfN3fCxFubm2Ng4C5JZMUQsUUD8PAgkvOW7ZWNkK%20Egh3xE5dG6ZvFXZs4IEHfIDqp68ufGNnVezTga%2FS1X0oEi9CBbVfbqy3sO0n%20UleDXblDRyFKX7zcWoVTzYRITiyeQkqKL%2BZNLzbGDiQyg95MyVU70dHL%2FIuB%20HU%2BgmUA%3D')
-     yyxsxxurlArr.push('http://goway.reader.yueyouxs.com/assemble/app/ucenter/home?channelId=yueyou&platId=1&deviceId=6D2F4EDF-6797-492B-AD2A-C8A5206A59E6&appId=com.reader.xiyue&appVersion=2.9.7&time=1614522743&userId=y39450766&sex=boy&tmpToken=13C0E70CF0D34711AE2BFF1CD5D070DD&wx=1&idfa=00000000-0000-0000-0000-000000000000&sign=x1LG0ckqqL85OcllzoO52wnJbiHAFkRlMAN7rGp5V9jKdqR7lTIOJyH1%2FCiS%201lOTys5X4VJX7lHIea3DNep2vcEqULJSsGen5YZr94ueiYrdtKeGsRRyYuN5%20MNl5Qh5zC1o7t58HJm%2FUa5IuZn4dux9Ijst3P5TRymrue16ghJZY72%2B2dFJS%20FsbaziwtWHXK3omXHJLaQ0LAsW%2BqUGaTXvlqCsV%2BFPa9eYYT4j6WjHGW6Eo5%20miyihE5ntzeZx0o4WY5rNxV2E8ye7xQxaqWrliAYWXuhFnUBmLa1e3DtvHF0%20iEJckcWece%2FlBl74RDUR8Y2%2B9DCanCzYPgtQkRyhin0oEi9CBbVf9Au1YAkp%20bzqd8LWA6MsbFdajGc5x2Gm1Y%2FhElw9COIW1mAuZM2BmDU6Q1Ov6Ze1g4d6N%20n%2F9UEMk%3D')
+
+   yyxsspurl = process.env.YYXS_SPURL
+   yyxssphd = process.env.YYXS_SPHD
+   yyxsspbody = process.env.YYXS_SPBODY
+   yyxsjsurl = process.env.YYXS_JSURL
+   yyxsjsbody = process.env.YYXS_JSBODY
+   yyxsscurl = process.env.YYXS_SCURL
+   yyxsschd = process.env.YYXS_SCHD
+   yyxscjurl = process.env.YYXS_SCJURL
+   yyxscjhd = process.env.YYXS_SCJHD
+   yyxsxxurl = process.env.YYXS_XXURL
+
     console.log(`============ 脚本执行-国际标准时间(UTC)：${new Date().toLocaleString()}  =============\n`)
     console.log(`============ 脚本执行-北京时间(UTC+8)：${new Date(new Date().getTime() + 8 * 60 * 60 * 1000).toLocaleString()}  =============\n`)
-} else {
-     yyxsspurlArr.push($.getdata('yyxsspurl'))
-     yyxssphdArr.push($.getdata('yyxssphd'))
-	yyxsspbodyArr.push($.getdata('yyxsspbody'))
-	yyxsjsurlArr.push($.getdata('yyxsjsurl'))
-	yyxsjsbodyArr.push($.getdata('yyxsjsbody'))
-     yyxsschdArr.push($.getdata('yyxsschd'))
-     yyxsscurlArr.push($.getdata('yyxsscurl'))
-     yyxscjhdArr.push($.getdata('yyxscjhd'))
-     yyxscjurlArr.push($.getdata('yyxscjurl'))
-     yyxsxxurlArr.push($.getdata('yyxsxxurl'))
-    let yyxscount = ($.getval('yyxscount') || '1');
-  for (let i = 2; i <= yyxscount; i++) {
-    yyxsspurlArr.push($.getdata(`yyxsspurl${i}`))
-    yyxssphdArr.push($.getdata(`yyxssphd${i}`))
-    yyxsspbodyArr.push($.getdata(`yyxsspbody${i}`))
-    yyxsjsurlArr.push($.getdata(`yyxsjsurl${i}`))
-    yyxsjsbodyArr.push($.getdata(`yyxsjsbody${i}`))
-    yyxsscurlArr.push($.getdata(`yyxsscurl${i}`))
-    yyxsschdArr.push($.getdata(`yyxsschd${i}`))
-    yyxscjurlArr.push($.getdata(`yyxscjurl${i}`))
-    yyxscjhdArr.push($.getdata(`yyxscjhd${i}`))
-    yyxsxxurlArr.push($.getdata(`yyxsxxurl${i}`))
-  }
-} 
+ }
 
-    console.log(`------------- 共${yyxssphdArr.length}个账号-------------\n`)
-      for (let i = 0; i < yyxssphdArr.length; i++) {
-        if (yyxssphdArr[i]) {
-         
-          yyxsspurl = yyxsspurlArr[i];
-          yyxssphd = yyxssphdArr[i];
-		yyxsspbody = yyxsspbodyArr[i];
-		yyxsjsurl = yyxsjsurlArr[i];
-		//yyxsjsbody = yyxsjsbodyArr[i];
-          yyxsscurl = yyxsscurlArr[i];
-          yyxsschd = yyxsschdArr[i];
-          yyxscjurl = yyxscjurlArr[i];
-          yyxscjhd = yyxscjhdArr[i];
-          yyxsxxurl = yyxsxxurlArr[i];
-          $.index = i + 1;
-          console.log(`\n开始【阅友小说${$.index}】`)
+
+!(async () => {
+ 
+    console.log(`\n开始【阅友小说任务】`)
     
     for (let sc = 1 ; sc < 200 ; sc++) {
     console.log('\n阅友小说阅读时长上传回执:成功🌝 已上传'+sc+'分钟') 
@@ -138,19 +106,16 @@ if ($.isNode()) {
     await $.wait(100);
     
     }
-	await yyxsjs();
+     await yyxsjs();
      await yyxssp();
      await yyxscj();
      await yyxsxx();
 
-      
-  }
- 
-}}
-
 })()
   .catch((e) => $.logErr(e))
   .finally(() => $.done())
+
+
 //阅友小说数据获取
 function yyxsck() {
    if ($request.url.indexOf("notify") > -1 && $request.body.indexOf("siteId") > -1) {
@@ -234,20 +199,14 @@ let url = {
 //阅友小说视频奖励
 function yyxssp(timeout = 0) {
   return new Promise((resolve) => {
-    setTimeout( ()=>{
-      if (typeof yyxssphd === "undefined") {
-        $.msg($.name,"",'请先获取阅友小说数据!😓',)
-        $.done()
-      }
 let url = {
         url : yyxsspurl,
-        headers : JSON.parse(yyxsschd),
+        headers : JSON.parse(yyxssphd),
         body : yyxsspbody,}
       $.post(url, async (err, resp, data) => {
         try {
           
     const result = JSON.parse(data)
-    console.log('\n阅友小说视频奖励领取回执:'+data)
         if(result.code == 0){
           console.log('\n阅友小说视频奖励领取回执:成功🌝') 
            await yyxssp();
@@ -260,7 +219,6 @@ console.log('\n阅友小说视频奖励领取回执:失败🚫 '+result.msg)
         } finally {
           resolve()
         }
-      })
     },timeout)
   })
 }
@@ -280,7 +238,6 @@ let url = {
       $.get(url, async (err, resp, data) => {
         try {
          const result = JSON.parse(data)
-	 //console.log('\n阅友小说阅读时长上传回执:'+data)
         if (result.code == 0) {
            
         } else {
@@ -342,7 +299,7 @@ let url = {
         if (result.code == 0) {
          // console.log(data)
           console.log('\n阅友小说用户信息回执:成功🌝 \n\n------------- 当前账号信息 -------------\n用户id:'+result.data.uc.User.id+'\n金币数:'+result.data.uc.User.acctInfo.coins+'个，约等于:'+result.data.uc.User.acctInfo.coins / 10000+'元\n'+result.data.uc.dailyMsg+'\n'+result.data.uc.totalMsg)
-           
+   
            
         } else {
        
