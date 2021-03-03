@@ -77,154 +77,18 @@ let yyxscjurl = $.getdata('yyxscjurl')
 let yyxscjhd = $.getdata('yyxscjhd')
 let yyxsxxurl = $.getdata('yyxsxxurl')
 
-!(async () => {
-  if (typeof $request !== "undefined") {
-    await yyxsck()
-   
-  } else {
-   if ($.isNode() && process.env.YYXSXXURL) {
-  COOKIES_SPLIT = process.env.COOKIES_SPLIT || "\n";
-  console.log(
-    `============ cookies分隔符为：${JSON.stringify(
-      COOKIES_SPLIT
-    )} =============\n`
-  );
-  if (
-    process.env.YYXSXXURL &&
-    process.env.YYXSXXURL.indexOf(COOKIES_SPLIT) > -1
-  ) {
-    yyxsxxurl = process.env.YYXSXXURL.split(COOKIES_SPLIT);
-  } else {
-    yyxsxxurl = process.env.YYXSXXURL.split();
-  }
-  if (
-    process.env.YYXSSPURL &&
-    process.env.YYXSSPURL.indexOf(COOKIES_SPLIT) > -1
-  ) {
-    yyxsspurl = process.env.YYXSSPURL.split(COOKIES_SPLIT);
-  } else {
-    yyxsspurl = process.env.YYXSSPURL.split();
-  }
-  if (
-    process.env.YYXSSPHD &&
-    process.env.YYXSSPHD.indexOf(COOKIES_SPLIT) > -1
-  ) {
-    yyxssphd = process.env.YYXSSPHD.split(COOKIES_SPLIT);
-  } else {
-    yyxssphd = process.env.YYXSSPHD.split();
-  }
-  if (
-    process.env.YYXSSPBODY &&
-    process.env.YYXSSPBODY.indexOf(COOKIES_SPLIT) > -1
-  ) {
-    yyxsspbody = process.env.YYXSSPBODY.split(COOKIES_SPLIT);
-  } else {
-    yyxsspbody = process.env.YYXSSPBODY.split();
-  }	
-  if (
-    process.env.YYXSJSURL &&
-    process.env.YYXSJSURL.indexOf(COOKIES_SPLIT) > -1
-  ) {
-    yyxsjsurl = process.env.YYXSJSURL.split(COOKIES_SPLIT);
-  } else {
-    yyxsjsurl = process.env.YYXSJSURL.split();
-  }
-  if (
-    process.env.YYXSJSBODY &&
-    process.env.YYXSJSBODY.indexOf(COOKIES_SPLIT) > -1
-  ) {
-    yyxsjsbody = process.env.YYXSJSBODY.split(COOKIES_SPLIT);
-  } else {
-    yyxsjsbody = process.env.YYXSJSBODY;
-  }
-  if (
-    process.env.YYXSSCURL &&
-    process.env.YYXSSCURL.indexOf(COOKIES_SPLIT) > -1
-  ) {
-    yyxsscurl = process.env.YYXSSCURL.split(COOKIES_SPLIT);
-  } else {
-    yyxsscurl = process.env.YYXSSCURL.split();
-  }
-  if (
-    process.env.YYXSSCHD &&
-    process.env.YYXSSCHD.indexOf(COOKIES_SPLIT) > -1
-  ) {
-    yyxsschd = process.env.YYXSSCHD.split(COOKIES_SPLIT);
-  } else {
-    yyxsschd = process.env.YYXSSCHD.split();
-  }
-  if (
-    process.env.YYXSCJURL &&
-    process.env.YYXSCJURL.indexOf(COOKIES_SPLIT) > -1
-  ) {
-    yyxscjurl = process.env.YYXSCJURL.split(COOKIES_SPLIT);
-  } else {
-    yyxscjurl = process.env.YYXSCJURL.split();
-  }
-  if (
-    process.env.YYXSCJHD &&
-    process.env.YYXSCJHD.indexOf(COOKIES_SPLIT) > -1
-  ) {
-    yyxscjhd = process.env.YYXSCJHD.split(COOKIES_SPLIT);
-  } else {
-    yyxscjhd = process.env.YYXSCJHD.split();
-  }
-	
-  Object.keys(yyxsxxurl).forEach((item) => {
-        if (yyxsxxurl[item]) {
-          yyxsxxurl.push(yyxsxxurl[item])
-        }
-    });
-    Object.keys(yyxsspurl).forEach((item) => {
-        if (yyxsspurl[item]) {
-          yyxsspurlArr.push(yyxsspurl[item])
-        }
-    });
-
-Object.keys(yyxssphd).forEach((item) => {
-        if (yyxssphd[item]) {
-          yyxssphdArr.push(yyxssphd[item])
-        }
-    });
-    Object.keys(yyxsspbody).forEach((item) => {
-        if (yyxsspbody[item]) {
-          yyxsspbodyArr.push(yyxsspbody[item])
-        }
-    });
-
-Object.keys(yyxsjsurl).forEach((item) => {
-        if (yyxsjsurl[item]) {
-          yyxsjsurlArr.push(yyxsjsurl[item])
-        }
-    });
-/*    Object.keys(yyxsjsbody).forEach((item) => {
-        if (yyxsjsbody[item]) {
-          yyxsjsbodyArr.push(yyxsjsbody[item])
-        }
-    });	
-*/
-Object.keys(yyxsschd).forEach((item) => {
-        if (yyxsschd[item]) {
-          yyxsschdArr.push(yyxsschd[item])
-        }
-    });
-    Object.keys(yyxsscurl).forEach((item) => {
-        if (yyxsscurl[item]) {
-          yyxsscurlArr.push(yyxsscurl[item])
-        }
-    });	
-
-Object.keys(yyxscjhd).forEach((item) => {
-        if (yyxscjhd[item]) {
-          yyxscjhdArr.push(yyxscjhd[item])
-        }
-    });
-    Object.keys(yyxscjurl).forEach((item) => {
-        if (yyxscjurl[item]) {
-          yyxscjurlArr.push(yyxscjurl[item])
-        }
-    });	
-  	
+if ($.isNode()) {
+     yyxsspurlArr.push('http://goway.reader.yueyouxs.com/assemble/app/video/notify?channelId=yueyou&platId=1&deviceId=6D2F4EDF-6797-492B-AD2A-C8A5206A59E6&appId=com.reader.xiyue&appVersion=2.9.7&time=1614522943&userId=y39450766&sex=boy&tmpToken=69F8DC7904CF4200AB9666008C9B73DD&wx=1&idfa=00000000-0000-0000-0000-000000000000&sign=x1LG0ckqqL%2BSZrJuv2eLTMMofB9zqkQKJZWQ2HvQssbKdqR7lTIOJyH1%2FCiS%201lOTys5X4VJX7lHIea3DNep2vcEqULJSsGen5YZr94ueiYrdtKeGsRRyYuN5%20MNl5Qh5zC1o7t58HJm%2FUa5IuZn4dux9Ijst3P5TRymrue16ghJZY72%2B2dFJS%20FsbaziwtWHXKE48gmxIdLrzAsW%2BqUGaTXvlqCsV%2BFPa9eYYT4j6WjHGW6Eo5%20miyihOTA77v5wHpOK9hUXir0sytU5IMEfhojaanF98g5bqkF08XcVhY07YJ0%20iEJckcWece%2FlBl74RDUR8Y2%2B9DCanCzYPgtQkRyhin0oEi9CBbVf9Au1YAkp%20bzqd8LWA6MsbFdajGc5x2Gm1Y%2FhElw9COIW1mAuZM2BmDU6Q1Ov6Ze1g4d6N%20n%2F9UEMk%3D')
+     yyxssphdArr.push('{\"Accept\":\"*/*\",\"Accept-Encoding\":\"gzip, deflate\",\"Connection\":\"keep-alive\",\"Content-Type\":\"application/x-www-form-urlencoded\",\"Host\":\"goway.reader.yueyouxs.com\",\"User-Agent\":\"yue you xiao shuo/2.9.71 (iPhone; iOS 14.2; Scale/3.00)\",\"Content-Length\":\"464\",\"Accept-Language\":\"zh-Hans-CN;q=1\"}')
+     yyxsspbodyArr.push('\"adCp=toutiao&extra=%7B%22appId%22%3A%22com.reader.xiyue%22%2C%22channelId%22%3A%22yueyou%22%2C%22p%22%3A%22Wwqsk6sc40ZMMsjke6/wqAhET96jgpoMRL7WgZF%2BqlJ76KGMceLfOsUri0w8bcq76Mzia3tyYoAyUGqPxJ5nDI9TJs3jVyMwf5rdn8BI0sG4resSY5SEv/4tNisKbeUS0Q66MTSnCxImuWk2RmCzOoycgTT6WxzQ%22%2C%22platId%22%3A1%2C%22subType%22%3A0%2C%22taskId%22%3A22%2C%22ts%22%3A%221614522916%22%2C%22type%22%3A6%2C%22version%22%3A%222.9.7%22%7D&siteId=121&trans_id=b1340177fbc94d0da8c3d121a971b65f\"')
+     yyxsjsurlArr.push('http://goway.reader.yueyouxs.com/goway/act/app/task/addTimerRcd?channelId=yueyou&platId=1&deviceId=6D2F4EDF-6797-492B-AD2A-C8A5206A59E6&appId=com.reader.xiyue&appVersion=2.9.7&time=1614522868&userId=y39450766&sex=boy&tmpToken=13C0E70CF0D34711AE2BFF1CD5D070DD&wx=1&idfa=00000000-0000-0000-0000-000000000000&sign=VNSVjmC0XeC5wjnrAiXu5QUmxDfljWstrDKAIVSuFZbY%2BCcsqEAmxedfRe0N%20RQPsegbntNkT%2FDYTKwxFrh64Q6RoPrTHBitsxSuLTDxtyrvozOJre3JigDJQ%20ao%2FEnmcMmoh9dC6UK0C2pp816YVxFpxsFUo%2FS6uOpnEkcgxkmNhEjAESF1H1%20RCtoloiecDajTUhYBlehc3IpdOniBKmCYNd6jRUaRmXOBmdMmkWcffjD6u00%202cjtg8Hct4oanBckAb%2FN6CYik%2FLcGOrU1%2B3qobSICSWe6mbuS5CFvyC5z9kO%20bZuiOyk4nzWYU6xVpvdA8Y2%2B9DCanCzYPgtQkRyhinyA6qevLnxjfSgSL0IF%20tV80tjjrokAy4vDCDyGHDs1%2FDOTsr7eO0hdvqGPcUTxmQ0Ewl98bzFiximP3%20LWXa23Q%3D')
+     yyxsschdArr.push('{\"User-Agent\":\"yue you xiao shuo/2.9.71 (iPhone; iOS 14.2; Scale/3.00)\",\"Host\":\"bi.reader.yueyouxs.com\",\"Connection\":\"keep-alive\",\"Accept-Language\":\"zh-Hans-CN;q=1\",\"Accept-Encoding\":\"gzip, deflate\",\"Accept\":\"*/*\"}')
+     yyxsscurlArr.push('http://bi.reader.yueyouxs.com/api/valid/create.do?data=3W7oZG2p6eqCSIPdrp3h8W%2BfilmBYyP0M7HTh6XaNxJdK1FUP9Zg9U19Rb3f%20zKZMbl8FaZxFk3uAJICPLFBPg4zUOYsgwFdJz8pkK6HFN8xgVzLO9cGbmfp4%20jAfY73sXuUMgZ0Uy%2BKs%2FHyhK1Y3FBteaRq1rjzWiwc7UywrS3oXY2IBTmGW3%20xuJvgfQwOk5rytv%2BElEcxwMYyIC34ZhY4vsGNtGKMuj6VNNH6mYSNALssMOK%20RC5cuzNU9mq3l%2FyWTkkVQDjXQL1NOSO1t%2FgCM9kupB6PItFvdR91YFP1d17O%202OhE2nsopHF0H8SHL%2FshwTKW%2FKCxAsfymHLDwxTXxlb3vTQQPw6ZtUrj02s2%20SkQaTH7B1%2B6vlP7jdGULAs70VL%2BdiYJgfKc%3D')
+     yyxscjhdArr.push('{\"Origin\":\"https://h5.reader.yueyouxs.com\",\"Accept\":\"application/json, text/plain, */*\",\"Connection\":\"keep-alive\",\"Referer\":\"https://h5.reader.yueyouxs.com/raffle?title=%25E5%25A4%25A7%25E8%25BD%25AC%25E7%259B%2598&YYFullScreen=1&channelId=yueyou&channelId=yueyou&platId=1&deviceId=6D2F4EDF-6797-492B-AD2A-C8A5206A59E6&appId=com.reader.xiyue&appVersion=2.9.7&time=1614522749&userId=y39450766&sex=boy&tmpToken=13C0E70CF0D34711AE2BFF1CD5D070DD&wx=1&idfa=00000000-0000-0000-0000-000000000000&sign=XxGsUC2sDl4bEmZPIhaI9GnGhFfkMxspyU4%2FLw78j69RRJ0hDQwgBSS3DOmy%20XtW9%2B5b003%2BkRe7ofLcW4aP%2BP2DrMORdn7XfVIwSR3oIyI7KdqR7lTIOJ8HK%20zf4U9zqhjLixvixS%2BvsY5NgC%2FCrO5pYdk3GNVRSPUD6U7iKS45ZoOy3loZ7L%20psOsHytfuJu%2BxtvCgl1VJYorxmt5fslWoKlspm4889mt8zCfl%2FgtcUCvlFLN%20xlth%2BiPXIOsZ5WBDuxcQwVaKejz1J0v4eBFFndW4PAY5I2F33%2FdKc21FDbOS%20f5C%2BLRhDHHqqU1P7uar31mfEh8Fk0TNV41hB7T1qUw%2FLuQYGNM3UPQ7Earse%20K7ldSPjY8hJCaC720uWqcaq6TkE8Z70I3Gt9KBIvQgW1X2dV7NOBr9LVDpP2%20zLlkA719KBIvQgW1X%2FBlNgH1UiPQH%2BIUgC3chW4lk6mu2S1BiQAFt5cgcDbd%20oqNhw7RydlV%2BpQCY4Dkd0WZ%2FI%2FpKk5ri\",\"Accept-Encoding\":\"gzip, deflate, br\",\"Host\":\"goway.reader.yueyouxs.com\",\"User-Agent\":\"Mozilla/5.0 (iPhone; CPU iPhone OS 14_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148\",\"Accept-Language\":\"zh-cn\"}')
+     yyxscjurlArr.push('https://goway.reader.yueyouxs.com/goway/act/h5/raffle/draw?channelId=yueyou&platId=1&deviceId=6D2F4EDF-6797-492B-AD2A-C8A5206A59E6&appId=com.reader.xiyue&appVersion=2.9.7&time=1614522794&userId=y39450766&sex=boy&tmpToken=13C0E70CF0D34711AE2BFF1CD5D070DD&wx=1&idfa=00000000-0000-0000-0000-000000000000&sign=VNSVjmC0XeBTmBv%2Fus8ZfP4imvLQeG8lhG7P%2BOPocPhKi4EEoJd38QkIKQPv%20ykfnWR%2B2k5JoO1QkVqnnJo9ySWGR%2BMgCK46feptagJM%2FFtVB7rC4gE%2FkYrSv%20GKPLbsdPmD0L%2BltubsDrcRrpyA2Xeb9opTp2eWzwJG36iocgtpq6kMdmeX77%20UGeXevixkO1n0%2FaMFxUZmljtvkqtrXwGFITHsfRaOJlViEKTQET5JvLUQ%2FYd%20rBNvb1HXWIxxX9cAH59PQfN3fCxFubm2Ng4C5JZMUQsUUD8PAgkvOW7ZWNkK%20Egh3xE5dG6ZvFXZs4IEHfIDqp68ufGNnVezTga%2FS1X0oEi9CBbVfbqy3sO0n%20UleDXblDRyFKX7zcWoVTzYRITiyeQkqKL%2BZNLzbGDiQyg95MyVU70dHL%2FIuB%20HU%2BgmUA%3D')
+     yyxsxxurlArr.push('http://goway.reader.yueyouxs.com/assemble/app/ucenter/home?channelId=yueyou&platId=1&deviceId=6D2F4EDF-6797-492B-AD2A-C8A5206A59E6&appId=com.reader.xiyue&appVersion=2.9.7&time=1614522743&userId=y39450766&sex=boy&tmpToken=13C0E70CF0D34711AE2BFF1CD5D070DD&wx=1&idfa=00000000-0000-0000-0000-000000000000&sign=x1LG0ckqqL85OcllzoO52wnJbiHAFkRlMAN7rGp5V9jKdqR7lTIOJyH1%2FCiS%201lOTys5X4VJX7lHIea3DNep2vcEqULJSsGen5YZr94ueiYrdtKeGsRRyYuN5%20MNl5Qh5zC1o7t58HJm%2FUa5IuZn4dux9Ijst3P5TRymrue16ghJZY72%2B2dFJS%20FsbaziwtWHXK3omXHJLaQ0LAsW%2BqUGaTXvlqCsV%2BFPa9eYYT4j6WjHGW6Eo5%20miyihE5ntzeZx0o4WY5rNxV2E8ye7xQxaqWrliAYWXuhFnUBmLa1e3DtvHF0%20iEJckcWece%2FlBl74RDUR8Y2%2B9DCanCzYPgtQkRyhin0oEi9CBbVf9Au1YAkp%20bzqd8LWA6MsbFdajGc5x2Gm1Y%2FhElw9COIW1mAuZM2BmDU6Q1Ov6Ze1g4d6N%20n%2F9UEMk%3D')
+    console.log(`============ 脚本执行-国际标准时间(UTC)：${new Date().toLocaleString()}  =============\n`)
+    console.log(`============ 脚本执行-北京时间(UTC+8)：${new Date(new Date().getTime() + 8 * 60 * 60 * 1000).toLocaleString()}  =============\n`)
 } else {
      yyxsspurlArr.push($.getdata('yyxsspurl'))
      yyxssphdArr.push($.getdata('yyxssphd'))
