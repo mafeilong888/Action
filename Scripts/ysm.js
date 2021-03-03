@@ -98,6 +98,13 @@ if ($.isNode()) {
     ysm2bodyArr.push($.getdata(`ysm2body${i}`))
     ysmtxArr.push($.getdata(`ysmtx${i}`))
   }
+}
+
+!(async () => {
+if (!ysmhdArr[0]) {
+    $.msg($.name, '【提示】请先获取云扫码一cookie')
+    return;
+  }
     console.log(`------------- 共${ysmhdArr.length}个账号-------------\n`)
       for (let i = 0; i < ysmhdArr.length; i++) {
         if (ysmhdArr[i]) {
