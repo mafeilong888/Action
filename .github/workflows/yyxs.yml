@@ -6,16 +6,18 @@ name: 阅友小说
 on:
   workflow_dispatch:
   schedule:
-    - cron: '15 2,4 * * *'
+    - cron: '15 4 * * *'
   # watch:
   #       types: started
   # repository_dispatch:
-  #   types: yyxs
+  #   types: jd_cash
 jobs:
   build:
     runs-on: ubuntu-latest
     if: github.event.repository.owner.id == github.event.sender.id
     env:
+      URL: "https://raw.githubusercontent.com/ziye66666/JavaScript/main/Task/QQread.js"
+      RUNFILE: "Task/QQread.js"      
       YYXSXXURL: ${{ secrets.YYXSXXURL }}
       YYXSSPURL: ${{ secrets.YYXSSPURL }}
       YYXSSPHD: ${{ secrets.YYXSSPHD }}
