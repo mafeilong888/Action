@@ -1,21 +1,26 @@
-name: 云扫码
+name: ysm
+
 
 on:
   workflow_dispatch:
   schedule:
-     - cron: '8 */2 * * *'
+     - cron: '3 0-15 * * *'
   watch:
     types: started
-  repository_dispatch:
-    types: 云扫码
-
 jobs:
   build:
     runs-on: ubuntu-latest
     if: github.event.repository.owner.id == github.event.sender.id
+    env:
+        YSM_URL: ${{ secrets.YSM_URL }}
+        YSM_HD: ${{ secrets.YSM_HD }}    
+        YSM_BD: ${{ secrets.YSM_BD }} 
+        YSM2_BD: ${{ secrets.YSM2_BD }}   
+        TZ: Asia/shanghai
     steps:
       - name: Checkout
         uses: actions/checkout@v1
+        
       - name: Use Node.js 12.x
         uses: actions/setup-node@v1
         with:
@@ -24,6 +29,7 @@ jobs:
         run: |
           npm install
       - name: '运行 【云扫码】'
+        if: env.YSM_HD
         run: |
           node Scripts/ysm.js
         env:
