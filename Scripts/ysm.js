@@ -75,10 +75,15 @@ let ysm2body = $.getdata('ysm2body')
 let ysmtx = $.getdata('ysmtx')
 let ysmkey = ''
 
-
-!(async () => {
-  if (typeof $request !== "undefined") {
-    await ysmck()
+if ($.isNode()) {
+    ysmurlArr.push('http://erd.tqdrwu.bar/yunonline/v1/task')
+    ysmhdArr.push('{\"Accept\":\"application/json, text/javascript, */*; q=0.01\",\"Origin\":\"http://erd.tqdrwu.bar\",\"Accept-Encoding\":\"gzip, deflate\",\"Content-Type\":\"application/x-www-form-urlencoded; charset=UTF-8\",\"Connection\":\"keep-alive\",\"Host\":\"erd.tqdrwu.bar\",\"User-Agent\":\"Mozilla/5.0 (iPhone; CPU iPhone OS 14_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 MicroMessenger/8.0.2(0x18000231) NetType/WIFI Language/zh_CN\",\"Referer\":\"http://erd.tqdrwu.bar/yunonline/v1/redirect/eyJpdiI6ImJPdVB6YXhBamRRejRwcGFGeUk3SGc9PSIsInZhbHVlIjoieG9FeWRDcUhkeHFCVjVGK3E5NEVMb3E5UW5vTitiRU1lUzBPZWlDUklXSmVYOXlYVTBhVldsWW9UQXZBak53R2ptcFAyZ3U1dGdaWDRBM2xOWWNISlBNT1QzYk9Zb2RodnpCVk4wXC9oNWduWnV0bVRtSXBhaW1OSDdvYTJEbGswN2FZQU1yUkJKT1d3eTlkRHc0ZVFsd3hackx6bWVTOURqOHZoN3J0d2hkSVNFcDhpWHgwejVsVFA2RTQxck51XC9PS1dabGtWWFl6UmdvRytlcitYYzAxMkErUjlIMHJTRkRmZlRqNTREYXhqQnI1bHZXaEpJcHM1RE5YRWRycXBMbmdRT3hKOVZYa3NiVFY1eGdpbUR5aVlFVzAySENCb3lKWVEwNjlcL25FUFZhekRSRkE0djRicXRvZzFkRUNXYlFIRU9BRDRGYU5hNDhLbWV0RkNKZXRcL2hDajhEdThhWTNOK3VvbncrdzFcL2Zycm9UMzFGQm5UZnNZdFJ1MUFtVW1SZVFzK3JRTFJia2E2aE5xMDdsVkhBPT0iLCJtYWMiOiJkMWQyMDMzOGZjYzJlZWVmYjFkOTQ5NDI3OTgzM2ViZTU1YTZhYTFkMWZmMjQzNTg4YWFkYzUzYWQ2MTgyMDg4In0%3D?openid=oksnzweL3p24EITgcCul5QPXSUUs&redirect_flag=read\",\"Accept-Language\":\"zh-cn\",\"Content-Length\":\"729\",\"X-Requested-With\":\"XMLHttpRequest\"}')
+    ysmbodyArr.push('\"secret=eyJpdiI6IjczZWZXeUNlY0V3VFFVMGxOU28zYXc9PSIsInZhbHVlIjoid1czM0hYaEpGS0NjY3NCY1JUdjRvQ0xEaUJsVUxSSlJPd3d2R1JxRnBzY3B5clV1bmVwZTJ0M1NMTDg1QnhGVlVjdGhiUVRwbXdKbDBOajRidEhzSW83TjYza2VUZVZtMDk1UnhJOGt4SkZJcG1idzBaSm9SNXBwSWRwZWY3bGZ5dmRhTjdzelwvbTNqMXg4KzZvWUdRRkxtbXBodlI0aDRYSGNqS1BuUjZlVGFcL1QrSkx0MHNhdUJUcWVWeFF2ODVlbUdKWEJ6Q2VMaUFmOTYrVXBxcmZibXBPN0JMcmZPKzl4Z1RMdzFwZUo5blNkekFRRHc4VHlrZzh2b25qbGFFNGlFb0tWSm9DYjEwWDRac3R6UVFYaUJCczF2dWVkOUlJMHZzam9XTXRLWHhHbVFpUFBHeTZxQzc1RzlYNk9QYTBhZnRPZURwU1ZWd3ZleGxPSXZiZEFKNTBqbnFoUW05OVpOUWxwRkNcL3owT0lGeVRSUUdHQ2ZPc2ZcL3l6UU1mUmV3bytZbDlEXC83U2Jsclhxcm5NK2RRPT0iLCJtYWMiOiI1ZmRkMmZhZGQ0NzRmOGFmZTJjYmM0MTM5YWZmYzQzMzFmNjk3ZTg0YzMyYWRmNzZhYTlhYWVhNzY3ODdiNzU3In0%253D&type=read\"')
+    ysm2bodyArr.push('openid=oksnzweL3p24EITgcCul5QPXSUUs&time=14')
+    ysmtxArr.push('openid=oksnzweL3p24EITgcCul5QPXSUUs&request_id=5f2c2e817055bc906a0203b2b22fbc8c&ua=1')
+  
+    console.log(`============ 脚本执行-国际标准时间(UTC)：${new Date().toLocaleString()}  =============\n`)
+    console.log(`============ 脚本执行-北京时间(UTC+8)：${new Date(new Date().getTime() + 8 * 60 * 60 * 1000).toLocaleString()}  =============\n`)
    
   } else {ysmurlArr.push($.getdata('ysmurl'))
     ysmhdArr.push($.getdata('ysmhd'))
