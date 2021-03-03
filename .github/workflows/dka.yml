@@ -59,4 +59,4 @@ jobs:
       - name: '运行 【蛋咖】'
         #if: env.RLHEADER
         run: |
-          node Task/dka.js
+          node Scripts/dka.js
