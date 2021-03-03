@@ -1,10 +1,10 @@
-name: 阅友小说
+name: yyxs
 
 
 on:
   workflow_dispatch:
   schedule:
-     - cron: '2 4 * * *'
+     - cron: '39 2 * * *'
   watch:
     types: started
 jobs:
@@ -12,8 +12,15 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event.repository.owner.id == github.event.sender.id
     env:
-        FQKK_URL: ${{ secrets.FQKK_URL }}
-        FQKK_HD: ${{ secrets.FQKK_HD }}       
+        YYXS_SPURL: ${{ secrets.YYXS_SPURL }}
+        YYXS_SPHD: ${{ secrets.YYXS_SPHD }}
+        YYXS_SPBODY: ${{ secrets.YYXS_SPBODY }}
+        YYXS_JSURL: ${{ secrets.YYXS_JSURL }}
+        YYXS_SCURL: ${{ secrets.YYXS_SCURL }}
+        YYXS_SCHD: ${{ secrets.YYXS_SCHD }}
+        YYXS_SCJURL: ${{ secrets.YYXS_SCJURL }}    
+        YYXS_SCJHD: ${{ secrets.YYXS_SCJHD }}     
+        YYXS_XXURL: ${{ secrets.YYXS_XXURL }}
         TZ: Asia/shanghai
     steps:
       - name: Checkout
@@ -26,8 +33,8 @@ jobs:
       - name: npm install
         run: |
           npm install
-      - name: '运行 【阅友小说】'
-        if: env.YYXSSPHD
+      - name: '运行 【yyxs】'
+        if: env.YYXS_SPHD
         run: |
           node Scripts/yyxs.js
         env:
