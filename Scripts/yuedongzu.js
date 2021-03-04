@@ -15,7 +15,8 @@ boxjs链接  https://raw.githubusercontent.com/ziye11/JavaScript/main/Task/ziye.
 3.2 调整抽奖机制，一次运行5次抽奖，抽中1000金币则兑奖
 3.2 修复手机不能跑的低级错误,调整提现时间为8点以后
 3.2-3 增加10分钟限速，修复用户名判定，修复视频助力
-3.3 完善提现判定，修复睡觉
+3.3 完善提现判定，修复睡觉，解决资讯赚报错问题
+3.4 取消限速
 
 ⚠️ 时间设置    0,30 0-23 * * *    每天 25次以上就行 
 
@@ -50,6 +51,7 @@ http-response https:\/\/yuedongzu\.yichengw\.cn\/* script-path=https://raw.githu
 #悦动族获取TOKEN
 悦动族获取TOKEN = type=http-response,pattern=https:\/\/yuedongzu\.yichengw\.cn\/*,script-path=https://raw.githubusercontent.com/ziye11/JavaScript/main/Task/yuedongzu.js
 
+
 */
 const $ = Env("悦动族");
 $.idx = ($.idx = ($.getval('yuedongzuSuffix') || '1') - 1) > 0 ? ($.idx + 1 + '') : ''; // 账号扩展字符
@@ -58,7 +60,8 @@ const COOKIE = $.isNode() ? require("./yuedongzuCOOKIE") : ``;
 const logs = 0; // 0为关闭日志，1为开启
 const notifyttt = 1 // 0为关闭外部推送，1为12 23 点外部推送
 const notifyInterval = 2; // 0为关闭通知，1为所有通知，2为12 23 点通知  ， 3为 6 12 18 23 点通知 
-$.message = '', COOKIES_SPLIT = '', CASH = '', CZ = '', ddtime = '';
+$.message = '', COOKIES_SPLIT = '', CASH = '', ddtime = '';
+CZ = 10
 const yuedongzutokenArr = [];
 let yuedongzutokenVal = ``;
 let middleyuedongzuTOKEN = [];
@@ -289,7 +292,7 @@ async function all() {
         if (!cookie_is_live) {
             continue;
         }
-        await jinbi_record() //收益记录
+        //await jinbi_record() //收益记录
         if (CZ >= 10) {
             await help_index() //助力活动
             await home() //首页信息
@@ -389,7 +392,7 @@ function jinbi_record(timeout = 0) {
                                 console.log(`收益记录：距离上次收益${CZ}分钟，已限速10分钟\n`);
                                 $.message += `【收益记录】：距离上次收益${CZ}分钟，已限速10分钟\n`;
 
-                            } else CZ = 11
+                            }
 
                         }
                     } catch (e) {
@@ -780,11 +783,11 @@ function signget(timeout = 0) {
             $.post(url, async (err, resp, data) => {
                 try {
                     if (logs) $.log(`${O}, 每日签到🚩: ${data}`);
-                    $.sign = JSON.parse(data);
-                    if ($.sign.code == 200) {
+                    $.signget = JSON.parse(data);
+                    if ($.signget.code == 200) {
 
-                        console.log(`每日签到：领取${$.sign.jinbi}金币\n`);
-                        $.message += `【每日签到】：领取${$.sign.jinbi}金币\n`;
+                        console.log(`每日签到：领取${$.signget.jinbi}金币\n`);
+                        $.message += `【每日签到】：领取${$.signget.jinbi}金币\n`;
                     }
                 } catch (e) {
                     $.logErr(e, resp);
@@ -1632,11 +1635,11 @@ function news_info(timeout = 0) {
                     if ($.news_info.code == 200) {
                         console.log(`资讯赚页：今日获得${$.news_info.jinbi}金币\n`);
                         $.message += `【资讯赚页】：今日获得${$.news_info.jinbi}金币\n`;
-                        if ($.news_info.is_max == 0) {
+                        if ($.news_info.jinbi < 1000) {
                             nonce_str = $.news_info.nonce_str
                             await news_done() //资讯赚
                         }
-                        if ($.news_info.is_max == 1) {
+                        if ($.news_info.jinbi >= 1000) {
                             console.log(`资讯赚：完成\n`);
                             $.message += `【资讯赚】：完成\n`;
                         }
@@ -1702,7 +1705,7 @@ function tixian_html(timeout = 0) {
                         }
                         console.log(`提现券：剩余${$.tixian_html.tixian_coupon}张券\n${jine2.jine}元：需要${jine2.cond}张券\n${jine3.jine}元：需要${jine3.cond}张券\n`);
                         $.message += `【提现券】：剩余${$.tixian_html.tixian_coupon}张券\n【${jine2.jine}元】：需要${jine2.cond}张券\n【${jine3.jine}元】：需要${jine3.cond}张券\n`;
-                        if (!day_tixian_tip && $.user.wx_username != "" && nowTimes.getHours() >= 8) {
+                        if (!day_tixian_tip && nowTimes.getHours() >= 8 && ($.user.wx_username != "" || $.user.is_weixin == 1)) {
                             if (CASH == 0.3 && $.user.money >= CASH && $.user.day_jinbi >= 6000) {
                                 await tixian() //提现
                             }
