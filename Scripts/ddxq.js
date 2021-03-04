@@ -36,7 +36,7 @@ https://ddstar.palmmob.com/ddstar_app/activity/ReceiveAdBonus?bonusboxid=1&v=44&
 圈X配置如下，其他软件自行测试，定时可以多设置几次，没任务会停止运行的
 [task_local]
 #嘀嗒星球
-15 0 * * * https://raw.githubusercontent.com/age174/-/main/ddxq.js, tag=嘀嗒星球, img-url=https://raw.githubusercontent.com/erdongchanyo/icon/main/taskicon/Yunsaoma.png, enabled=true
+15 0,6,12,18, * * * https://raw.githubusercontent.com/age174/-/main/ddxq.js, tag=嘀嗒星球, img-url=https://raw.githubusercontent.com/erdongchanyo/icon/main/taskicon/Yunsaoma.png, enabled=true
 
 
 [rewrite_local]
@@ -65,9 +65,10 @@ hostname = ddstar.palmmob.com
 
 
 const $ = new Env('嘀嗒星球');
+const notify = $.isNode() ? require("./sendNotify") : ``;
 let status;
 status = (status = ($.getval("ddxqstatus") || "1") ) > 1 ? `${status}` : ""; // 账号扩展字符
-const ddxqurlArr = [], ddxqhdArr = [],ddxqggurlArr = [],ddxqcount = ''
+let ddxqurlArr = [], ddxqhdArr = [],ddxqggurlArr = [],ddxqcount = ''
 let ddxqurl = $.getdata('ddxqurl')
 let ddxqhd = $.getdata('ddxqhd')
 let ddxqggurl = $.getdata('ddxqggurl')
@@ -76,7 +77,61 @@ let ddxqhb = 0
   if (typeof $request !== "undefined") {
     await ddxqck()
    
-  } else {ddxqurlArr.push($.getdata('ddxqurl'))
+  } else {
+  
+ if ($.isNode()) {
+  COOKIES_SPLIT = process.env.COOKIES_SPLIT || "\n";
+  console.log(
+    `============ cookies分隔符为：${JSON.stringify(
+      COOKIES_SPLIT
+    )} =============\n`
+  );
+if (
+    process.env.DDXQURL &&
+    process.env.DDXQURL.indexOf(COOKIES_SPLIT) > -1
+  ) {
+    ddxqurl = process.env.DDXQURL.split(COOKIES_SPLIT);
+  } else {
+    ddxqurl = process.env.DDXQURL.split();
+  }
+  if (
+    process.env.DDXQHD &&
+    process.env.DDXQHD.indexOf(COOKIES_SPLIT) > -1
+  ) {
+    ddxqhd = process.env.DDXQHD.split(COOKIES_SPLIT);
+  } else {
+    ddxqhd = process.env.DDXQHD.split();
+  }
+  if (
+    process.env.DDXQGGURL &&
+    process.env.DDXQGGURL.indexOf(COOKIES_SPLIT) > -1
+  ) {
+    ddxqggurl = process.env.DDXQGGURL.split(COOKIES_SPLIT);
+  } else {
+    ddxqggurl = process.env.DDXQGGURL.split();
+  }
+
+	
+  Object.keys(ddxqurl).forEach((item) => {
+        if (ddxqurl[item]) {
+          ddxqurlArr.push(ddxqurl[item])
+        }
+    });
+    Object.keys(ddxqhd).forEach((item) => {
+        if (ddxqhd[item]) {
+          ddxqhdArr.push(ddxqhd[item])
+        }
+    });
+
+Object.keys(ddxqggurl).forEach((item) => {
+        if (ddxqggurl[item]) {
+          ddxqggurlArr.push(ddxqggurl[item])
+        }
+    });
+
+  	
+} else {
+  ddxqurlArr.push($.getdata('ddxqurl'))
     ddxqhdArr.push($.getdata('ddxqhd'))
    ddxqggurlArr.push($.getdata('ddxqggurl'))
     let ddxqcount = ($.getval('ddxqcount') || '1');
@@ -85,7 +140,15 @@ let ddxqhb = 0
     ddxqhdArr.push($.getdata(`ddxqhd${i}`))
     ddxqggurlArr.push($.getdata(`ddxqggurl${i}`))
   }
+ }
     console.log(`------------- 共${ddxqhdArr.length}个账号-------------\n`)
+      
+//时间
+nowTimes = new Date(
+  new Date().getTime() +
+  new Date().getTimezoneOffset() * 60 * 1000 +
+  8 * 60 * 60 * 1000
+);
       for (let i = 0; i < ddxqhdArr.length; i++) {
         if (ddxqhdArr[i]) {
          
@@ -145,6 +208,8 @@ let url = {
 } else {
      
 console.log('\n嘀嗒星球[红包任务]已运行完毕\n本次运行共获得🧧'+ddxqhb+'元')
+  if ($.isNode() && (nowTimes.getHours() === 6) && (nowTimes.getMinutes() >= 0 && nowTimes.getMinutes() <= 59))
+      await notify.sendNotify('嘀嗒星球${$.index}', '\n嘀嗒星球[红包任务]已运行完毕\n本次运行共获得🧧'+ddxqhb+'元');
       
 }
    
@@ -164,7 +229,7 @@ console.log('\n嘀嗒星球[红包任务]已运行完毕\n本次运行共获得�
 function ddxqlb(timeout = 0) {
   return new Promise((resolve) => {
     setTimeout( ()=>{
-      if (typeof $.getdata('ddxqhd') === "undefined") {
+      if (typeof ddxqhd === "undefined") {
         $.msg($.name,"",'请先获取嘀嗒星球数据!😓',)
         $.done()
       }
