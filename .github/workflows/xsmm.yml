@@ -1,4 +1,4 @@
-name: xsmm
+name: 悬赏猫猫
 
 
 on:
@@ -25,7 +25,7 @@ jobs:
       - name: npm install
         run: |
           npm install
-      - name: '运行 【xsmm】'
+      - name: '运行 【悬赏猫猫】'
         if: env.XSMM_HD
         run: |
           node Scritps/xsmm.js
