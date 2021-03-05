@@ -16,6 +16,7 @@ jobs:
         YSM_HD: ${{ secrets.YSM_HD }}    
         YSM_BD: ${{ secrets.YSM_BD }} 
         YSM2_BD: ${{ secrets.YSM2_BD }}
+        YSM_TX: ${{ secrets.YSM_TX }}   
         TZ: Asia/shanghai
     steps:
       - name: Checkout
