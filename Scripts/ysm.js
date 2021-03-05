@@ -18,7 +18,6 @@
 
 TG电报群: https://t.me/hahaha802
 
-
 boxjs地址 :  
 
 https://raw.githubusercontent.com/age174/-/main/feizao.box.json
@@ -59,11 +58,12 @@ hostname = .*.top
 const $ = new Env('云扫码自动阅读');
 let status;
 status = (status = ($.getval("ysmstatus") || "1") ) > 1 ? `${status}` : ""; // 账号扩展字符
-let ysmurlArr = [], ysmhdArr = [],ysmbodyArr = [],ysm2bodyArr = [],ysmcount = ''
+let ysmurlArr = [], ysmhdArr = [],ysmbodyArr = [],ysm2bodyArr = [],ysmtxArr = [],ysmcount = ''
 let ysmurl = $.getdata('ysmurl')
 let ysmhd = $.getdata('ysmhd')
 let ysmbody = $.getdata('ysmbody')
 let ysm2body = $.getdata('ysm2body')
+let ysmtx = $.getdata('ysmtx')
 let ysmkey = ''
 let max = 30;
 let min = 10;
@@ -110,20 +110,31 @@ if ($.isNode()) {
   } else {
    ysm2bodyArr = process.env.YSM2_BD.split()
   };		
+  if (process.env.YSM_TX && process.env.YSM_TX.indexOf('#') > -1) {
+   ysmtxArr = process.env.YSM_TX.split('#');
+   console.log(`您选择的是用"#"隔开\n`)
+  }
+  else if (process.env.YSM_TX && process.env.YSM_TX.indexOf('\n') > -1) {
+   ysmtxArr = process.env.YSM_TX.split('\n');
+   console.log(`您选择的是用换行隔开\n`)
+  } else {
+   ysmtxArr = process.env.YSM_TX.split()
+  };	
 	
-
     console.log(`============ 脚本执行-国际标准时间(UTC)：${new Date().toLocaleString()}  =============\n`)
     console.log(`============ 脚本执行-北京时间(UTC+8)：${new Date(new Date().getTime() + 8 * 60 * 60 * 1000).toLocaleString()}  =============\n`)
  } else {ysmurlArr.push($.getdata('ysmurl'))
     ysmhdArr.push($.getdata('ysmhd'))
     ysmbodyArr.push($.getdata('ysmbody'))
     ysm2bodyArr.push($.getdata('ysm2body'))
+    ysmtxArr.push($.getdata('ysmtx'))
     let ysmcount = ($.getval('ysmcount') || '1');
   for (let i = 2; i <= ysmcount; i++) {
     ysmurlArr.push($.getdata(`ysmurl${i}`))
     ysmhdArr.push($.getdata(`ysmhd${i}`))
     ysmbodyArr.push($.getdata(`ysmbody${i}`))
     ysm2bodyArr.push($.getdata(`ysm2body${i}`))
+    ysmtxArr.push($.getdata(`ysmtx${i}`))
   }
 }
 
@@ -142,6 +153,7 @@ if (!ysmhdArr[0]) {
           ysmhd = ysmhdArr[i];
           ysmbody = ysmbodyArr[i];
           ysm2body = ysm2bodyArr[i];
+          ysmtx = ysmtxArr[i];
           $.index = i + 1;
           console.log(`\n开始【云扫码${$.index}】`)
     await ysm1();
@@ -198,14 +210,18 @@ let url = {
         if(result.errcode == 0){
         console.log('\n云扫码领取阅读奖励回执:成功🌝 '+result.data.gold+'\n今日阅读次数: '+result.data.day_read+' 今日阅读奖励: '+result.data.day_gold+' 当前余额'+result.data.last_gold+'\n')
         if(result.data.last_gold >= 3000){
-    console.log('\n检测到当前金额可提现，前去执行提现')         
-    console.log('\n提现已被注释')        
-//await ysmdh();
+    console.log('\n检测到当前金额可提现，前去执行提现,请去抓取提现的数据，如果没有提现数据脚本会自行终止!')                
+await ysmdh();
 }       await $.wait(2000);
         await ysm1();
         
 } else {
-       console.log('\n云扫码领取阅读奖励回执:失败🚫 '+result.msg)
+       if(result.errcode == 405){
+console.log('\n🧼来自肥皂的提示:'+result.msg+'尝试继续执行任务')
+      await ysm1();
+}
+    console.log(result.errcode)
+console.log('\n云扫码领取阅读奖励回执:失败🚫 '+result.msg)
 }
    
         } catch (e) {
@@ -229,15 +245,16 @@ let url = {
         try {
          //console.log('\n开始重定向跳转，跳转返回结果：'+data)
         if (err) {
-          console.log(`\n${$.name} 请求失败，请检查网路重试`)
+          console.log(`\n${$.name} 🧼来自肥皂的提示:key请求提交失败,尝试重新执行任务`)
+     await ysm1();
         } else {
            
     //const result = JSON.parse(data)
-       console.log('\n云扫码key提交成功,即将开始领取阅读奖励') 
+       console.log('\n云扫码key提交成功,10秒后开始领取阅读奖励') 
         random = Math.floor(Math.random()*(max-min+1)+min)*1000
         console.log(random);
-	await $.wait(random);       
-    //    await $.wait(8000);
+	await $.wait(random);     
+        //await $.wait(9000);
         await ysm3(); 
        
         }} catch (e) {
@@ -253,20 +270,6 @@ let url = {
 //云扫码key
 function ysm1(timeout = 0) {
   return new Promise((resolve) => {
-/*    setTimeout( ()=>{
-      if (typeof $.getdata('ysmhd') === "undefined") {
-        $.msg($.name,"",'请先获取云扫码数据!😓',)
-        $.done()
-      } */
-//console.log(ysmurl.match(/m.(.*?)reada/)[1])
-//console.log("http:"+ysmurl.match(/http:(.*?)yunonline/)[1]+"yunonline/v1/add_gold")
-//$.done()
-//erd14.jkfjcop.top/
-//console.log("http:"+ysmurl.match(/http:(.*?)yunonline/)[1]+"yunonline/v1/task")
-//console.log(ysmhd)
-//console.log(ysmbody)
-
-
 let url = {
         url : "http:"+ysmurl.match(/http:(.*?)yunonline/)[1]+"yunonline/v1/task",
         headers : JSON.parse(ysmhd),
@@ -298,7 +301,6 @@ console.log('云扫码获取key回执:失败🚫 '+result.msg+' 已停止当前�
         } finally {
           resolve()
         }
-  //    })
     },timeout)
   })
 }
@@ -348,6 +350,7 @@ let url = {
     const result = JSON.parse(data)
         if(result.errcode == 0){
         console.log('\n云扫码微信提现回执:成功🌝 '+result.msg)
+        $.msg($.name,"",'云扫码已成功提现至微信0.3元')
         await ysm1();
 } else {
        console.log('\n云扫码微信提现回执:失败🚫 '+result.msg)
@@ -361,6 +364,7 @@ let url = {
     },timeout)
   })
 }
+
 
 
 
