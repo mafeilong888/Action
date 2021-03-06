@@ -10,6 +10,8 @@ boxjs链接  https://raw.githubusercontent.com/ziye11/JavaScript/main/Task/ziye.
 点击  http://qmyd.yichengw.cn/?id=115796 下载APP 谢谢支持
 
 3.3 制作
+3.4 优化提现，优化刮刮卡，优化抽手机
+3.5 增加了点延迟，优化提现
 
 ⚠️ 时间设置    0,30 0-23 * * *    每天 25次以上就行 
 
@@ -284,23 +286,33 @@ async function all() {
         if (!cookie_is_live) {
             continue;
         }
+            await $.wait(1000)
         //await jinbi_record() //收益记录
         if (CZ >= 10) {
             await help_index() //助力活动
+            await $.wait(1000)
             await home() //首页信息
             await zhuan_index() //任务列表
+            await $.wait(1000)
             await pophongbaoyu() //红包雨
+            await $.wait(1000)
             await dk_info() //打卡
+            await $.wait(1000)
             await water_info() //喝水
+            await $.wait(1000)
             await sleep_info() //睡觉
             await ggk() //刮刮卡
             await $.wait(8000)
             await lucky() //转盘抽奖
             await $.wait(1000)
             await lucky() //转盘抽奖
+            await $.wait(1000)
             await news() //资讯赚
+            await $.wait(1000)
             await lotteryindex() //抽手机
+            await $.wait(1000)
             await cy_info() //答题
+            await $.wait(1000)
             await tixian_html() //提现
         }
 
@@ -1266,7 +1278,20 @@ function guadet(timeout = 0) {
                         if (guacs) {
                             console.log(`【刮刮卡查询】：开启${$.guadet.jine}元,抽中${guacs}等奖\n`)
                             $.message += `【刮刮卡查询】：开启${$.guadet.jine}元,抽中${guacs}等奖\n`;
-                            if (guacs <= 2) {
+
+                            if (guacs <= 3 && nowTimes.getHours() >= 0 && nowTimes.getHours() <= 17) {
+                                console.log(`【刮刮卡领取】：成功领奖\n`)
+                                $.message += `【刮刮卡领取】：成功领奖\n`;
+                                sign = $.guadet.sign
+                                glid = $.guadet.glid
+                                await guapost() //刮卡奖励
+                            } else if (guacs <= 4 && nowTimes.getHours() >= 18 && nowTimes.getHours() <= 22) {
+                                console.log(`【刮刮卡领取】：成功领奖\n`)
+                                $.message += `【刮刮卡领取】：成功领奖\n`;
+                                sign = $.guadet.sign
+                                glid = $.guadet.glid
+                                await guapost() //刮卡奖励
+                            } else if (guacs <= 5 && nowTimes.getHours() == 23) {
                                 console.log(`【刮刮卡领取】：成功领奖\n`)
                                 $.message += `【刮刮卡领取】：成功领奖\n`;
                                 sign = $.guadet.sign
@@ -1278,7 +1303,6 @@ function guadet(timeout = 0) {
                             }
                         }
                     }
-
                 } catch (e) {
                     $.logErr(e, resp);
                 } finally {
@@ -1330,11 +1354,11 @@ function lotteryindex(timeout = 0) {
                 try {
                     if (logs) $.log(`${O}, 抽手机列表🚩: ${data}`);
                     $.lotteryindex = JSON.parse(data);
-                    if ($.lotteryindex.lottery_count) {
+                    if ($.lotteryindex.data.lottery_count) {
 
-                        console.log(`抽手机列表：剩余${$.lotteryindex.lottery_count}次，手机碎片${$.lotteryindex.phone_part}个，红包碎片${$.lotteryindex.hongbao_part}个\n`);
-                        $.message += `【抽手机列表】：剩余${$.lotteryindex.lottery_count}次，手机碎片${$.lotteryindex.phone_part}个，红包碎片${$.lotteryindex.hongbao_part}个\n`;
-                        if ($.lotteryindex.lottery_count >= 1) {
+                        console.log(`抽手机列表：剩余${$.lotteryindex.data.lottery_count}次，手机碎片${$.lotteryindex.data.phone_part}个，红包碎片${$.lotteryindex.data.hongbao_part}个\n`);
+                        $.message += `【抽手机列表】：剩余${$.lotteryindex.data.lottery_count}次，手机碎片${$.lotteryindex.data.phone_part}个，红包碎片${$.lotteryindex.data.hongbao_part}个\n`;
+                        if ($.lotteryindex.data.lottery_count >= 1) {
                             await lotteryadd() //抽手机抽奖
                         }
                     }
@@ -1356,7 +1380,7 @@ function lotteryadd(timeout = 0) {
                 url: `https://qmyd.yichengw.cn/apps/lottery/add?`,
                 headers: header,
             }
-            $.get(url, async (err, resp, data) => {
+            $.post(url, async (err, resp, data) => {
                 try {
                     if (logs) $.log(`${O}, 抽手机🚩: ${data}`);
                     $.lotteryadd = JSON.parse(data);
@@ -1365,7 +1389,7 @@ function lotteryadd(timeout = 0) {
                         add = $.lotteryindex.data.options.find(item => item.id === $.lotteryadd.data.id);
 
                         console.log(`抽手机：抽中 ${add.name}\n`);
-                        $.message += `【抽手机】：抽中 ${$.lotteryadd.tip}\n`;
+                        $.message += `【抽手机】：抽中 ${add.name}\n`;
 
                         if ($.lotteryadd.data.id == 6) {
                             tid = 16
@@ -1373,6 +1397,10 @@ function lotteryadd(timeout = 0) {
                             nonce_str = $.lotteryadd.data.nonce_str
                             await index()
                         }
+
+                              await part()
+
+
                     }
                 } catch (e) {
                     $.logErr(e, resp);
@@ -1399,7 +1427,7 @@ function part(timeout = 0) {
                         console.log(`手机碎片任务：达标${$.part.data.phone_keep_day}天，视频进度${$.part.data.video_jindu}\n`);
                         $.message += `【手机碎片任务】：达标${$.part.data.phone_keep_day}天，视频进度${$.part.data.video_jindu}\n`;
 
-                        if ($.part.data.is_dabiao == 0 && $.lotteryindex.lottery_count == 0) {
+                        if ($.part.data.is_dabiao == 0 && $.lotteryindex.data.lottery_count == 0) {
                             await no_callback() //看视频
                         }
                     }
@@ -1777,16 +1805,11 @@ function tixian_html(timeout = 0) {
                     if (logs) $.log(`${O}, 提现页🚩: ${data}`);
                     $.tixian_html = JSON.parse(data);
                     if ($.tixian_html.tixian_html) {
-                        jine1 = $.tixian_html.tixian_html.find(item => item.jine === '0.3');
-                        jine2 = $.tixian_html.tixian_html.find(item => item.jine === '1');
-                        jine3 = $.tixian_html.tixian_html.find(item => item.jine === '10');
-                        jine4 = $.tixian_html.tixian_html.find(item => item.jine === '20');
+                        
                         jine5 = $.tixian_html.tixian_html.find(item => item.jine === '30');
                         jine6 = $.tixian_html.tixian_html.find(item => item.jine === '100');
                         jine7 = $.tixian_html.tixian_html.find(item => item.jine === '200');
                         jine8 = $.tixian_html.tixian_html.find(item => item.jine === '300');
-
-
 
                         day_tixian_tip = $.tixian_html.tixian_html.find(item => item.day_tixian_tip);
                         await $.wait(1000)
@@ -1794,43 +1817,39 @@ function tixian_html(timeout = 0) {
                             console.log(`提现查询：今日已提现\n`);
                             $.message += `【提现查询】：今日已提现\n`;
                         }
-                        console.log(`提现券：剩余${$.tixian_html.tixian_coupon}张券\n${jine2.jine}元：需要${jine2.cond}张券\n${jine3.jine}元：需要${jine3.cond}张券\n${jine4.jine}元：需要${jine4.cond}张券\n${jine5.jine}元：需要${jine5.cond}张券\n`);
-                        $.message += `【提现券】：剩余${$.tixian_html.tixian_coupon}张券\n【${jine2.jine}元】：需要${jine2.cond}张券\n【${jine3.jine}元】：需要${jine3.cond}张券\n【${jine4.jine}元】：需要${jine4.cond}张券\n【${jine5.jine}元】：需要${jine5.cond}张券\n`;
+                        if (jine5) {
+                        console.log(`提现券：剩余${$.tixian_html.tixian_coupon}张券\n${jine5.jine}元：需要${jine5.cond}张券\n`);
+                        $.message += `【提现券】：剩余${$.tixian_html.tixian_coupon}张券\n【${jine5.jine}元】：需要${jine5.cond}张券\n`;
+                           }
+                        if (jine6.fenshu_tixian_tip) {
+
+                            fenshu6 = jine6.fenshu_tixian_tip.split('今日剩余')[1].split('份')[0]
+                            fenshu7 = jine7.fenshu_tixian_tip.split('今日剩余')[1].split('份')[0]
+                            fenshu8 = jine8.fenshu_tixian_tip.split('今日剩余')[1].split('份')[0]
+
+                            console.log(`${jine6.jine}元：${jine6.fenshu_tixian_tip}\n${jine6.jine}元：${jine6.fenshu_tixian_tip}\n${jine6.jine}元：${jine6.fenshu_tixian_tip}\n`);
+                            $.message += `【${jine6.jine}元】：${jine6.fenshu_tixian_tip}\n【${jine7.jine}元】：${jine7.fenshu_tixian_tip}\n【${jine8.jine}元】：${jine8.fenshu_tixian_tip}\n`;
+
+                        }
+
+
 
                         if (!day_tixian_tip && ($.user.wx_username != "" || $.user.is_weixin == 1)) {
-                            if (CASH == 0.3 && $.user.money >= CASH && $.user.day_jinbi >= 6000) {
-                                await tixian() //提现
-                            }
-                            if (CASH == 1 && $.tixian_html.tixian_coupon >= 3 && $.user.money >= CASH) {
-                                await tixian() //提现
-                            }
-                            if (CASH == 10 && $.tixian_html.tixian_coupon >= 15 && $.user.money >= CASH) {
-                                await tixian() //提现
-                            }
-                            if (CASH == 20 && $.tixian_html.tixian_coupon >= 20 && $.user.money >= CASH) {
-                                await tixian() //提现
-                            }
+
+                            
                             if (CASH == 30 && $.tixian_html.tixian_coupon >= 25 && $.user.money >= CASH) {
                                 await tixian() //提现
                             }
                             if (CASH == 888) {
-                                if ($.user.money >= 300) {
+                                 if ($.user.money >= 300&&fenshu8>=1) {
                                     CASH = 300
-                                } else if ($.user.money >= 200) {
+                                } else if ($.user.money >= 200&&fenshu7>=1) {
                                     CASH = 200
-                                } else if ($.user.money >= 100) {
+                                } else if ($.user.money >= 100&&fenshu6>=1) {
                                     CASH = 100
-                                } else if ($.user.money > 30 && $.tixian_html.tixian_coupon >= 25) {
+                                } else if ($.user.money > 30  && jine5&& $.tixian_html.tixian_coupon >= 25) {
                                     CASH = 30
-                                } else if ($.user.money > 20 && $.tixian_html.tixian_coupon >= 20) {
-                                    CASH = 20
-                                } else if ($.user.money > 10 && $.tixian_html.tixian_coupon >= 15) {
-                                    CASH = 10
-                                } else if ($.user.money > 1 && $.tixian_html.tixian_coupon >= 3) {
-                                    CASH = 1
-                                } else if ($.user.money > 0.3 && $.user.day_jinbi >= 6000) {
-                                    CASH = 0.3
-                                }
+                                } 
                                 if (CASH != 888) {
                                     await tixian() //提现
                                 }
