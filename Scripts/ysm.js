@@ -251,10 +251,8 @@ let url = {
            
     //const result = JSON.parse(data)
        console.log('\n云扫码key提交成功,10秒后开始领取阅读奖励') 
-        random = Math.floor(Math.random()*(max-min+1)+min)*1000
-        console.log(random);
-	await $.wait(random);     
-        //await $.wait(9000);
+       
+        await $.wait(9000);
         await ysm3(); 
        
         }} catch (e) {
@@ -270,6 +268,12 @@ let url = {
 //云扫码key
 function ysm1(timeout = 0) {
   return new Promise((resolve) => {
+    setTimeout( ()=>{
+      if (typeof $.getdata('ysmhd') === "undefined") {
+        $.msg($.name,"",'请先获取云扫码数据!😓',)
+        $.done()
+      }
+
 let url = {
         url : "http:"+ysmurl.match(/http:(.*?)yunonline/)[1]+"yunonline/v1/task",
         headers : JSON.parse(ysmhd),
@@ -288,9 +292,12 @@ let url = {
       if(result.data.link === undefined){
        console.log('\n🧼来自肥皂的提示:没有匹配到key'+result.data.msg)
 } else {
-        ysmkey = result.data.link
-        await ysm2();
+        ysmkey = result.data.link.match(/redirect_uri=(.*?)#wechat/)[1]
+        ysmkey = unescape(ysmkey)
+//$.log(unescape(ysmkey))
         await $.wait(1000);
+        await ysm2();
+        
 }
         
 } else {
@@ -301,6 +308,7 @@ console.log('云扫码获取key回执:失败🚫 '+result.msg+' 已停止当前�
         } finally {
           resolve()
         }
+      })
     },timeout)
   })
 }
@@ -364,7 +372,6 @@ let url = {
     },timeout)
   })
 }
-
 
 
 
