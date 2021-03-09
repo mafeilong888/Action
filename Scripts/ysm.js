@@ -292,9 +292,8 @@ let url = {
       if(result.data.link === undefined){
        console.log('\n🧼来自肥皂的提示:没有匹配到key'+result.data.msg)
 } else {
-        ysmkey = result.data.link.match(/redirect_uri=(.*?)#wechat/)[1]
-        ysmkey = unescape(ysmkey)
-//$.log(unescape(ysmkey))
+        ysmkey = result.data.link
+        //$.log(ysmkey)
         await $.wait(1000);
         await ysm2();
         
