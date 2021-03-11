@@ -222,13 +222,12 @@ function wnbxx(timeout = 0) {
   return new Promise((resolve) => {
 let url = {
         url : 'https://api.snail2020.com/api/user/assets/getAssets',
-        headers : JSON.parse(wnbhd),
-        body :  ``,}
+        headers : JSON.parse(wnbhd)
+        }
       $.get(url, async (err, resp, data) => {
         try {
            
     const result = JSON.parse(data)
-    console.log(result)
         if(result.code == 200){
         console.log('\n\n蜗牛吧获取个人信息成功\n当前红包余额: '+result.result.balance+'元\n当前金币余额: '+result.result.gold)
 }
@@ -236,7 +235,7 @@ if(result.code == 400 || result.code == 411){
         console.log('\n蜗牛吧获取个人信息失败: '+result.msg)}
 
         } catch (e) {
-          $.logErr(e, resp);
+          //$.logErr(e, resp);
         } finally {
           resolve()
         }
