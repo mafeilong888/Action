@@ -97,6 +97,13 @@ if ($.isNode()) {
     cfzhdArr.push($.getdata(`cfzhd${i}`))
     cfzsbhdArr.push($.getdata(`cfzsbhd${i}`))
   }
+}
+
+!(async () => {
+if (!cfzhdArr[0]) {
+    $.msg($.name, '【提示】请先获取一cookie')
+    return;
+  }
     console.log(`------------- 共${cfzhdArr.length}个账号-------------\n`)
       for (let i = 0; i < cfzhdArr.length; i++) {
         if (cfzhdArr[i]) {
@@ -115,7 +122,7 @@ console.log('\n'+`春风转开始执行循环阅读，本次共执行20次，已
             await $.wait(31000);
             }
   }
-}}
+}
 
 })()
   .catch((e) => $.logErr(e))
