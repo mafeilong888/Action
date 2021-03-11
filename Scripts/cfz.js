@@ -67,10 +67,6 @@ let sdid = '';sdlqid = '';tc = 0
 !(async () => {
   if (typeof $request !== "undefined") {
     await cfzck()
-
-!(async () => {
-  if (typeof $request !== "undefined") {
-    await cfzck()
    
   } else {
    if ($.isNode()) {
