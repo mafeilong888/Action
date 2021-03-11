@@ -61,7 +61,7 @@ const $ = new Env('春风转');
 let status;
 status = (status = ($.getval("cfzstatus") || "1") ) > 1 ? `${status}` : ""; // 账号扩展字符
 const cfzurlArr = [], cfzhdArr = [],cfzsbhdArr = []
-let concurrency = ($.getval('cfzConcurrency') || '2') - 0; // 并发执行任务的账号数，默认单账号循环执行
+let concurrency = ($.getval('cfzConcurrency') || '3') - 0; // 并发执行任务的账号数，默认单账号循环执行
 concurrency = concurrency < 1 ? 1 : concurrency;
 
 !(async () => {
