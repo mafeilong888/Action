@@ -12,9 +12,9 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event.repository.owner.id == github.event.sender.id
     env:
-        HLDSP_URL: ${{ secrets.CFZURL }}
-        HLDSP_HD: ${{ secrets.CFZHD }}
-        HLDSP_HD: ${{ secrets.CFZSBHD }}        
+        CFZURL: ${{ secrets.CFZURL }}
+        CFZHD: ${{ secrets.CFZHD }}
+        CFZSBHD: ${{ secrets.CFZSBHD }}        
         TZ: Asia/shanghai
     steps:
       - name: Checkout
