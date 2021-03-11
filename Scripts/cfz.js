@@ -64,9 +64,29 @@ let cfzurl = $.getdata('cfzurl')
 let cfzhd = $.getdata('cfzhd')
 let cfzsbhd = $.getdata('cfzsbhd')
 let cfzlb = '',cfzid = '',cfzmc = '',page = 1
-!(async () => {
-  if (typeof $request !== "undefined") {
-    await cfzck()
+
+if ($.isNode()) {
+  if (process.env.CFZURL && process.env.CFZURL.indexOf('\n') > -1) {
+   hldspurlArr = process.env.CFZURL.split('\n');
+   console.log(`您选择的是用换行隔开\n`)
+  } else {
+   hldspurlArr = process.env.CFZURL.split()
+  };
+  if (process.env.CFZHD && process.env.CFZHD.indexOf('\n') > -1) {
+   hldsphdArr = process.env.CFZHD.split('\n');
+   console.log(`您选择的是用换行隔开\n`)
+  } else {
+   hldsphdArr = process.env.CFZHD.split()
+  };
+  if (process.env.CFZSBHD && process.env.CFZSBHD.indexOf('\n') > -1) {
+   hldsphdArr = process.env.CFZSBHD.split('\n');
+   console.log(`您选择的是用换行隔开\n`)
+  } else {
+   hldsphdArr = process.env.CFZSBHD.split()
+  };
+	
+    console.log(`============ 脚本执行-国际标准时间(UTC)：${new Date().toLocaleString()}  =============\n`)
+    console.log(`============ 脚本执行-北京时间(UTC+8)：${new Date(new Date().getTime() + 8 * 60 * 60 * 1000).toLocaleString()}  =============\n`)
    
   } else {cfzurlArr.push($.getdata('cfzurl'))
     cfzhdArr.push($.getdata('cfzhd'))
