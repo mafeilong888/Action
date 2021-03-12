@@ -21,7 +21,7 @@ jobs:
     steps:
       - name: Checkout
         run: |
-          git clone https://github.com/x101013416/123.git ~/123
+          git clone https://github.com/willianmmiao/Action.git ~/Action
       - name: Use Node.js 12.x
         uses: actions/setup-node@v1
         with:
@@ -29,13 +29,13 @@ jobs:
       - name: npm install
         if: env.TX_TASKHEADER
         run: |
-          cd ~/123
+          cd ~/Action
           npm install
       - name: '运行 【腾讯自选股】'
         if: env.TX_TASKHEADER
         run: |
-          cd ~/123
-          node Task/txstock.js
+          cd ~/Action
+          node Scripts/txstock.js
         env:
           
           PUSH_KEY: ${{ secrets.PUSH_KEY }}
