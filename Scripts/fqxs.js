@@ -74,7 +74,7 @@ if ($.isNode()) {
   };
 
 Object.keys(fqxsurl).forEach((item) => {
-        if (fqxs[item]) {
+        if (fqxsurl[item]) {
           fqxsurlArr.push(fqxsurl[item])
         }
     });
