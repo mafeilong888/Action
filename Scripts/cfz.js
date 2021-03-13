@@ -165,7 +165,7 @@ function execTask(ac, i) {
 }
         $.log(`春风转开始执行循环阅读，本次共执行10次，已执行${i+1}次`)
         await cfzqd(ac)
-        await $.wait(31000)
+        await $.wait(60000)
       }
 await cfzrw1(ac) 
 await $.wait(1000)
@@ -337,8 +337,8 @@ console.log('\n春风转[上报数据]回执:失败🌚'+result.message)
 function cfzqd(ac, timeout = 0) {
   return new Promise((resolve) => {
     setTimeout(() => {
-      let sjs = Math.floor(Math.random() * 100); //生成随机数
-let sj = Math.floor(Math.random() * 100); //生成随机数
+      let sjs = Math.floor(Math.random() * 500); //生成随机数
+let sj = Math.floor(Math.random() * 500); //生成随机数
       let url = {
         url: 'http://cf-api.douzhuanapi.cn:10002/api/article/list?city_type=1&page=' + sjs + '&slide=' + sj + '&tag_id=0&type=1',
         headers: JSON.parse(ac.cfzhd)
@@ -387,11 +387,11 @@ let url = {
           } else {
     const result = JSON.parse(data)
         if(result.code == 200){
-        console.log('\n春风转[每日任务阅读新闻]回执:成功🌝 \n获得奖励: '+result.data.amount)                
+        console.log('\n春风转[领取每日任务阅读新闻]回执:成功🌝 \n获得奖励: '+result.data.amount)                
            
 } else {
      
-console.log('\n春风转[每日任务阅读新闻]回执:失败🌚'+result.message)
+console.log('\n春风转[领取每日任务阅读新闻]回执:失败🌚'+result.message)
 }
 }
         } catch (e) {
@@ -416,12 +416,12 @@ let url = {
           } else {
     const result = JSON.parse(data)
         if(result.code == 200){
-        console.log('\n春风转[每日任务阅读60分钟]回执:成功🌝 \n获得奖励: '+result.data.amount)       
+        console.log('\n春风转[领取每日任务阅读60分钟]回执:成功🌝 \n获得奖励: '+result.data.amount)       
            
            
 } else {
      
-console.log('\n春风转[每日任务阅读60分钟]回执:失败🌚'+result.message)
+console.log('\n春风转[领取每日任务阅读60分钟]回执:失败🌚'+result.message)
 }
 }
         } catch (e) {
@@ -448,19 +448,20 @@ let url = {
           } else {
     const result = JSON.parse(data)
         if(result.code == 200){
-        console.log('\n春风转[每日任务福利视频]回执:成功🌝 \n获得奖励: '+result.data.amount)       
+        console.log('\n春风转[领取每日任务福利视频]回执:成功🌝 \n获得奖励: '+result.data.amount)       
            
            
 } else {
      
 if(result.message =='该任务您还未完成'){
-console.log('\n春风转[每日任务福利视频]回执:失败🌚'+result.message)
+console.log('\n春风转[领取每日任务福利视频]回执:失败🌚'+result.message)
 for (let i = 0; i < 3; i++) {
          
         $.log(`春风转开始执行观看福利视频，本次共执行3次，已执行${i+1}次`)
         await cfzrwsp(ac)
+        await $.wait(10000)
       }
-}else{console.log('\n春风转[每日任务福利视频]回执:失败🌚'+result.message)}
+}else{console.log('\n春风转[领取每日任务福利视频]回执:失败🌚'+result.message)}
 
 }
 }
@@ -487,19 +488,20 @@ let url = {
           } else {
     const result = JSON.parse(data)
         if(result.code == 200){
-        console.log('\n春风转[每日任务晒图奖励]回执:成功🌝 \n获得奖励: '+result.data.amount)       
+        console.log('\n春风转[领取每日任务晒图奖励]回执:成功🌝 \n获得奖励: '+result.data.amount)       
            
            
 } else {
      
 if(result.message =='该任务您还未完成'){
-console.log('\n春风转[每日任务晒图奖励]回执:失败🌚'+result.message)
+console.log('\n春风转[领取每日任务晒图奖励]回执:失败🌚'+result.message)
 for (let i = 0; i < 3; i++) {
          
         $.log(`春风转开始执行观看福利视频，本次共执行3次，已执行${i+1}次`)
         await cfzrwst(ac)
+await $.wait(10000)
       }
-}else{console.log('\n春风转[每日任务晒图奖励]回执:失败🌚'+result.message)}
+}else{console.log('\n春风转[领取每日任务晒图奖励]回执:失败🌚'+result.message)}
 
 }
 }
@@ -527,7 +529,7 @@ let url = {
           } else {
     const result = JSON.parse(data)
         if(result.code == 200){
-        console.log('\n春风转[看广告视频]回执:成功🌝 \n获得奖励: '+result.data)       
+        console.log('\n春风转[看广告视频]回执:成功🌝 \n'+result.data)       
            
            
 } else {
@@ -558,7 +560,7 @@ let url = {
           } else {
     const result = JSON.parse(data)
         if(result.code == 200){
-        console.log('\n春风转[晒图奖励]回执:成功🌝 \n获得奖励: '+result.data)       
+        console.log('\n春风转[晒图奖励]回执:成功🌝 \n'+result.data)       
            
            
 } else {
