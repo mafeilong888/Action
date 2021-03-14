@@ -91,6 +91,16 @@ if ($.isNode()) {
    wkzzhd= process.env.WKZZ_HD.split()
   };
 
+Object.keys(wkzzurl).forEach((item) => {
+        if (wkzzurl[item]) {
+          wkzzurlArr.push(wkzzurl[item])
+        }
+    });
+    Object.keys(wkzzhd).forEach((item) => {
+        if (wkzzhd[item]) {
+          wkzzhdArr.push(wkzzhd[item])
+        }
+    });
   
     console.log(`============ 脚本执行-国际标准时间(UTC)：${new Date().toLocaleString()}  =============\n`)
     console.log(`============ 脚本执行-北京时间(UTC+8)：${new Date(new Date().getTime() + 8 * 60 * 60 * 1000).toLocaleString()}  =============\n`)
