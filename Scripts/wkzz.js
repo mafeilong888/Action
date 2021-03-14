@@ -70,12 +70,27 @@ let max = 60
 let min = 17
 
 if ($.isNode()) {
-  if (process.env.WKZZ_HD && process.env.WKZZ_HD.indexOf('\n') > -1) {
-   wkzzhdArr = process.env.WKZZ_HD.split('\n');
+   if (process.env.WKZZ_URL && process.env.WKZZ_URL.indexOf('#') > -1) {
+   wkzzurl = process.env.WKZZ_URL.split('#');
+   console.log(`您选择的是用"#"隔开\n`)
+  }
+  else if (process.env.WKZZ_URL && process.env.WKZZ_URL.indexOf('\n') > -1) {
+   wkzzurl = process.env.WKZZ_URL.split('\n');
    console.log(`您选择的是用换行隔开\n`)
   } else {
-   wkzzhdArr = process.env.WKZZ_HD.split()
+   wkzzurl = process.env.WKZZ_URL.split()
   };
+  if (process.env.WKZZ_HD && process.env.WKZZ_HD.indexOf('#') > -1) {
+   wkzzhd= process.env.WKZZ_HD.split('#');
+   console.log(`您选择的是用"#"隔开\n`)
+  }
+  else if (process.env.WKZZ_HD && process.env.WKZZ_HD.indexOf('\n') > -1) {
+   wkzzhd= process.env.WKZZ_HD.split('\n');
+   console.log(`您选择的是用换行隔开\n`)
+  } else {
+   wkzzhd= process.env.WKZZ_HD.split()
+  };
+
   
     console.log(`============ 脚本执行-国际标准时间(UTC)：${new Date().toLocaleString()}  =============\n`)
     console.log(`============ 脚本执行-北京时间(UTC+8)：${new Date(new Date().getTime() + 8 * 60 * 60 * 1000).toLocaleString()}  =============\n`)
