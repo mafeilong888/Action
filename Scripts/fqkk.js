@@ -9,7 +9,8 @@ let fqkkhd = $.getdata('fqkkhd')
 let fqkey = ''
 let fqkkxh = ($.getval('fqkkxh') || '25');  // 此处修改循环次数，默认一百
 let fqtx = ($.getval('fqtx') || '500');  // 此处修改提现金额，0.1元等于10，默认为提现一元，也就是100
-var zz = ''
+let max = 120
+let min = 37
 
 if ($.isNode()) {
    if (process.env.FQKK_URL && process.env.FQKK_URL.indexOf('#') > -1) {
@@ -32,8 +33,7 @@ if ($.isNode()) {
   } else {
    fqkkhdArr = process.env.FQKK_HD.split()
   };
-fqkkurlArr.push('http://m.danteng.online/reada/getTask')
-fqkkhdArr.push('{\"Accept\":\"*/*\",\"Accept-Encoding\":\"gzip, deflate\",\"Origin\":\"http://m.danteng.online\",\"Cookie\":\"autoRead=1; udtauth=617ffi6nsY4X%2FITl9NBivVD0f9qnlVY9OvsFLpiVfEOFeJ6R87jleMsIqBVLb5su%2F9MhQjjcUZXPs3X%2FY3cVnd7nduF44HQmDMXbakGqZ3A7DY9HvL3V1SyeCV4vvcKGdwhPul46OEY2zDI3HMSaIO2McZ%2FXw1D6upuAX4evfo0; PHPSESSID=knqhame15dnuo71cj3c8udkkon\",\"Connection\":\"keep-alive\",\"Host\":\"m.danteng.online\",\"Content-Length\":\"0\",\"User-Agent\":\"Mozilla/5.0 (iPhone; CPU iPhone OS 14_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 MicroMessenger/8.0.2(0x18000236) NetType/WIFI Language/zh_CN\",\"Referer\":\"http://m.danteng.online/reada?upuid=3967396\",\"Accept-Language\":\"zh-cn\",\"X-Requested-With\":\"XMLHttpRequest\"}')
+   
     console.log(`============ 脚本执行-国际标准时间(UTC)：${new Date().toLocaleString()}  =============\n`)
     console.log(`============ 脚本执行-北京时间(UTC+8)：${new Date(new Date().getTime() + 8 * 60 * 60 * 1000).toLocaleString()}  =============\n`)
  } else {
