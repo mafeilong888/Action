@@ -12,25 +12,25 @@ let fqtx = ($.getval('fqtx') || '500');  // 此处修改提现金额，0.1元等
 var zz = ''
 
 if ($.isNode()) {
-   if (process.env.FQKKURL && process.env.FQKKURL.indexOf('#') > -1) {
-   fqkkurlArr = process.env.FQKKURL.split('#');
+   if (process.env.FQKK_URL && process.env.FQKK_URL.indexOf('#') > -1) {
+   fqkkurlArr = process.env.FQKK_URL.split('#');
    console.log(`您选择的是用"#"隔开\n`)
   }
-  else if (process.env.FQKKURL && process.env.FQKKURL.indexOf('\n') > -1) {
-   fqkkurlArr = process.env.FQKKURL.split('\n');
+  else if (process.env.FQKK_URL && process.env.FQKK_URL.indexOf('\n') > -1) {
+   fqkkurlArr = process.env.FQKK_URL.split('\n');
    console.log(`您选择的是用换行隔开\n`)
   } else {
-   fqkkurlArr = process.env.FQKKURL.split()
+   fqkkurlArr = process.env.FQKK_URL.split()
   };
-  if (process.env.FQKKHD && process.env.FQKKHD.indexOf('#') > -1) {
-   fqkkhdArr = process.env.FQKKHD.split('#');
+  if (process.env.FQKK_HD && process.env.FQKK_HD.indexOf('#') > -1) {
+   fqkkhdArr = process.env.FQKK_HD.split('#');
    console.log(`您选择的是用"#"隔开\n`)
   }
-  else if (process.env.FQKKHD && process.env.FQKKHD.indexOf('\n') > -1) {
-   fqkkhdArr = process.env.FQKKHD.split('\n');
+  else if (process.env.FQKK_HD && process.env.FQKK_HD.indexOf('\n') > -1) {
+   fqkkhdArr = process.env.FQKK_HD.split('\n');
    console.log(`您选择的是用换行隔开\n`)
   } else {
-   fqkkhdArr = process.env.FQKKHD.split()
+   fqkkhdArr = process.env.FQKK_HD.split()
   };
 fqkkurlArr.push('http://m.danteng.online/reada/getTask')
 fqkkhdArr.push('{\"Accept\":\"*/*\",\"Accept-Encoding\":\"gzip, deflate\",\"Origin\":\"http://m.danteng.online\",\"Cookie\":\"autoRead=1; udtauth=617ffi6nsY4X%2FITl9NBivVD0f9qnlVY9OvsFLpiVfEOFeJ6R87jleMsIqBVLb5su%2F9MhQjjcUZXPs3X%2FY3cVnd7nduF44HQmDMXbakGqZ3A7DY9HvL3V1SyeCV4vvcKGdwhPul46OEY2zDI3HMSaIO2McZ%2FXw1D6upuAX4evfo0; PHPSESSID=knqhame15dnuo71cj3c8udkkon\",\"Connection\":\"keep-alive\",\"Host\":\"m.danteng.online\",\"Content-Length\":\"0\",\"User-Agent\":\"Mozilla/5.0 (iPhone; CPU iPhone OS 14_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 MicroMessenger/8.0.2(0x18000236) NetType/WIFI Language/zh_CN\",\"Referer\":\"http://m.danteng.online/reada?upuid=3967396\",\"Accept-Language\":\"zh-cn\",\"X-Requested-With\":\"XMLHttpRequest\"}')
