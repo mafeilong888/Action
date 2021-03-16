@@ -12,7 +12,6 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event.repository.owner.id == github.event.sender.id
     env:
-        FQKK: ${{ secrets.FQKK }}
         TZ: Asia/shanghai
     steps:
       - name: Checkout
@@ -26,7 +25,6 @@ jobs:
         run: |
           npm install
       - name: '运行 【番茄看看】'
-        if: env.FQKK
         run: |
           node Scripts/fqkk.js
         env:
