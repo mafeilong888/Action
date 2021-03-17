@@ -11,10 +11,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
     if: github.event.repository.owner.id == github.event.sender.id
-    env:
-        FQXSURL: ${{ secrets.FQXSURL }}
-        FQXS: ${{ secrets.FQXS }}
-        TZ: Asia/shanghai
     steps:
       - name: Checkout
         uses: actions/checkout@v1
@@ -27,7 +23,6 @@ jobs:
         run: |
           npm install
       - name: '运行 【番茄小说】'
-        if: env.FQXS
         run: |
           node Scripts/fqxs.js
         env:
