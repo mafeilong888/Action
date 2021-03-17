@@ -52,38 +52,9 @@ if (isfqxsck) {
    $.done()
 }
 if ($.isNode()) {
-   if (process.env.FQXSURL && process.env.FQXSURL.indexOf('#') > -1) {
-   fqxsurl = process.env.FQXSURL.split('#');
-   console.log(`您选择的是用"#"隔开\n`)
-  }
-  else if (process.env.FQXSURL && process.env.FQXSURL.indexOf('\n') > -1) {
-   fqxsurl = process.env.FQXSURL.split('\n');
-   console.log(`您选择的是用换行隔开\n`)
-  } else {
-   fqxsurl = process.env.FQXSURL.split()
-  };
-  if (process.env.FQXS && process.env.FQXS.indexOf('#') > -1) {
-   fqxs= process.env.FQXS.split('#');
-   console.log(`您选择的是用"#"隔开\n`)
-  }
-  else if (process.env.FQXS && process.env.FQXS.indexOf('\n') > -1) {
-   fqxs= process.env.FQXS.split('\n');
-   console.log(`您选择的是用换行隔开\n`)
-  } else {
-   fqxs= process.env.FQXS.split()
-  };
-
-Object.keys(fqxsurl).forEach((item) => {
-        if (fqxsurl[item]) {
-          fqxsurlArr.push(fqxsurl[item])
-        }
-    });
-    Object.keys(fqxs).forEach((item) => {
-        if (fqxs[item]) {
-          fqxsArr.push(fqxs[item])
-        }
-    });
-
+   
+   fqxsurlArr.push('&_request_from=web&ip=192.168.1.142&caid1=30fdb880e4f9225fd7d3417965972048&version_code=405&app_name=novelapp&vid=C6479E49-5FA2-4C1A-B50B-27AAAEC213B0&device_id=2516115080366680&channel=App%20Store&resolution=1242*2208&aid=1967&version_name=4.0.5.32&update_version_code=40532&gender=0&cdid=E43E6233-5BF6-4B7A-80A0-A7C11707D5BF&idfv=C6479E49-5FA2-4C1A-B50B-27AAAEC213B0&ac=wifi&os_version=14.2&ssmix=a&ab_sdk_version=2492776,2413569,2379404&caid2=&device_platform=iphone&iid=1478176127076622&device_type=iPhone%207%20Plus&idfa=00000000-0000-0000-0000-000000000000')
+   fqxsArr.push('{"x-tt-trace-id": "00-25b8f4140d8f064b1944a585d0f207af-25b8f4140d8f064b-01","Connection": "keep-alive","Accept-Encoding": "gzip, deflate","sdk-version": "2","x-Tt-Token": "000afd24e34a7f52fe6041006c2bb7e637029504c346710aaf1668f044e77f52bfbd5d5eeb57303da2f19a91c1273c9522cc58e093b648a9b85bb52cfff7aaeb9034c4116f5578d9a0005b31c5cc82f6b893487ed0a4cf862f4ccc99fc96f64243115-1.0.1","X-Khronos": "1615540581","User-Agent": "Reading 4.0.5 rv:4.0.5.32 (iPhone; iOS 14.2; zh_CN) Cronet","x-vc-bdturing-sdk-version": "2.0.0","Cookie": "excgd=20210312; passport_csrf_token=975ba0d431dad7c0e282e77b84553724; passport_csrf_token_default=975ba0d431dad7c0e282e77b84553724; d_ticket=3aca32f4f591d31f2e46af9944f3d30bd094b; n_mh=FanDFbDtTIHXCkPURE60NM12r2WhHbvksze5vJiBJD0; odin_tt=e3f8a43942d84c8245d03c69da9c2ae3b42e796b616167739c7b53cf8736c39a9d127c49ba7ba0c9da983e1044525dfd93969d47bb0b49bb37b03098f1b3096f; sessionid=0afd24e34a7f52fe6041006c2bb7e637; sessionid_ss=0afd24e34a7f52fe6041006c2bb7e637; sid_guard=0afd24e34a7f52fe6041006c2bb7e637%7C1615540244%7C5184000%7CTue%2C+11-May-2021+09%3A10%3A44+GMT; sid_tt=0afd24e34a7f52fe6041006c2bb7e637; uid_tt=03c6ac5b989a6829de74b9bcb9f98cea; uid_tt_ss=03c6ac5b989a6829de74b9bcb9f98cea; install_id=1478176127076622; ttreq=1$e311d81880ab9767e410d58e431fabca9e7f272e","Host": "i.snssdk.com","X-Tyhon": "oyNuKD4iTgVUEElJNCZtIk03XFJBOnAwCTd+XQk=","passport-sdk-version": "5.13.3","X-Gorgon": "8404005b0000432ca135cf87138032d2c227484e77815f446574"}')
     console.log(`============ 脚本执行-国际标准时间(UTC)：${new Date().toLocaleString()}  =============\n`)
     console.log(`============ 脚本执行-北京时间(UTC+8)：${new Date(new Date().getTime() + 8 * 60 * 60 * 1000).toLocaleString()}  =============\n`)
  } else {
