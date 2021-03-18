@@ -3,22 +3,19 @@ name: 笑谱
 on:
   workflow_dispatch:
   schedule:
-     - cron: '*/15 8-23 * * *'
+     - cron: '*/20 * * * *'
   watch:
     types: started
+  repository_dispatch:
+    types: 笑谱
+
 jobs:
   build:
     runs-on: ubuntu-latest
     if: github.event.repository.owner.id == github.event.sender.id
-    env:
-        XP_refreshTOKEN: ${{ secrets.XP_refreshTOKEN }}
-        XP_CASH: ${{ secrets.XP_CASH }}
-        XP_live: ${{ secrets.XP_live }}
-        TZ: Asia/shanghai
     steps:
       - name: Checkout
         uses: actions/checkout@v1
-        
       - name: Use Node.js 12.x
         uses: actions/setup-node@v1
         with:
@@ -26,8 +23,7 @@ jobs:
       - name: npm install
         run: |
           npm install
-      - name: '运行 【iboxpay】'
-        if: env.XP_refreshTOKEN
+      - name: '运行 【笑谱】'
         run: |
           node Scripts/iboxpay.js
         env:
