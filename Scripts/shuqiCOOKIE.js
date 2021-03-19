@@ -21,7 +21,7 @@ boxjs链接  https://raw.githubusercontent.com/6Svip120apk69/gitee_q8qsTAUA_cThx
 
 */
 
-modulees = 1 //1 选择方式一 2 选择方式二 3 选择方式三
+modulees = 2 //1 选择方式一 2 选择方式二 3 选择方式三
 
 
 
