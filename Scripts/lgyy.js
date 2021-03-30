@@ -57,26 +57,52 @@ let max = 40
 let min = 12
 
 if ($.isNode()) {
-   if (process.env.LGYY_URL && process.env.LGYY_URL.indexOf('\n') > -1) {
-   lgyyurlArr = process.env.LGYY_URL.split('\n');
+   if (process.env.LGYY_URL && process.env.LGYY_URL.indexOf('#') > -1) {
+   lgyyurl = process.env.LGYY_URL.split('#');
+   console.log(`您选择的是用"#"隔开\n`)
+  }
+  else if (process.env.LGYY_URL && process.env.LGYY_URL.indexOf('\n') > -1) {
+   lgyyurl = process.env.LGYY_URL.split('\n');
    console.log(`您选择的是用换行隔开\n`)
   } else {
-   lgyyurlArr = process.env.LGYY_URL.split()
+   lgyyurl = process.env.LGYY_URL.split()
   };
-
-  if (process.env.LGYY_HD && process.env.LGYY_HD.indexOf('\n') > -1) {
-   lgyyhdArr = process.env.LGYY_HD.split('\n');
+  if (process.env.LGYY_HD && process.env.LGYY_HD.indexOf('#') > -1) {
+   lgyyhd = process.env.LGYY_HD.split('#');
+   console.log(`您选择的是用"#"隔开\n`)
+  }
+  else if (process.env.LGYY_HD && process.env.LGYY_HD.indexOf('\n') > -1) {
+   lgyyhd = process.env.LGYY_HD.split('\n');
    console.log(`您选择的是用换行隔开\n`)
   } else {
-   lgyyhdArr = process.env.LGYY_HD.split()
+   lgyyhd = process.env.LGYY_HD.split()
   };
- 
-  if (process.env.LGYY_BODY && process.env.LGYY_BODY.indexOf('\n') > -1) {
-   lgyybodyArr = process.env.LGYY_BODY.split('\n');
+  if (process.env.LGYY_BODY && process.env.LGYY_BODY.indexOf('#') > -1) {
+   lgyybody = process.env.LGYY_BODY.split('#');
+   console.log(`您选择的是用"#"隔开\n`)
+  }
+  else if (process.env.LGYY_BODY && process.env.LGYY_BODY.indexOf('\n') > -1) {
+   lgyybody = process.env.LGYY_BODY.split('\n');
    console.log(`您选择的是用换行隔开\n`)
   } else {
-   lgyybodyArr = process.env.LGYY_BODY.split()
+   lgyybody = process.env.LGYY_BODY.split()
   };
+   
+Object.keys(lgyyurl).forEach((item) => {
+        if (lgyyurl[item]) {
+          lgyyurlArr.push(lgyyurl[item])
+        }
+    });
+    Object.keys(lgyyhd).forEach((item) => {
+        if (lgyyhd[item]) {
+          lgyyhdArr.push(lgyyhd[item])
+        }
+    });
+    Object.keys(lgyybody).forEach((item) => {
+        if (lgyybody[item]) {
+          lgyybodyArr.push(lgyybody[item])
+        }
+    });
   
     console.log(`============ 脚本执行-国际标准时间(UTC)：${new Date().toLocaleString()}  =============\n`)
     console.log(`============ 脚本执行-北京时间(UTC+8)：${new Date(new Date().getTime() + 8 * 60 * 60 * 1000).toLocaleString()}  =============\n`)
