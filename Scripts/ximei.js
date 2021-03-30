@@ -92,18 +92,17 @@ if ($.isNode()) {
   };
 
    
-Object.keys(lgyyurl).forEach((item) => {
-        if (lgyyurl[item]) {
-          lgyyurlArr.push(lgyyurl[item])
+Object.keys(ximeiurl).forEach((item) => {
+        if (ximeiurl[item]) {
+          ximeiurlArr.push(ximeiurl[item])
         }
     });
-    Object.keys(lgyyhd).forEach((item) => {
-        if (lgyyhd[item]) {
-          lgyyhdArr.push(lgyyhd[item])
+    Object.keys(ximeihd).forEach((item) => {
+        if (ximeihd[item]) {
+          ximeihdArr.push(ximeihd[item])
         }
     });
 
-  
     console.log(`============ 脚本执行-国际标准时间(UTC)：${new Date().toLocaleString()}  =============\n`)
     console.log(`============ 脚本执行-北京时间(UTC+8)：${new Date(new Date().getTime() + 8 * 60 * 60 * 1000).toLocaleString()}  =============\n`)   
   } else {ximeiurlArr.push($.getdata('ximeiurl'))
@@ -113,6 +112,11 @@ Object.keys(lgyyurl).forEach((item) => {
     ximeiurlArr.push($.getdata(`ximeiurl${i}`))
     ximeihdArr.push($.getdata(`ximeihd${i}`))
   }
+!(async () => {
+if (!ximeihdArr[0]) {
+    $.msg($.name, '【提示】请先获取一cookie')
+    return;
+  }          
     console.log(`------------- 共${ximeihdArr.length}个账号-------------\n`)
       for (let i = 0; i < ximeihdArr.length; i++) {
         if (ximeihdArr[i]) {
@@ -125,7 +129,7 @@ Object.keys(lgyyurl).forEach((item) => {
           await ximeixx();
 
   }
-}}
+}
 
 })()
   .catch((e) => $.logErr(e))
