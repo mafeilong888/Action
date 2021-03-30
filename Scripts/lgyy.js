@@ -96,7 +96,6 @@ if ($.isNode()) {
           $.index = i + 1;
           console.log(`\n开始【朗果英语${$.index}】`)
           await lgyylb();
-          await $.wait(1000);
           await lgyydz();
           await $.wait(1000);
           await lgyy1();
