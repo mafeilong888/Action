@@ -87,6 +87,12 @@ if ($.isNode()) {
     lgyyhdArr.push($.getdata(`lgyyhd${i}`))
     lgyybodyArr.push($.getdata(`lgyybody${i}`))
   }
+}
+!(async () => {
+if (!lgyyhdArr[0]) {
+    $.msg($.name, '【提示】请先获取一cookie')
+    return;
+  }          
     console.log(`------------- 共${lgyyhdArr.length}个账号-------------\n`)
       for (let i = 0; i < lgyyhdArr.length; i++) {
         if (lgyyhdArr[i]) {
@@ -96,13 +102,14 @@ if ($.isNode()) {
           $.index = i + 1;
           console.log(`\n开始【朗果英语${$.index}】`)
           await lgyylb();
+          await $.wait(1000);           
           await lgyydz();
           await $.wait(1000);
           await lgyy1();
           await $.wait(1000);
           await lgyy2();
   }
-}}
+}
 
 })()
   .catch((e) => $.logErr(e))
