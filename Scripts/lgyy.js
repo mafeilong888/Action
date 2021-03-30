@@ -48,11 +48,13 @@ const $ = new Env('朗果英语');
 let status;
 status = (status = ($.getval("lgyystatus") || "1") ) > 1 ? `${status}` : ""; // 账号扩展字符
 const lgyyurlArr = [], lgyyhdArr = [],lgyybodyArr = [],lgyycount = ''
-let times = Math.round(Date.now())
+let times = Math.round(Date.now()/ 1000)
 let lgyyurl = $.getdata('lgyyurl')
 let lgyyhd = $.getdata('lgyyhd')
 let lgyybody = $.getdata('lgyybody')
 let lgyykey = '',id = '',uid='',tid='',name=''
+let max = 40
+let min = 12
 
 if ($.isNode()) {
    if (process.env.LGYY_URL && process.env.LGYY_URL.indexOf('\n') > -1) {
