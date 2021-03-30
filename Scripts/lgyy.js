@@ -53,10 +53,31 @@ let lgyyurl = $.getdata('lgyyurl')
 let lgyyhd = $.getdata('lgyyhd')
 let lgyybody = $.getdata('lgyybody')
 let lgyykey = '',id = '',uid='',tid='',name=''
-!(async () => {
-  if (typeof $request !== "undefined") {
-    await lgyyck()
-   
+
+if ($.isNode()) {
+   if (process.env.LGYY_URL && process.env.LGYY_URL.indexOf('\n') > -1) {
+   lgyyurlArr = process.env.LGYY_URL.split('\n');
+   console.log(`您选择的是用换行隔开\n`)
+  } else {
+   lgyyurlArr = process.env.LGYY_URL.split()
+  };
+
+  if (process.env.LGYY_HD && process.env.LGYY_HD.indexOf('\n') > -1) {
+   lgyyhdArr = process.env.LGYY_HD.split('\n');
+   console.log(`您选择的是用换行隔开\n`)
+  } else {
+   lgyyhdArr = process.env.LGYY_HD.split()
+  };
+ 
+  if (process.env.LGYY_BODY && process.env.LGYY_BODY.indexOf('\n') > -1) {
+   lgyybodyArr = process.env.LGYY_BODY.split('\n');
+   console.log(`您选择的是用换行隔开\n`)
+  } else {
+   lgyybodyArr = process.env.LGYY_BODY.split()
+  };
+  
+    console.log(`============ 脚本执行-国际标准时间(UTC)：${new Date().toLocaleString()}  =============\n`)
+    console.log(`============ 脚本执行-北京时间(UTC+8)：${new Date(new Date().getTime() + 8 * 60 * 60 * 1000).toLocaleString()}  =============\n`)
   } else {lgyyurlArr.push($.getdata('lgyyurl'))
     lgyyhdArr.push($.getdata('lgyyhd'))
     lgyybodyArr.push($.getdata('lgyybody'))
