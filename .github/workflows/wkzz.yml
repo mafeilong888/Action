@@ -4,7 +4,7 @@ name: 微客众智
 on:
   workflow_dispatch:
   schedule:
-     - cron: '0,30 0-12 * * *'
+     - cron: '0,30 1-14,17,21 * * *'
   watch:
     types: started
 jobs:
