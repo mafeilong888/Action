@@ -11,6 +11,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     if: github.event.repository.owner.id == github.event.sender.id
+    env:
+        FQXSURL: ${{ secrets.FQXSURL }}
+        FQXS: ${{ secrets.FQXS }}    
     steps:
       - name: Checkout
         uses: actions/checkout@v1
