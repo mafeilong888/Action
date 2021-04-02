@@ -28,6 +28,12 @@ jobs:
       - name: '运行 【番茄小说】'
         run: |
           node Scripts/fqxs.js
+      - name: '运行 【番茄小说2】'
+        run: |
+          node Scripts/fqxs2.js
+      - name: '运行 【番茄小说3】'
+        run: |
+          node Scripts/fqxs3.js
         env:
           PUSH_KEY: ${{ secrets.PUSH_KEY }}
           BARK_PUSH: ${{ secrets.BARK_PUSH }}
