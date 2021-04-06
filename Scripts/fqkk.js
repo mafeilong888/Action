@@ -72,20 +72,39 @@ const $ = new Env('番茄看看');
 const fqkkurlArr = [], fqkkhdArr = []
 let fqkk = $.getjson('fqkk', [
   {
-    "uid": 4194775,
-    "url": "http://m.281644.pw/reada/getTask",
-    "hd": "{\"Accept\":\"*/*\",\"Proxy-Connection\":\"keep-alive\",\"X-Requested-With\":\"XMLHttpRequest\",\"Host\":\"m.281644.pw\",\"Accept-Language\":\"zh-cn\",\"Accept-Encoding\":\"gzip, deflate\",\"Origin\":\"http://m.281644.pw\",\"User-Agent\":\"Mozilla/5.0 (iPad; CPU OS 14_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 MicroMessenger/7.0.18(0x17001233) NetType/WIFI Language/zh_CN\",\"Connection\":\"keep-alive\",\"Referer\":\"http://m.281644.pw/reada?upuid=4194775\",\"Content-Length\":\"0\",\"Cookie\":\"autoRead=1; udtauth=88cbIc%2FIODTBbM2qxHz92y3xiegzbVFGsUyQ6C5Hei1T9wP2yctDwI%2FKvXQiIqjXDHYEV15ZVJvmv9QjZhUWPhd%2BN3vzOK0NA%2BYsv0FXChoU3ZH9Re%2FBjjrd3ED6Rp%2BcUgvBLH9na7aO%2BSZ6GTQpHB6Tg%2BYWV0SpybPb5nIK0nc; PHPSESSID=8g3dhe0g5o69f8lbldh48gktei\"}"
-  },
-  {
-    "uid": 4194791,
-    "url": "http://m.281644.pw/reada/getTask",
-    "hd": "{\"Accept\":\"*/*\",\"Proxy-Connection\":\"keep-alive\",\"X-Requested-With\":\"XMLHttpRequest\",\"Host\":\"m.281644.pw\",\"Accept-Language\":\"zh-cn\",\"Accept-Encoding\":\"gzip, deflate\",\"Origin\":\"http://m.281644.pw\",\"User-Agent\":\"Mozilla/5.0 (iPad; CPU OS 14_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 MicroMessenger/7.0.18(0x17001233) NetType/WIFI Language/zh_CN\",\"Connection\":\"keep-alive\",\"Referer\":\"http://m.281644.pw/reada?upuid=4194775\",\"Content-Length\":\"0\",\"Cookie\":\"autoRead=1; udtauth=eba9mbH3c0jaluXjehY1ppGEVNBvR3nZY5BMTndvsNxfUwHq1XBie%2FqWOxBOAjVL86L57lKIqSPvC53QnFBQ4cUgoaWh5TLAazf%2FVS%2F8QU5OcRhy0gXKqG7yFQ8Xr3NlstAl3ArdZokDqjAJasJlNPE1zlFzmQGW4lforialWUo; PHPSESSID=acr86al4vj8uc44ir1dfh6e4ta\"}"
-  }
+
+  "uid": 3967396,
+
+  "url": "http://m.pmchina.work/reada/getTask",
+
+  "hd": "{\"Accept\":\"*/*\",\"Accept-Encoding\":\"gzip, deflate\",\"Origin\":\"http://m.pmchina.work\",\"Cookie\":\"autoRead=1; Hm_lpvt_84099950848427564e5e4b4310ad032e=1617664261; Hm_lvt_84099950848427564e5e4b4310ad032e=1617664261; udtauth=c06aw7s9DbmzhM0UP4h0Uz7ghH9ItJqyfhJWPaY3sOzZe7E%2Fg12ND%2BO0rcsh6M%2FE3CvchRzGSfDKNKLz%2Ba%2BqABysuBqEkYH9kWKzDApA8pSX%2FEiOQWaU0TubixRATpW4qvP%2FG80mt7rku%2Bpo5FHBbKCm9gizxQ%2FHQVhlOc4BZKA; PHPSESSID=lcvt13tp9gu76a1ks80luri7uf\",\"Connection\":\"keep-alive\",\"Host\":\"m.pmchina.work\",\"Content-Length\":\"0\",\"User-Agent\":\"Mozilla/5.0 (iPhone; CPU iPhone OS 14_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 MicroMessenger/8.0.3(0x18000329) NetType/4G Language/zh_CN\",\"Referer\":\"http://m.pmchina.work/reada?upuid=3967396\",\"Accept-Language\":\"zh-cn\",\"X-Requested-With\":\"XMLHttpRequest\"}"
+
+ },
+
+ {
+
+  "uid": 3971402,
+
+  "url": "http://m.pmchina.work/reada/getTask",
+
+  "hd": "{\"Accept\":\"*/*\",\"Accept-Encoding\":\"gzip, deflate\",\"Origin\":\"http://m.pmchina.work\",\"Cookie\":\"autoRead=1; Hm_lpvt_84099950848427564e5e4b4310ad032e=1617664703; Hm_lvt_84099950848427564e5e4b4310ad032e=1617664703; udtauth=a4d5nfXwYr8iLLMfHPNX0dz0hlZLlWX0qLY3PHJcqPy8kXvWuZopSEDijXUJzJVt4A7u279JUPTd%2BGIEeeo6fpmd4yEUOnxDzZf4J4HBCXagwy0wPmstFCB0oEvfdl3lBL%2BVArzUZdTT5nN5s3GWEnwcbwFyMfzCUiC0ni4qNxk; PHPSESSID=u9lf2h44e11jt6105f3gbasu6k\",\"Connection\":\"keep-alive\",\"Host\":\"m.pmchina.work\",\"Content-Length\":\"0\",\"User-Agent\":\"Mozilla/5.0 (iPhone; CPU iPhone OS 14_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 MicroMessenger/8.0.3(0x18000329) NetType/4G Language/zh_CN\",\"Referer\":\"http://m.pmchina.work/reada?upuid=3967396\",\"Accept-Language\":\"zh-cn\",\"X-Requested-With\":\"XMLHttpRequest\"}"
+
+ },
+
+ {
+
+  "uid": 3971275,
+
+  "url": "http://m.pmchina.work/reada/getTask",
+
+  "hd": "{\"Accept\":\"*/*\",\"Accept-Encoding\":\"gzip, deflate\",\"Origin\":\"http://m.pmchina.work\",\"Cookie\":\"autoRead=1; Hm_lpvt_84099950848427564e5e4b4310ad032e=1617665106; Hm_lvt_84099950848427564e5e4b4310ad032e=1617665106; udtauth=bb21pgYTu80I7qejRlpG8UnmYdGXOkiEKoH6eye%2Bq0DnjbTX60oV903l39UZo6LN9ZJbx7bDtHnrMHTA7MTL7Hjew7uQSj7qEOgAMFo7EnmPtGOHXlbjEKcDNV9G26iZ91aGsK6eZIgNisV1zlLqlWksdfPN65eJTieFKYfsaqI; PHPSESSID=aldc9d6datacbjdra4p1q3bpck\",\"Connection\":\"keep-alive\",\"Host\":\"m.pmchina.work\",\"Content-Length\":\"0\",\"User-Agent\":\"Mozilla/5.0 (iPhone; CPU iPhone OS 14_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 MicroMessenger/8.0.3(0x18000329) NetType/4G Language/zh_CN\",\"Referer\":\"http://m.pmchina.work/reada?upuid=3967396\",\"Accept-Language\":\"zh-cn\",\"X-Requested-With\":\"XMLHttpRequest\"}"
+
+ }
 ])
 let fqkkBanfirstTask = $.getval('fqkkBanfirstTask') || 'ture' // 禁止脚本执行首个任务，避免每日脚本跑首次任务导致微信限制
 let fqkkCkMoveFlag = $.getval('fqkkCkMove') || ''
-let fqtx = ($.getval('fqtx') || '100');  // 此处修改提现金额，0.3元等于30，默认为提现一元，也就是100
-let concurrency = ($.getval('fqkkConcurrency') || '1') - 0; // 并发执行任务的账号数，默单账号循环执行
+let fqtx = ($.getval('fqtx') || '500');  // 此处修改提现金额，0.3元等于30，默认为提现一元，也就是100
+let concurrency = ($.getval('fqkkConcurrency') || '3') - 0; // 并发执行任务的账号数，默单账号循环执行
 concurrency = concurrency < 1 ? 1 : concurrency;
 let fqkktz = ''
 !(async () => {
