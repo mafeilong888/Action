@@ -11,7 +11,7 @@ let vsh1body = $.getdata('vsh1body')
 let vsh2body = $.getdata('vsh2body')
 let vshbody = $.getdata('vshbody')
 let vshqdbody = $.getdata('vshqdbody')
-let vshsp = ($.getval('vshsp') || '1');//短视频刷金币开关,短视频刷金币因为时间很长,且不知道上限,默认为关闭状态,脚本只会运行除了短视频之外的任务,需要刷短视频金币的,建议先跑完日常任务再去boxjs里把短视频刷金币开关改为1,之后脚本只会运行刷短视频任务。。
+let vshsp = ($.getval('vshsp') || '0');//短视频刷金币开关,短视频刷金币因为时间很长,且不知道上限,默认为关闭状态,脚本只会运行除了短视频之外的任务,需要刷短视频金币的,建议先跑完日常任务再去boxjs里把短视频刷金币开关改为1,之后脚本只会运行刷短视频任务。。
 vshurlArr.push("http://iosvsh.zwzanwm.cn/app/svjl")
     vshhdArr.push("{\"Accept-Encoding\":\"gzip, deflate\",\"Accept\":\"*/*\",\"Connection\":\"keep-alive\",\"Content-Type\":\"application/json\",\"Host\":\"iosvsh.zwzanwm.cn\",\"User-Agent\":\"vsh/1.13 (iPhone; iOS 14.2; Scale/3.00)\",\"Content-Length\":\"2\",\"Accept-Language\":\"zh-Hans-CN;q=1\",\"token\":\"602BAF2E-C0C3-4FA8-A629-C349E27478DF\"}")
     vshdspbodyArr.push("{\"isDouble\":\"0\",\"moneyId\":\"0\",\"mark\":\"hyVxXxW+UTj+5zOVUY9scLVGioB6cozrs6bklGbQpsOfeq096mtRGT\\/WdkReVOjC\\/i0jTtuT50S5AMgFAEKDrP0cCvuUwX1oY65CcyxLXjs=\",\"type\":\"8\",\"seconds\":\"19\"}")
