@@ -1,4 +1,4 @@
-name: V生活
+name: V生活短视频
 
 on:
   workflow_dispatch:
