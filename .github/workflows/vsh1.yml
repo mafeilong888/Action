@@ -3,7 +3,7 @@ name: V生活短视频
 on:
   workflow_dispatch:
   schedule:
-     - cron: '15 4 * * *'
+     - cron: '15 4,10 * * *'
   watch:
     types: started
 jobs:
