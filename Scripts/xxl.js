@@ -2,12 +2,16 @@ const jsname='妞妞'
 const $ = Env(jsname)
 let i = 0;
 var num = 12000;
-let xxlheader1 = $.getdata('{"deviceudid":"5c1cb635-0e2f-435c-9527-9ab792263a6e-1618237567865","sign":"c177ceed857f05b253d22b2994c54b8a","Connection":"keep-alive","Accept-Encoding":"gzip, deflate, br","Content-Type":"application/octet-stream","X-Unity-Version":"2019.3.0f6","User-Agent":"%E5%BC%80%E5%BF%83%E6%B6%88%E6%B6%88%E6%B6%88/108 CFNetwork/1206 Darwin/20.1.0","token":"a29c508733a143bb88da1d6100c4890e","gamePackage":"com.ios.tetris.match","Host":"r1.nullpointerexception.cn","Accept-Language":"zh-cn","Accept":"*/*","Content-Length":"119"}')
-let xxlbody1 = $.getdata('{"userID":8123406310,"isLoginMsg":false,"userType":"D","time":1618237699666,"maxPassId":2,"playerLevel":1,"passType":0}')
+const xxlheader1Arr = ['{"deviceudid":"5c1cb635-0e2f-435c-9527-9ab792263a6e-1618237567865","sign":"c177ceed857f05b253d22b2994c54b8a","Connection":"keep-alive","Accept-Encoding":"gzip, deflate, br","Content-Type":"application/octet-stream","X-Unity-Version":"2019.3.0f6","User-Agent":"%E5%BC%80%E5%BF%83%E6%B6%88%E6%B6%88%E6%B6%88/108 CFNetwork/1206 Darwin/20.1.0","token":"a29c508733a143bb88da1d6100c4890e","gamePackage":"com.ios.tetris.match","Host":"r1.nullpointerexception.cn","Accept-Language":"zh-cn","Accept":"*/*","Content-Length":"119"}']
+const xxlbody1Arr = ['{"userID":8123406310,"isLoginMsg":false,"userType":"D","time":1618237699666,"maxPassId":2,"playerLevel":1,"passType":0}']
 
-let xxlheader2 = $.getdata('{"deviceudid":"5c1cb635-0e2f-435c-9527-9ab792263a6e-1618237567865","sign":"cc6366d73d9e79f58110a8ae96b639ff","Connection":"keep-alive","Accept-Encoding":"gzip, deflate, br","Content-Type":"application/octet-stream","X-Unity-Version":"2019.3.0f6","User-Agent":"%E5%BC%80%E5%BF%83%E6%B6%88%E6%B6%88%E6%B6%88/108 CFNetwork/1206 Darwin/20.1.0","token":"a29c508733a143bb88da1d6100c4890e","gamePackage":"com.ios.tetris.match","Host":"r1.nullpointerexception.cn","Accept-Language":"zh-cn","Accept":"*/*","Content-Length":"120"}')
-let xxlbody2 = $.getdata('{"userID":8123406310,"isLoginMsg":false,"userType":"D","time":1618237731751,"adType":1,"isActiveClick":true,"price":0.0}')
+const xxlheader2Arr = ['{"deviceudid":"5c1cb635-0e2f-435c-9527-9ab792263a6e-1618237567865","sign":"cc6366d73d9e79f58110a8ae96b639ff","Connection":"keep-alive","Accept-Encoding":"gzip, deflate, br","Content-Type":"application/octet-stream","X-Unity-Version":"2019.3.0f6","User-Agent":"%E5%BC%80%E5%BF%83%E6%B6%88%E6%B6%88%E6%B6%88/108 CFNetwork/1206 Darwin/20.1.0","token":"a29c508733a143bb88da1d6100c4890e","gamePackage":"com.ios.tetris.match","Host":"r1.nullpointerexception.cn","Accept-Language":"zh-cn","Accept":"*/*","Content-Length":"120"}']
+const xxlbody2Arr = ['{"userID":8123406310,"isLoginMsg":false,"userType":"D","time":1618237731751,"adType":1,"isActiveClick":true,"price":0.0}']
+let xxlheader1 = $.getdata('xxlheader1')
+let xxlbody1 = $.getdata('xxlbody1')
 
+let xxlheader2 = $.getdata('xxlheader2')
+let xxlbody2 = $.getdata('xxlbody2')
 
 let isGetCookie = typeof $request !== 'undefined'
 if (isGetCookie) {
