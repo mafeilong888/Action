@@ -3,7 +3,7 @@ name: 易趣牛帮
 on:
   workflow_dispatch:
   schedule:
-     - cron: '*/15 0-23 * * *'
+     - cron: '*/15 * * * *'
   watch:
     types: started
   repository_dispatch:
