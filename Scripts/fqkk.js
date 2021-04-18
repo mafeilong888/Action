@@ -99,7 +99,13 @@ let fqkk = $.getjson('fqkk', [
 
   "hd": "{\"Accept\":\"*/*\",\"Accept-Encoding\":\"gzip, deflate\",\"Origin\":\"http://m.pmchina.work\",\"Cookie\":\"autoRead=1; Hm_lpvt_84099950848427564e5e4b4310ad032e=1617665106; Hm_lvt_84099950848427564e5e4b4310ad032e=1617665106; udtauth=bb21pgYTu80I7qejRlpG8UnmYdGXOkiEKoH6eye%2Bq0DnjbTX60oV903l39UZo6LN9ZJbx7bDtHnrMHTA7MTL7Hjew7uQSj7qEOgAMFo7EnmPtGOHXlbjEKcDNV9G26iZ91aGsK6eZIgNisV1zlLqlWksdfPN65eJTieFKYfsaqI; PHPSESSID=aldc9d6datacbjdra4p1q3bpck\",\"Connection\":\"keep-alive\",\"Host\":\"m.pmchina.work\",\"Content-Length\":\"0\",\"User-Agent\":\"Mozilla/5.0 (iPhone; CPU iPhone OS 14_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 MicroMessenger/8.0.3(0x18000329) NetType/4G Language/zh_CN\",\"Referer\":\"http://m.pmchina.work/reada?upuid=3967396\",\"Accept-Language\":\"zh-cn\",\"X-Requested-With\":\"XMLHttpRequest\"}"
 
- }
+ },
+
+  {
+    "uid": 4240436,
+    "url": "http://m.bqltcb.shop/reada/getTask",
+    "hd": "{\"Accept\":\"*/*\",\"Accept-Encoding\":\"gzip, deflate\",\"Origin\":\"http://m.bqltcb.shop\",\"Cookie\":\"autoRead=1; udtauth=e4684SZacRBRREkNoOzZ4WA6beQbd5%2FbVYqPWZhsJm%2FVRb3U77d3saUwRTWyi%2BiKBjxWvKXEOtAey9%2F7uy%2BQ4MUaCe2iYKB7boJ%2FbH8YOiz%2FV6wSodHuse5dUjjt02vN9imRXY1Lx6yi%2B9mOAwZ2yci6%2FpJzZcj34Qz%2BTJ2Fz%2B4; PHPSESSID=4vos0t2auinifngir9gveiefmu\",\"Connection\":\"keep-alive\",\"Host\":\"m.bqltcb.shop\",\"Content-Length\":\"0\",\"User-Agent\":\"Mozilla/5.0 (iPhone; CPU iPhone OS 14_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 MicroMessenger/8.0.3(0x1800032c) NetType/4G Language/zh_CN\",\"Referer\":\"http://m.bqltcb.shop/reada/\",\"Accept-Language\":\"zh-cn\",\"X-Requested-With\":\"XMLHttpRequest\"}"
+
 ])
 let fqkkBanfirstTask = $.getval('fqkkBanfirstTask') || 'ture' // 禁止脚本执行首个任务，避免每日脚本跑首次任务导致微信限制
 let fqkkCkMoveFlag = $.getval('fqkkCkMove') || ''
