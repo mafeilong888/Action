@@ -42,11 +42,6 @@ let name = '',id = '',did = ''
     cgwzhdArr.push($.getdata('cgwzhd'))
     cgwzggurlArr.push($.getdata('cgwzggurl'))
     let cgwzcount = ('1');
-  for (let i = 2; i <= cgwzcount; i++) {
-    cgwzggurlArr.push($.getdata(`cgwzggurl${i}`))
-    cgwzurlArr.push($.getdata(`cgwzurl${i}`))
-    cgwzhdArr.push($.getdata(`cgwzhd${i}`))
-  }
     console.log(`------------- 共${cgwzhdArr.length}个账号-------------\n`)
       for (let i = 0; i < cgwzhdArr.length; i++) {
         if (cgwzhdArr[i]) {
