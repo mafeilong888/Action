@@ -24,7 +24,7 @@ jobs:
           npm install
       - name: '运行 【猜歌王者】'
         run: |
-          node Scripts/cgwz.js
+          node cgwz.js
         env:
           PUSH_KEY: ${{ secrets.PUSH_KEY }}
           BARK_PUSH: ${{ secrets.BARK_PUSH }}
