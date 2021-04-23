@@ -41,7 +41,7 @@ let name = '',id = '',did = ''
   } else {cgwzurlArr.push($.getdata('cgwzurl'))
     cgwzhdArr.push($.getdata('cgwzhd'))
     cgwzggurlArr.push($.getdata('cgwzggurl'))
-    let cgwzcount = ($.getval('cgwzcount') || '1');
+    let cgwzcount = ('1');
   for (let i = 2; i <= cgwzcount; i++) {
     cgwzggurlArr.push($.getdata(`cgwzggurl${i}`))
     cgwzurlArr.push($.getdata(`cgwzurl${i}`))
