@@ -5,7 +5,6 @@ const cglmheaderArr = ['{"Connection":"keep-alive","Accept-Encoding":"gzip,defla
 let status;
 let num = 50;
 status = (status = ($.getval("cglmstatus") || "1") ) > 1 ? `${status}` : ""; // 账号扩展字符
-cglmheaderArr = []
 let cglmheader = $.getdata('cglmheader')
 let tz = ($.getval('tz') || '1');//0关闭通知，1默认开启
 const invite=1;//新用户自动邀请，0关闭，1默认开启
