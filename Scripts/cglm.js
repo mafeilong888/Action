@@ -26,7 +26,7 @@ if (isGetCookie) {
    $.done()
 } 
 
-cglmheaderArr.push($.getdata('{"Connection":"keep-alive","Accept-Encoding":"gzip,deflate","Content-Type":"application/json","Access-Control-Allow-Origin":"*","Access-Control-Allow-Methods":"GET, POST","Cache-Control":"no-cache","User-Agent":"%E7%8C%9C%E6%AD%8C%E8%81%94%E8%90%8C/1.0.4 CFNetwork/1206 Darwin/20.1.0","token":"6f38fb84b90b4924808e0b6fbf7469bf","Host":"www.xizai.com","Access-Control-Allow-Headers":"x-requested-with,content-type","Accept-Language":"zh-cn","Accept":"*/*","Content-Length":"62"}'))
+cglmheaderArr.push($.getdata('cglmheader'))
     let cglmcount = ($.getval('cglmcount') || '1');
   for (let i = 2; i <= cglmcount; i++) {
     cglmheaderArr.push($.getdata(`cglmheader${i}`))
