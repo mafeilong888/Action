@@ -59,11 +59,32 @@ if (isGetCookie) {
    GetCookie();
    $.done()
 } 
+if ($.isNode()) {
+//sign
+  if (process.env.XPREADCOOKIE && process.env.XPREADCOOKIE.indexOf('#') > -1) {
+   xpreadCookie = process.env.XPREADCOOKIE.split('#');
+   console.log(`您选择的是用"#"隔开\n`)
+  }
+  else if (process.env.XPREADCOOKIE && process.env.XPREADCOOKIE.indexOf('\n') > -1) {
+   xpreadCookie = process.env.XPREADCOOKIE.split('\n');
+   console.log(`您选择的是用换行隔开\n`)
+  } else {
+   xpreadCookie = process.env.XPREADCOOKIE.split()
+  };
+    Object.keys(xpreadCookie).forEach((item) => {
+        if (xpreadCookie[item]) {
+          xpreadCookieArr.push(xpreadCookie[item])
+        }
+    });
+    console.log(`============ 脚本执行-国际标准时间(UTC)：${new Date().toLocaleString()}  =============\n`)
+    console.log(`============ 脚本执行-北京时间(UTC+8)：${new Date(new Date().getTime() + 8 * 60 * 60 * 1000).toLocaleString()}  =============\n`)
+ } else {
     xpreadCookieArr.push($.getdata('xpreadCookie'))
     let xpreadcount = ($.getval('xpreadcount') || '1');
   for (let i = 2; i <= xpreadcount; i++) {
     xpreadCookieArr.push($.getdata(`xpreadCookie${i}`))
   }
+}    
 !(async () => {
 if (!xpreadCookieArr[0]) {
     $.msg($.Ariszy, '【提示】请先获取笑谱阅读一Cookies')
