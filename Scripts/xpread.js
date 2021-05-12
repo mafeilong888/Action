@@ -35,7 +35,7 @@ const notify = $.isNode() ?require('./sendNotify') : '';
 var newsaid;
 let status;
 status = (status = ($.getval("xpreadstatus") || "1") ) > 1 ? `${status}` : ""; // 账号扩展字符
-var delay = ($.getval("delay") || 30)
+var delay = ($.getval("delay") || 15)
 var xpreadCookieArr = []
 var newslist = new Array();
 let xpreadCookie = $.getdata('xpreadCookie')
