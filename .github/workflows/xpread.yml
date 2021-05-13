@@ -35,5 +35,4 @@ jobs:
       - name: '运行 【笑谱阅读】'
         run: |
           node Scripts/xpread.js
-        env:
-          XPREADCOOKIE: ${{ secrets. XPREADCOOKIE }}
+
