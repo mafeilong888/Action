@@ -35,8 +35,8 @@ const notify = $.isNode() ?require('./sendNotify') : '';
 var newsaid;
 let status;
 status = (status = ($.getval("xpreadstatus") || "1") ) > 1 ? `${status}` : ""; // 账号扩展字符
-var delay = ($.getval("delay") || 15)
-var xpreadCookieArr = ['{"X-Requested-With":"XMLHttpRequest","Connection":"keep-alive","Accept-Encoding":"gzip, deflate, br","Content-Type":"application/x-www-form-urlencoded; charset=UTF-8","Origin":"https://lrqd.wasair.com","User-Agent":"Mozilla/5.0 (iPhone; CPU iPhone OS 14_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148","X-CSRF-TOKEN":"Sg6VaDu2BpCgKFCsDJEkWjG8AijjVcf8vrprR866","Cookie":"XSRF-TOKEN=eyJpdiI6InJUUjVjUmdmQ3U0c0V3dmF2RDZMdVE9PSIsInZhbHVlIjoiN2JcL2xrWWp5bEo5MCs2YzViR1ZmdkRlWlpiZ25yWGlRYm9GR25sS3ZPakFqQ0xSaENmRnRIZjdtZ0ZqR3c4REQ4ZlBhMWVHNG9hT25OU3B6aUtmS2pRPT0iLCJtYWMiOiI0NjUwM2Q3ZWRhMmMyNzhmYWZhYjhmYzFmM2JhYzNjYjMwOTRkNTIwMzE5MGJhZjNhZGMwOGE2MzViNjNiZDkwIn0%3D; laravel_session=eyJpdiI6InM1dTFycmc5UkFwaGNjSSt3dnZBdWc9PSIsInZhbHVlIjoiVmNkQ0tEMkZ1Mzgyd003aVVhWUNDaVlYSmVPNWZza2dGRng5RUZKdWNXOFdpNVFSTVwvSDJFWHkwaEVLamJ6VlVCcDBoS0tWUXkzWUgyVnN3aVV4bEVBPT0iLCJtYWMiOiJjYWMxNDczYWU5ZWQyNzY2NDdkOGM4NGU4MzIyZjI1NjIyZmIwYjUzYThiNjAxNGE0NTliNjRlZTkwMjMxZmNiIn0%3D; _idfa_device=eyJpdiI6ImVzMUpMVkw4ZTRjYlRlaFwvbHE1QjdRPT0iLCJ2YWx1ZSI6ImdVT3JFYzhBNjJFWENxVWYxT1Q1dWc9PSIsIm1hYyI6IjhkODBhN2FhMjNmY2NiMmU2ZDdiODU2MjE4MmRmNTVkZWZhODYyNGY4Y2QxY2ZjYzI5ZDk0OWY2NTZhNzFlY2MifQ%3D%3D; _imei_device=eyJpdiI6IkluQWRpbVgzaUJ5ZGNYMXBEUVMxYmc9PSIsInZhbHVlIjoidkhUbFNVZWEzUXo1dGtDU25DMUJGZz09IiwibWFjIjoiM2NhN2JmMjJjMzc4OGI5N2Q5ZGY0NzE1MDg4MzE3Y2Y5OWMxZjI2MjcxODk4MjBmMDFlN2JjYWJjYzAwMGEyZiJ9; _source_into_value=eyJpdiI6ImdYR2RnZ21oVjVmYzRjaFhMdDdHU2c9PSIsInZhbHVlIjoiU1ZRWEFIMjZcLzhHZVBDcis1Zk9cL0hQaVd3d3VNVXZBVytsMENybThoXC90ODZ1Z05FSnAxc0lSOUhCanZCaHcyME9hWU43ajdMUWRQQ3B5QUpRMFNHcUU1d0FGcCtFUG1GWFFZcTFhMXprT1ZWYmFJZytiakk4Wjg0TlRWblVJTklMTFR0XC81cmYrMjAyUmd5Rm8yZ1JSazErYjB0U2l4Zm93aDYwQmF6UGhFdUVlQnBlXC8wdXlEdFFGUW5qbHlkRnZYbGxtbEoySVFsYmxUblZma2t3MDlpUWhHOXVcL0pXcXNcL1Y2YmpYNWtQQ009IiwibWFjIjoiY2JhZjBhOTVkYjVkNzBmOTk2MTc2NjY4YmIwMzc3YWQ1YjUwY2M3NDJhNzVlNWNmMjIwMDgwZmIwNGJlNjMwMyJ9; _user_vip_identify=eyJpdiI6Ijl4OHJac0pYMFI2aVVpekdcL1RONTBRPT0iLCJ2YWx1ZSI6IjE3dWpzWHFDTlc4Z1QrZFNzQXI0Z2c9PSIsIm1hYyI6IjExNWE4MzQ1MzNmNmM4NDliNzgyMjU3MGU1ZTAyOGM3MThkNjM2NzZjYTllMWQzMGIxMTAxNzViNzY0M2UwMGUifQ%3D%3D; _user_vip_url=eyJpdiI6InF0SjFCOXg0aXdPcUZUVDNuNE9uUEE9PSIsInZhbHVlIjoiUTBcL2FYVUlhd2FhZjBZUjdRZnVwbHc9PSIsIm1hYyI6ImMyOGNhMDQ1MjBmZjRmY2E0NDIwZjAwNjI0NzZjOTkxMzk1OTcyMzhmMTNkMTgzNTJlN2U3ZjBhODhhNDBiNmQifQ%3D%3D","Referer":"https://lrqd.wasair.com/advert/task/con/transition","Host":"lrqd.wasair.com","Accept-Language":"zh-cn","Accept":"application/json, text/javascript, */*; q=0.01","Content-Length":"43"}']
+var delay = ($.getval("delay") || 30)
+var xpreadCookieArr = []
 var newslist = new Array();
 let xpreadCookie = $.getdata('xpreadCookie')
 var xpreadtaskId = 15;
@@ -59,32 +59,11 @@ if (isGetCookie) {
    GetCookie();
    $.done()
 } 
-if ($.isNode()) {
-//sign
-  if (process.env.XPREADCOOKIE && process.env.XPREADCOOKIE.indexOf('#') > -1) {
-   xpreadCookie = process.env.XPREADCOOKIE.split('#');
-   console.log(`您选择的是用"#"隔开\n`)
-  }
-  else if (process.env.XPREADCOOKIE && process.env.XPREADCOOKIE.indexOf('\n') > -1) {
-   xpreadCookie = process.env.XPREADCOOKIE.split('\n');
-   console.log(`您选择的是用换行隔开\n`)
-  } else {
-   xpreadCookie = process.env.XPREADCOOKIE.split()
-  };
-    Object.keys(xpreadCookie).forEach((item) => {
-        if (xpreadCookie[item]) {
-          xpreadCookieArr.push(xpreadCookie[item])
-        }
-    });
-    console.log(`============ 脚本执行-国际标准时间(UTC)：${new Date().toLocaleString()}  =============\n`)
-    console.log(`============ 脚本执行-北京时间(UTC+8)：${new Date(new Date().getTime() + 8 * 60 * 60 * 1000).toLocaleString()}  =============\n`)
- } else {
     xpreadCookieArr.push($.getdata('xpreadCookie'))
     let xpreadcount = ($.getval('xpreadcount') || '1');
   for (let i = 2; i <= xpreadcount; i++) {
     xpreadCookieArr.push($.getdata(`xpreadCookie${i}`))
   }
-}    
 !(async () => {
 if (!xpreadCookieArr[0]) {
     $.msg($.Ariszy, '【提示】请先获取笑谱阅读一Cookies')
@@ -230,7 +209,7 @@ async function newscomplete(){
         }else if(result.errorCode == 10331){
            $.log("😫"+result.errorMsg+"\n")
            await cash()
-           $done();
+           $.done();
         }else{
            $.log("😫"+result.errorMsg+"\n")
         }
